@@ -1,0 +1,257 @@
+.text-sm {
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: .8rem;
+}
+
+.text-md {
+  font-size: 1.375rem;
+}
+
+.text-lg {
+  font-size: 2.5rem;
+  line-height: 2.3rem;
+}
+
+#footer a {
+  line-height: 1.25rem;
+}
+
+@media (max-width: 992px) {
+  .text-lg {
+    font-size: 2.1rem;
+    line-height: 1.75rem;
+  }
+  .text-md {
+    font-size: 1.15rem;
+    line-height: 1.4rem;
+  }
+}
+
+body {
+  color: #555555;
+}
+
+.gradient-blue, #innerNavbar, #navbar .btn-search:hover, #header {
+  background: #22b5e4;
+  background: -webkit-gradient(linear, left top, right top, from(#22b5e4), to(#304494));
+  background: linear-gradient(90deg, #22b5e4 0%, #304494 100%);
+  color: #ffffff !important;
+}
+
+.gradient-blue a, #innerNavbar a, #navbar .btn-search:hover a, #header a {
+  color: #ffffff !important;
+}
+
+.gradient-green, #services {
+  background: #1cd0df;
+  background: -webkit-gradient(linear, left top, right top, from(#1fe0cd), to(#1cd0df));
+  background: linear-gradient(90deg, #1fe0cd 0%, #1cd0df 100%);
+  color: #304494 !important;
+}
+
+.img-bar-bottom {
+  margin-bottom: -1px;
+}
+
+.img-bar-top {
+  margin-top: -1px;
+}
+
+.btn {
+  padding: 5px 20px;
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: #304494;
+  border-color: #304494;
+  border-width: 2px;
+}
+
+.btn-outline-primary {
+  color: #304494;
+  border-color: #304494;
+  border-width: 2px;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 15px 0px;
+}
+
+.slick-slide, .slick-active, .slick-center {
+  opacity: .5;
+  outline: none;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+.slick-current {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+
+span.icon-big {
+  font-size: 2rem;
+  color: #1EDCD0;
+}
+
+#innerNavbar {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#innerNavbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#innerNavbar .navbar-icon {
+  height: 16px;
+}
+
+#navbar .brand {
+  width: 180px;
+}
+
+@media (max-width: 992px) {
+  #navbar .brand {
+    width: 120px;
+  }
+  #navbar #navbarNav ul {
+    padding-top: 1rem;
+    margin-top: .5rem;
+    border-top: 1px #555555 solid;
+    padding-bottom: 1rem;
+  }
+  #navbar #navbarNav .text-sm {
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1rem;
+  }
+}
+
+#navbar #navbarNav a {
+  color: #555555;
+}
+
+#navbar #navbarNav a:hover {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #1EDCD0;
+}
+
+#navbar .btns-others a:hover {
+  text-decoration: none;
+}
+
+#navbar .btn-cart {
+  color: #555555;
+}
+
+#navbar .btn-cart:hover {
+  color: #304494;
+  border-bottom: 2px solid #1EDCD0;
+  padding-bottom: 5px;
+}
+
+#navbar .btn-search {
+  background-color: #304494;
+  padding: .75rem;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+#products .product-card {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+#products img {
+  max-height: 120px;
+}
+
+#products h2 {
+  color: #304494;
+}
+
+#products h3 {
+  color: #1EDCD0;
+  font-size: 1rem;
+  margin-bottom: 0px;
+}
+
+#products p {
+  font-size: .9rem;
+}
+
+#featured h3 {
+  color: #304494;
+}
+
+#featured .material-icons {
+  color: #1EDCD0;
+}
+
+#services {
+  position: relative;
+}
+
+#services .woman {
+  background-image: url(../../assets/images/woman.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#services .img-bar-bottom {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 5;
+}
+
+#why {
+  color: #304494;
+}
+
+#why .material-icons {
+  color: #1EDCD0;
+}
+
+#news {
+  background-color: #F3F3F3;
+}
+
+#news h2, #news h4 {
+  color: #304494;
+}
+#navbarNav .nav-item .dropdown-menu a.dropdown-item {
+ font-size: small !important;
+}
+
+#navbarNav .nav-item .dropdown-menu a.dropdown-item:hover {
+  color: #fff !important;
+}
+
+.btn-search {
+  background-color: #304494;
+  padding: .75rem;
+  border-radius: 50%;
+  color: #ffffff;
+}
+/*# sourceMappingURL=main.css.map */
+
+
+.slides .smooth {
+  opacity:0.3;
+}

@@ -1,0 +1,14 @@
+#innerNavbar{
+   padding-top: 12px;
+   padding-bottom: 12px;
+   @extend .gradient-blue;
+
+   ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+   }
+   .navbar-icon{
+      height:16px;
+   }
+}

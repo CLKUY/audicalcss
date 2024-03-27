@@ -1,0 +1,15 @@
+#services{
+   position: relative;
+   .woman{
+      background-image: url(../../assets/images/woman.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+   }
+   .img-bar-bottom{
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      z-index: 5;
+   }
+   @extend .gradient-green;
+}

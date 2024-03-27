@@ -1,0 +1,168 @@
+#grp-navigation {
+	background-image: none;
+	background-color: #A6CE39;
+}
+#grp-user-tools{
+	border: none;
+}
+#grp-user-tools>li{
+	border:none;
+}
+#grp-user-tools>li a{
+	color: #FFFFFF;
+}
+#grp-user-tools>li a:hover{
+	color: #D7ECA0;
+    border-bottom-color: rgba(255, 255, 255, 0.25);
+    text-decoration: underline;
+}
+#grp-navigation ul li.grp-collapse.grp-open>ul{
+	border:none;
+}
+#grp-navigation ul li.grp-collapse.grp-open>ul li{
+	background-color: #A6CE39;
+	border:none;
+}
+#branding {
+    background: #A6CE39 url(../img/logo_clk.png) 30px center no-repeat;
+    height: 40px;
+    padding: 3px 0;
+}
+.grp-module h2{
+	background: #A6CE39;
+    color: #9ac267;	
+}
+a.grp-section, .grp-module h2{
+	color: #FFFFFF;
+	text-shadow: none;
+}
+.grp-module .grp-row:not(tr){
+	background-color: #FFFFFF;
+}
+.grp-row a, .grp-icon a, .grp-row span, #grp-breadcrumbs>ul a, #grp-breadcrumbs>ul li{
+	color: #809E37;
+	text-shadow: none;
+}
+.grp-row a:hover{
+	color: #3D3C25;
+}
+#grp-breadcrumbs>ul a:hover{
+	color: rgba(255, 255, 255, 0.6);
+}
+span.grp-font-color-quiet {
+    color: #888;
+}
+#grp-context-navigation{
+    background: #CDE884;
+    color: #7B9833;
+}
+table.grp-table tbody tr.grp-row-even td, table.grp-table tbody tr.grp-row-even th, table.grp-table tbody tr.grp-alt td, table.grp-table tbody tr.grp-alt th{
+	background:#F0FFB8;
+}
+table.grp-table tbody tr.grp-row-odd td, table.grp-table tbody tr.grp-row-odd th{
+	background:#FFFFFF;
+}
+table.grp-table.grp-sortable thead th.sortable .grp-text a, table.grp-table.grp-sortable thead th div.grp-text span{
+	color: #666;
+}
+.grp-pulldown-container .grp-pulldown-handler{
+	color: #FFFFFF;
+	background-color: #A6CE39;
+}
+.button-state-blue, button, a.fb_show, a.related-lookup, body.tinyMCE input[name="src"]+div a, body.tinyMCE input[name="href"]+div a, input[type=button], a.related-lookup.m2m, .grp-autocomplete-wrapper-m2m a.related-lookup, .grp-autocomplete-wrapper-fk a.related-lookup, button.ui-datetime-now, .grp-pulldown-container .grp-pulldown-handler:hover, .grp-pulldown-container.grp-pulldown-state-open .grp-pulldown-handler, .grp-pulldown-container.grp-pulldown-state-open .grp-pulldown-handler:hover{
+	background-color: #CDE884;
+}
+button.ui-datepicker-trigger, button.ui-timepicker-trigger{
+	background-color: #FFFFFF;
+}
+.ui-widget-content .ui-state-default,.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current,#ui-timepicker ul li.row.ui-state-default{
+	background:rgb(240, 255, 184);
+}
+.ui-widget-content .ui-state-default:hover,.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current:hover,#ui-timepicker ul li.row.ui-state-default:hover{
+	background:#A6CE39;
+}
+.ui-datepicker table td a.ui-state-hover{
+	background:#A6CE39!important;
+}
+.grp-object-tools a.grp-add-link{
+	background:url('../images/icons-s79f97b581c.png') 0 -891px no-repeat,linear-gradient(#999,#999);
+	border: none;
+}
+.grp-object-tools a.grp-add-link:hover{
+	background:url('../images/icons-s79f97b581c.png') 0 -891px no-repeat,linear-gradient(#A6CE39,#A6CE39);
+}
+.grp-object-tools a:hover{
+	background: #A6CE39;
+	border-color: #A6CE39;
+}
+.grp-object-tools a.grp-viewsite-link:hover, .grp-object-tools a[target="_blank"]:hover{
+	background-image: url(../images/icons-s79f97b581c.png), linear-gradient( #A6CE39,  #A6CE39);
+	border-color: #A6CE39;
+}
+input[type="submit"]{
+	background-image: linear-gradient(#A6CE39,#A6CE39);
+	color: #555;
+}
+.grp-fixed-footer input[type="submit"]:hover, .grp-fixed-footer input[type="submit"]:focus,.grp-submit-row input.grp-button:hover{
+	background-image: linear-gradient(#CDE884,#CDE884);
+	border: none;
+}
+.grp-submit-row input.grp-button:hover{
+	color: #555;
+}
+.grp-submit-row input.grp-button, .grp-submit-row a.grp-button, .grp-submit-row button.grp-button{
+	opacity: 1;
+	border: none;
+}
+button.grp-button{
+	background-image: linear-gradient(#A6CE39,#A6CE39);
+	color: #555;
+}
+.grp-submit-row button.grp-button:hover{
+	border: none;
+}
+.grp-collapse.grp-closed>h2.grp-collapse-handler, .grp-collapse.grp-closed > h3.grp-collapse-handler, .grp-collapse.grp-open > h3.grp-collapse-handler, .grp-collapse.grp-closed>h3.grp-collapse-handler:hover{
+	background-image: linear-gradient(#CDE884,#CDE884);
+}
+.grp-collapse.grp-closed>h2.grp-collapse-handler:hover, .grp-group>h2,.grp-collapse.grp-open>h2.grp-collapse-handler{
+	background-image: linear-gradient(#A6CE39,#A6CE39);
+}
+.grp-group>h2{
+	text-shadow: none;
+	color: #FFFFFF;
+}
+.grp-tabular .grp-table .grp-tbody .grp-th, .grp-tabular .grp-table .grp-tbody:nth-child(even) .grp-td{
+	background-color: rgb(240, 255, 184);
+}
+.grp-tabular .grp-table .grp-tbody .grp-th, .grp-tabular .grp-table .grp-tbody:nth-child(odd) .grp-td{
+	background-color: #FFFFFF;
+}
+.file-upload a, .grp-pagination ul li a{
+	color: #809E37;
+}
+.file-upload a:hover{
+	color: #3D3C25;
+}
+div#grp-branding{
+	background: #A6CE39 url(../img/logo_clk.png) no-repeat;
+    height: 40px;
+    padding: 3px 0;
+    width: 60px;
+    margin:auto;
+}
+body.grp-login .grp-module-login h1{
+	padding: 0;
+    border-top: 0;
+}
+body.grp-login .grp-module-login h1 span.grp-admin-title{
+	display:none;
+}
+body.grp-login .grp-module-login h1 span.grp-current-page{
+	background-image: linear-gradient(#A6CE39,#A6CE39);
+	border-left: 1px solid #A6CE39;
+	border-right: 1px solid #A6CE39;
+}
+body.grp-login .grp-module-login .grp-module .grp-row.grp-connected{
+	border-top: 0;
+	background-color: #FFFFFF;
+}

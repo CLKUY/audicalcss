@@ -1,0 +1,27 @@
+$cyan: #1EDCD0;
+$blue: #304494;
+$grey: #555555;
+$grey-light: #F3F3F3;
+
+body{
+   color: $grey;
+}
+
+.gradient{
+   &-blue{
+      background: #22b5e4;
+      background: linear-gradient(90deg, #22b5e4 0%, #304494 100%);
+      color: #ffffff !important;
+      a{
+         color: #ffffff !important;
+      }
+   }
+}
+
+.gradient{
+   &-green{
+      background: #1cd0df;
+      background: linear-gradient(90deg, #1fe0cd 0%, #1cd0df 100%);
+      color: $blue !important;
+   }
+}

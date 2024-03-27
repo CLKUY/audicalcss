@@ -1,0 +1,64 @@
+#navbar{
+   
+   .brand{
+      width: 180px;
+   }
+
+   @media(max-width:992px){
+      .brand{
+         width: 120px;
+      }
+      #navbarNav{
+         ul{
+            padding-top: 1rem;
+            margin-top: .5rem;
+            border-top: 1px $grey solid;
+            padding-bottom: 1rem;
+         }
+         .text-sm {
+            font-size: .9rem;
+            font-weight: 600;
+            line-height: 1rem;
+         }
+      }
+   }
+
+   #navbarNav{
+      a{
+         color: $grey;
+         &:hover{
+            // text-decoration: underline;
+            padding-bottom: 5px;
+            border-bottom: 2px solid $cyan;
+         }
+      }
+   }
+
+   .btns-others{
+      a:hover{
+         text-decoration: none;
+      }
+   }
+
+   .btn-cart{
+      color: $grey;
+      &:hover{
+         color: $blue;
+         border-bottom: 2px solid $cyan;
+         padding-bottom: 5px;
+      }
+   }
+
+   .btn-search{
+      background-color: $blue;
+      padding: .75rem;
+      border-radius: 50%;
+      color: #ffffff;
+      &:hover{
+         @extend .gradient-blue;
+      }
+   }
+
+
+   
+}

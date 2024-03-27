@@ -1,0 +1,24 @@
+.divider{
+   width: 60px;
+   height: 4px;
+   border-radius: 2px;
+   margin: 15px 0px;
+}
+
+.slick-slide, .slick-active, .slick-center{
+   opacity: .5;
+   outline: none;
+   transform: scale(.9);
+   transition: all .25s ease-in-out;
+}
+
+.slick-current{
+   opacity: 1;
+   transform: scale(1);
+   transition: all .25s ease-in-out;
+}
+
+span.icon-big{
+   font-size: 2rem;
+   color: $cyan;
+}

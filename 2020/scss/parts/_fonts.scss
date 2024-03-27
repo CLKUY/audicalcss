@@ -1,0 +1,34 @@
+.text-sm{
+   font-size: .75rem;
+   font-weight: 600;
+   line-height: .8rem;
+}
+
+.text-md{
+   font-size: 1.375rem;
+   // font-weight: 600;
+}
+
+.text-lg{
+   font-size: 2.5rem;
+   line-height: 2.3rem;
+   // font-weight: 600;
+}
+
+#footer{
+   a{
+      line-height: 1.25rem;
+   }
+}
+
+@media(max-width:992px){
+   .text-lg{
+      font-size: 2.1rem;
+      line-height: 1.75rem;
+   }
+   .text-md{
+      font-size: 1.15rem;
+      line-height: 1.4rem;
+      // font-weight: 600;
+   }
+}
