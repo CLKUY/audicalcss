@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static thumbnail%}
+
+{% block extra_head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}" >
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}" >
+{% endblock %}
+
+{% block main_content %}
+
+  <!-- Banners -->
+  <div class="container">
+    <div class="row">
+      {% if visibleBanners %}
+        {% with visibleBanners as banners %}
+          {% include "includes/slider.html"%}
+        {% endwith %}
+      {% endif %}
+    </div>
+  </div>
+  <!--Solutions-->
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-md-4 text-center img-hover-zoom">
+        {{home_imagen_1}}
+      </div>
+      <div class="col-md-4 text-center img-hover-zoom">
+       {{home_imagen_2}}
+      </div>
+      <div class="col-md-4 text-center img-hover-zoom">
+        {{home_imagen_3}}
+      </div>
+    </div>
+  </div>
+  <!--End Solutions-->
+
+  <!--Cita-->
+  <div id="cita">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 text-right pt-5">
+          <h2 class="text-uppercase text-light title">Agende su cita</h2>
+          <p class="text-light description mb-5">Si lo desea puede agendar su próxima cita con nuestras fonoaudiólogas.</p>
+          <a class="text-light btn-cita" href="{% url 'cita' %}">Agendar cita</a>
+        </div>
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static "images/doctora.png" %}" class="img-fluid pt-5">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Cita-->
+
+  <!--Test-->
+  <div id="test">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 pt-2 d-none d-md-block">
+          <img src="{% static "images/icon-test.png" %}" class="img-fluid">
+        </div>
+        <div class="col-md-8">
+          <h2 class="text-uppercase title-test text-light">Test auditivo</h2>
+          <p class="description mb-5 text-light">Sepa rápidamente si tiene algún síntoma de pérdida auditiva.</p>
+          <a class="text-light btn-test" href="{% url 'test' %}">Realizar test</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+  <!--CAP-->
+<div id="cap">
+  <div class="container">
+    <div class="row my-5">
+      <div class="col-md-7 col-12">
+      <iframe width="100%" height="359" src="https://www.youtube.com/embed/0hCchYAvHL8?rel=0 " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+      </div>
+      <div class="col-md-4 offset-md-1 text-center col-10 offset-1">
+        <img src="{% static "images/logo-cap.jpg" %}" class="img-fluid my-4">
+        <a  href="https://www.audical.com.uy/servicios/cap/" class="d-inline-block text-white btn-cap font-weight-bold mt-4">Más información</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--End CAP-->
+<section class="before_footer">
+  <!--Notice-->
+  <div class="notice">
+    <div class="container">
+      <div class="row pt-5 pb-3">
+        <div class="col-6">
+          <h2 class="font-weight-bold title-test">Noticias</h2>
+        </div>
+        <div class="col-6">
+          <a  href="{% url 'article_list' %}" class="float-right text-white btn-noticias font-weight-bold mt-3">Más noticias</a>
+        </div>
+      </div>
+      <div class="row">
+      {% for article in articles %}
+        <div class="col-md-4">
+          <a href="{% url 'article_detail' article.slug %}">
+            {% if article.image %}
+             {% thumbnail article.image "350x229" crop="center" as img %}
+              <img class="img-fluid" src="{{ img.url }}" onerror="this.onerror=null;this.src='{% static "images/noimg.png" %}';">
+            {% empty  %}
+              <img src="{% static "images/noimg.png" %}" alt="" class="img-fluid">
+            {% endthumbnail %}
+            {% else %}
+            <img class="img-fluid" src="{% static "images/noimg.png" %}">
+            {% endif %}
+          </a>
+          <div class="item_news px-2 py-3 mb-3">
+            <a href="{% url 'article_detail' article.slug %}">
+              <h4 class="font-weight-bold">{{article.title}}</h4>
+              <p>{{article.summary}}</p>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!--End Notice-->
+
+  <!--When-->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-5 mt-2 d-none d-md-block">
+        <img src="{% static 'images/icon-ubicacion-01.svg' %}" class="img-fluid">
+      </div>
+      <div class="col-md-7 mt-5 findus">
+        <h2 class="text-uppercase font-weight-bold title-test pt-5">Dónde<br>encontrarnos</h2>
+        <p class="">Hay un centro Audical cerca de tu casa. Te esperamos.</p>
+        <p><small>Nuestro Horario de Atención es de Lunes a Viernes de 09:00 a 18:00 hs.</small></p>
+        <br>
+        <a class="text-white btn-where font-weight-bold mt-5" href="{% url 'donde-encontrarnos' %}">Buscar Centro</a>
+      </div>
+    </div>
+  </div>
+  <!--End When-->
+
+   <!-- Payment Method -->
+   {% include 'includes/metodo-pago.html' %}
+  <!-- end Payment Method -->
+</section>
+{{home_popup_desktop}}
+{{home_popup_mobile}}
+{% endblock main_content %}
+
+{% block extra_js %}
+  <script type="text/javascript" src="{% static 'slick/slick.min.js' %}" ></script>
+  <script >
+    $('#slickCarousel').slick({
+      slidesToShow: 1,
+      dots: true,
+      speed: 300,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            arrows: true,
+            slidesToShow: 1
+
+          }
+        },
+      ]
+  });
+  </script>
+{% endblock %}

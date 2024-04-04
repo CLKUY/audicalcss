@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static thumbnail %}
+
+{% block title %}Noticias{% endblock %}
+{% block body_class %}noticias noticias_list{% endblock %}
+
+{% block main_content %}
+<!--FILTROS -->
+<section class="pb-5">
+  <!--Notice-->
+ 	<div class="notice">
+	    <div class="container">
+
+	    	<div class="row pt-2 pb-2">
+			    <div class="col-12 col-md-3 nav_servicios">
+				    <div class="search_left js_search_left">
+			    		<form>
+
+                <span class="categorias text-white w-100 d-block text-uppercase font-weight-bold py-1 px-2 mb-2">{{filter_form.categories.label}}:</span>
+                {{filter_form.categories}}
+                <label>{{filter_form.year.label}}:</label>
+                {{filter_form.year}}
+                <label>{{filter_form.month.label}}:</label>
+                {{filter_form.month}}
+
+              </form>
+
+				    </div>
+			    </div>
+
+		 		<div class="col-12 col-md-9">
+		 		<div class="row">
+			      	{% for article in object_list %}
+        <div class="col-md-4">
+          <a href="{% url 'article_detail' article.slug %}">
+            {% if article.image %}
+             {% thumbnail article.image "350x229" crop="center" as img %}
+              <img class="img-fluid" src="{{ img.url }}" onerror="this.onerror=null;this.src='{% static "images/noimg.png" %}';">
+            {% empty  %}
+              <img src="{% static "images/noimg.png" %}" alt="" class="img-fluid">
+            {% endthumbnail %}
+            {% else %}
+            <img class="img-fluid" src="{% static "images/noimg.png" %}">
+            {% endif %}
+          </a>
+          <div class="item_news px-2 pt-2 pb-4 mb-3">
+            <a href="{% url 'article_detail' article.slug %}">
+              <h4 class="font-weight-bold">{{article.title}}</h4>
+              <p>{{article.summary}}</p>
+            </a>
+          </div>
+        </div>
+			      	{% endfor %}
+			      	</div>
+		     	</div>
+		     </div>
+
+	    </div>
+	</div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    $(document).ready(function(){
+
+      $('.search_left input').click(function () {
+        $(this).closest('form').submit();
+      });
+    })
+    var tagSelect = $('.search_left label input:checked');
+
+    var listSelect ="";
+    if (tagSelect.length > 0) {
+      tagSelect.each(function(index, el) {
+        listSelect += '<li><a href="#" data-target-ref=' + $(this).attr('id')+ '>' + $(this).parent('label').text() + '</a></li>';
+      });
+      $('.js_cont_tags').append(listSelect)
+    }
+
+    $('.js_cont_tags a').on('click touchstart', function(event) {
+      event.preventDefault();
+      var linkRef = $(this).attr('data-target-ref');
+      $('.search_left input#'+ linkRef).trigger('click');
+    });
+  </script>
+{% endblock %}

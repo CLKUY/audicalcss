@@ -1,0 +1,12 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+<p>De: {{ name }} {{last_name}}</p>
+<p>Email: {{ email }}</p>
+<p>Teléfono: {{ phone }}</p>
+<p>Ciudad/Localidad: {{ city }}</p>
+<p>Departamento: {{ state }}</p>
+<p>Motivo del Contacto: {{ subject|default:"---" }}</p>
+<p>Mensaje: {% autoescape off %}{{ message|default:"---" }}{% endautoescape %}</p>
+</div>
+{% endblock %}

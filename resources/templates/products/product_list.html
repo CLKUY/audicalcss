@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}{{extra.category.name}}{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+  <!--Test-->
+<div id="{{ header_div_id }}" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right">{% autoescape off %}{{category.name}}{% endautoescape %}</h2>
+          <img class="img-fluid pt-0 pb-4" src="{% static 'images/linea-azul.png' %}">
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static header_div_image %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+<!-- Contenido -->
+<div class="container py-2 py-md-4">
+<div class="row">
+
+
+
+    <div class="col-12 col-sm-3 nav_servicios px-0 px-md-3">
+      <div class="d-none d-md-block">
+        {% include "includes/filter.html" %}
+      </div>
+
+      <a class="text-white text-uppercase font-weight-bold" data-target="#filtros_mobile" data-toggle="modal" href="#"><div class="sidebar-filter d-block d-md-none w-100 bg-dark my-3 p-3">
+        <span>Filtrar <svg class="filter_icon float-right" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="#fff"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span>
+      </div></a>
+       {% include "includes/filter-modal.html" %}
+
+    </div>
+
+    <div class="col-12 col-sm-9 px-md-5">
+      
+      <h1 class="pb-3">{{category.title|default_if_none:""}}</h1> 
+      {% if category.image %}
+          <div class="text-center">
+            <img class="img-fluid py-2" src="{{ category.image.url }}">
+          </div>
+      {% endif %}      
+      {% for video in category_videos %}     
+      <div class="video-container">   
+      {% if video.type == 'online' %}      
+      {% autoescape off %}{{video.embed}}{% endautoescape %}        
+      {% endif %}
+      {% if video.type == 'file' %}
+      <video controls src="{{video.url}}">
+      {% endif %}
+      </div>
+      <div class="clearfix"></div>
+      {% endfor %}
+      {% autoescape off %}
+      <p class="mb-0">{{category.description|default_if_none:""|linebreaks}}</p>
+      {% endautoescape %}
+
+      <div class="row">
+      {% for product in products %}
+      	<div class="col-6 col-sm-3 item_ps mb-4 item-page item-page-{% page_for_item forloop.counter0 paginate_by %}" >
+          {% thumbnail product.image "167x167" padding=True as im %}
+              {% if parent_category %}
+              <a href="{% url 'product_detail' parent_slugs=parent_category.slug|add:'/' category_slug=category.slug product_slug=product.slug %}"><img class="img-fluid mb-2"  src="{{ im.url }}"></a>
+              {% else %}
+              <a href="{% url 'product_detail' category_slug=category.slug product_slug=product.slug %}"><img class="img-fluid mb-2"  src="{{ im.url }}"></a>
+              {% endif %}
+          {% empty %}
+              <!--img class="img-fluid mb-2" src="ghost100x100.jpg"-->
+          {% endthumbnail %}
+          {% if parent_category %}
+          <a href="{% url 'product_detail' parent_slugs=parent_category.slug|add:'/' category_slug=category.slug product_slug=product.slug %}" class="text-center pb-2">{{ product.name }}</a>
+          {% else %}
+          <a href="{% url 'product_detail' category_slug=category.slug product_slug=product.slug %}" class="text-center">{{ product.name }}</a>
+          {% endif %}
+        </div>
+      {% empty %}  
+      {% endfor %}       
+      </div>
+      <div class="row py-3" id="product_list_paginator">
+      </div>   
+    </div>
+
+</div>
+</div>
+<!-- end Contenido -->
+
+  <!-- Payment Method -->
+
+  {% include 'includes/metodo-pago.html' %}
+  
+  <!-- end Payment Method -->
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.twbsPagination.min.js' %}"></script>
+ <script type="text/javascript">
+$(document).ready(function() {
+  {% if products %}
+  $('#product_list_paginator').twbsPagination({
+      first : "Primero",
+      prev: "Anterior",
+      next: "Siguiente",
+      last: "Último",
+      hideOnlyOnePage : true,
+      totalPages: {{total_pages}},
+      visiblePages: 7,
+      onPageClick: function (event, page) {
+          $('.item-page').hide();
+          $('.item-page-'+page).show();
+      }
+  });
+  {% endif %}
+});
+</script>
+{% endblock%}

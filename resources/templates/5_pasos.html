@@ -1,0 +1,927 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks %}
+
+{% block title %}5 pasos para oír mejor con audífonos{% endblock %}
+{% block body_class %}cinco_pasos{% endblock %}
+
+
+{% block main_content %}
+
+<div class="container pt-4">
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Volver arriba</button>
+
+    <div class="col-12 mt-4">
+      <h2 class="text-lg text-uppercase text-center mb-3 mt-4">5 pasos para OÍR MEJOR con audífonos</h2>
+      <h3 class="text-center">Su guía para mejorar la comprensión, independencia y satisfacción mediante el uso de audífonos.</h3>
+    </div>
+
+    <div class="row mt-4 mb-3">
+      <div class="col-lg-4 col-md-4 col-12">
+        <img class="img-fluid mb-2" src="{% static '2020/images/foto-1.jpg' %}" alt="foto-1">
+      </div>
+      <div class="col-12 col-lg-8 col-md-8 mt-4">
+        <p>Este documento de ejercicios es el resultado de un año de estudios para aprender la diferencia entre una persona que porta sus audífonos todo el día y otra que los utiliza ocasionalmente o en muy raras ocasiones.</p>
+        <p>De este estudio, hemos escogido cinco factores que son claves para el éxito.</p>
+        <p>Cada factor es presentado en un capítulo de este documento de ejercicios. Mantenga un bolígrafo o lápiz a la mano para tomar notas conforme vaya leyendo.</p>
+        <p>Revise el texto continuamente para comprender los 5 pasos y así desarrollará la habilidad para usar sus nuevos audífonos.</p>
+        <a class="mt-3 btn btn-primary rounded-pill" target="_blank" href="{% static '/pdf/AUDICAL_5pasos.pdf' %}">Descargar documento</a>
+      </div>
+    </div>
+
+    <div class="row mb-5 mt-5 d-none d-lg-flex d-md-flex d-xl-flex">
+
+      <div class="card col-lg-4">
+
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              PRIMER PASO - Aceptar que tengo un problema auditivo permanente.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              SEGUNDO PASO - Compromiso personal de buscar ayuda con una actitud positiva.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              TERCER PASO - EDUCACIÓN PERSONAL: Aprender todo lo que pueda sobre mi problema auditivo.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              CUARTO PASO - Establecer expectativas reales.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingFive">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              QUINTO PASO - Práctica, tiempo y paciencia: sus claves para el éxito.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingSix">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+              PRIMERA TAREA - Situaciones auditivas sencillas.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingSeven">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              SEGUNDA TAREA - Situaciones auditivas difíciles.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingEight">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+              TERCER TAREA - Situaciones auditivas muy difíciles.
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingNine">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+              SISTEMA ROGER
+            </button>
+          </h5>
+        </div>
+
+        <div class="card-header" id="headingTen">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+              CONEXIONES INALÁMBRICAS
+            </button>
+          </h5>
+        </div>
+
+      </div>
+
+      <div class="pasos col-lg-8">
+
+        <div id="accordion">
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">PRIMER PASO</h4>
+              <h3 class="mb-3">Aceptar que tengo un problema auditivo permanente.</h3>
+              <h5 class="mb-2">Tuve que aceptar que tengo un problema auditivo permanente.</h5>
+              <ol>
+                <li class="mb-3">Su audición en estos momentos ya fue revisada por un profesional y le ha informado que usted efectivamente tiene un problema auditivo permanente. Ahora, usted tiene dos opciones:(1) Rehusarse a aceptar o (2) Aceptar. Es normal que la mayoría de las personas pasen por la etapa en que se rehusan a aceptar. Lo lamentable es que muchas personas esperan de cinco a siete años para resolver su problema auditivo. Estas personas siguen un proceso típico de razonamiento.
+                  <ul>
+                    <li>“Oigo bien, lo que sucede es que la gente murumura; ya no habla claro.”</li>
+                    <li>“En los lugares ruidosos es en donde tengo problemas para oír. Solo dejaré de frecuentar esos lugares y estaré bien.”</li>
+                    <li>“Mi audición mejorará con el tiempo.”</li>
+                    <li>“Escucho lo que tengo que escuchar. De otra manera, pediré que lo repitan.”</li>
+                    <li>“Puedo manejarlo. Sólo me concentraré un poco más.”</li>
+                    <li>“Aún no es tan grave como para usa audífonos.”</li>
+                    <li>“El portar audífonos no va con mi imagen.”</li>
+                    <li>“Si mi audición empeora, entonces buscaré ayuda.”</li>
+                  </ul>
+                </li>
+                <li class="mb-3">Lo cierto es que no puede esconder su pérdida auditiva. Es más notoria que cualquier par de audífonos. Sus socios, clientes, amigos y personas queridas saben que usted tiene un problema. Usted puede ignorar el hecho de que existe el problema, pero sólo se estará engañando. Puede intentar esconder el problema, pero sus síntomas ya han revelado su secreto.
+                  <ul>
+                    <li>Responde a las preguntas equivocadas.</li>
+                    <li>Confunde palabras similares como “barco” y “banco”, “fresa” y “mesa”, “dime” y “cine”.</li>
+                    <li>Sube el volumen del televisor demasiado alto para las personas con audición normal.</li>
+                    <li>Ha hecho costumbre el pedir a las personas que repitan lo que han dicho.</li>
+                    <li>Su expresión muestra confusión cuando está escuchando.</li>
+                  </ul>
+                </li>
+                <li class="mb-3">Si continúa escondiendo su problema, será como una persona que se ve en el espejo y encuentra migajas de pan en su cara y tercamente se rehusa a removerlas.<br />Su empeño de esconder el problema afectará de manera negativa su vida social.<br />A continuación listamos las consecuencias más comunes. Con el tiempo usted...
+                  <ul>
+                    <li>Dejará de realizar sus actividades favoritas para no sentirse avergonzado de su problema auditivo.</li>
+                    <li>Evitará todas las situaciones que pueden resultar complicadas.</li>
+                    <li>Perderá su ingeniosidad, su vivacidad.</li>
+                    <li>Inconscientemente afectará a sus seres queridos con sus molestias, será una carga para ellos.</li>
+                    <li>Causará que sus seres queridos se den por vencidos.</li>
+                    <li>Se convertirá en una víctima de su decisión de no hacer nada.</li>
+                  </ul>
+                </li>
+                <li class="mb-3">El primer paso para resolver su problema de comunicación es admitir a usted mismo a sus seres queridos que:
+                  <ul>
+                    <li>Tiene un problema auditivo irreversible.</li>
+                    <li>Su problema auditivo está afectando su vida de manera significativa.</li>
+                    <li>El medicamento no “abrirá” sus oídos.</li>
+                    <li>No existe ninguna cirugía que corrija las pérdidas auditivas neurosensoriales o mixtas.</li>
+                    <li>Sus amigos, seres queridos, clientes y socios, ya están enterados de que tiene un problema auditivo.</li>
+                    <li>La única opción positiva es usar audífonos.</li>
+                  </ul>
+                </li>
+              </ol>
+              <div class="mt-4 mb-3">
+                <h5>“Muchas personas invierten más tiempo y energía inmersos en sus problemas en vez de tratar de resolverlos”</h5> <span>Henry Ford</span><br /><br />
+                <h5>“Una crítica honesta es difícil de aceptar, especialmente si viene de un pariente, amigo, conocido o extraño”</h5> <span>Franklin P. Jones</span><br /><br />
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text">Enfoque: No existe ayuda para un problema de audición hasta que no se acepte que persiste el problema.</p>
+                  <p class="card-text">Aplicación: ¿Ha admitido a usted mismo y a sus seres queridos que tiene un problema auditivo permanente?</p>
+                  <p class="card-text">¿Ha elegido la manera más sencilla y directa de comunicarlo a otros? Esto puede lograrse en una o dos oraciones.</p>
+                  <p class="card-text">Ejemplo: “Tantos años de exponerme al ruido de mi trabajo y en mis pasatiempos han deteriorado gradualmente mi habilidad para captar las consonantes en las palabras. Tengo una pérdida en el nervio auditivo para las frecuencias agudas. He decidido usar audífonos.”</p>
+                  <p class="card-text">Practique estas oraciones hasta que no requieran esfuerzo.</p>
+                </card>
+              </div>
+            </div>
+          </div>
+
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">SEGUNDO PASO</h4>
+              <h3 class="mb-3">Compromiso personal de buscar ayuda con una actitud positiva.</h3>
+              <h5 class="mb-2">Tuve que aceptar que tengo un problema auditivo permanentes</h5>
+              <ol>
+                <li class="mb-3">No es la compra de un producto nuevo la que mejorará su audición. Sólo el 20% del éxito dependerá del funcionamiento de los productos que usted adquirió.</li>
+                <li class="mb-3">El requisito fundamental para superar su problema auditivo es su profundo deseo de aprender y su voluntad de incrementar su habilidad para oír. Las seis características que presentan las personas que deciden finalmente usar audífonos son:
+                  <ul>
+                    <li>Actitud positiva.</li>
+                    <li>Deseo de aprender.</li>
+                    <li>Un serio compromiso de no renunciar.</li>
+                    <li>Tiempo dedicado a la práctica del uso de audífonos.</li>
+                    <li>Paciencia mientras que su cerebro se acostumbra a los ruidos y sonidos del medio ambiente.</li>
+                    <li>El esfuerzo del usuario equivale al deseo de incrementar su habilidad para oír.</li>
+                  </ul>
+                </li>
+                <li class="mb-3">Si Los audífonos no le darán resultados inmediatos. No son como los anteojos, que al colocarlos en nuestros ojos nos dan una visión clara. Los audífonos son más como patines; el comprar un buen par es sólo el comienzo. Un buen entrenador que sabe cómo enseñar a patinar es el segundo paso. El tiempo dedicado a la práctica con un paciente y la actitud positiva del estudiante, es el tercer y más importante paso.</li>
+                <li class="mb-3">Para lograr una mejor audición, necesita trabajar diariamente. La habilidad para volver a oír la 	puede aprender de nuevo, no puede comprarla. Los usuarios que han tenido éxito, con gusto le dirán que su afán de aprender y el tiempo dedicado a practicar, fue el precio que pagaron por oír mejor.</li>
+                <li class="mb-3">La decisión de tomar una actitud positiva durante el proceso de mejorar su audición deberá tomarla usted, no su cónyuge, hijo o hija. Nosotros como profesionales de la audición no podemos hacer este compromiso por usted; es su decisión. Abraham Lincoln (décimo sexto presidente de los EE.UU.) una vez dijo: “la mayoría de la gente es tan feliz como decide serlo”. A medida que se embarca en el proceso de oír mejor, una actitud alegre no solamente afectará el éxito que obtenga, si no que servirá de aliciente para todas las personas que usted conoce.</li>
+              </ol>
+              <h5 class="mt-4">“Cualquier cosa positiva será mejor que una cosa negativa”</h5><span>Elbert Hubbard</span><br /><br />
+              <h5>“La habilidad para volver a oír puede ser aprendida nuevamente, no puede ser comprada”</h5><span>Thomas Jones</span><br /><br />
+              <h5>“Mantenga una actitud mental positiva, actitudes como valor, sinceridad y alegría. Pensar correctamente es crear. Todas las cosas vienen si las deseamos y toda plegaria sincera será escuchada”</h5><span>Elbert Hubbard</span><br /><br />
+              <card class="mt-4 card bg-info text-white p-4">
+                <p class="card-text">Enfoque: La determinación y disposición del usuario son necesarias para acostumbrarse al uso de audífonos.</p>
+                <p class="card-text">Aplicación: Algunas personas buscan ayuda para su problema auditivo sólo por la insistencia de algún miembro de la familia, sin poner empeño personal en ello. ¿Está usted interesado personalmente en su problema auditivo?</p>
+                <p class="card-text">¿Tiene usted la voluntad suficiente de visitar a su profesional de la audición y tomar la decisión de usar audífonos diariamente?</p>
+              </card>
+            </div>
+          </div>
+
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">TERCER PASO</h4>
+              <h3 class="mb-3">EDUCACIÓN PERSONAL: Aprender todo lo que pueda sobre mi problema auditivo.</h3>
+              <ol>
+                <li class="mb-3">El remedio más efectivo a la pérdida auditiva es la educación personal. Usted necesitará aprender todo lo que pueda sobre su pérdida en particular. Para comenzar necesitará saber:     <li>El requisito fundamental para superar su problema auditivo es su profundo deseo de aprender y su voluntad de incrementar su habilidad para oír. Las seis características que presentan las personas que deciden finalmente usar audífonos son:
+                  <ul>
+                    <li>¿Qué tipo de pérdida auditiva tengo?</li>
+                    <li>¿Cuál es el grado de pérdida auditiva en mi oído izquierdo y derecho?</li>
+                    <li>¿Cómo ha sido afectado mi cerebro?</li>
+                    <li>¿En qué forma compensan la pérdida los audífonos?</li>
+                    <li>¿Qué puedo hacer para mejorar mi audición?</li>
+                  </ul>
+                </li>
+                <li class="mb-3">¿De qué manera ha sido afectado mi cerebro? Si usted ha perdido su habilidad para oír gradualmente con el  paso del tiempo, entonces, su cerebro ha estado privado del estímulo de las frecuencias de los sonidos que no percibe a un volumen normal.<br />
+                Entonces, cuando usted comienza a usar audífonos, su cerebro se asombra al recibir señales que ha dejado de percibir. Hasta que se acostumbre a estos sonidos, usted pensará...
+                  <ul>
+                    <li>Todas las voces suenan raras.</li>
+                    <li>Mi voz me molesta. Suena como si estuviese hablando dentro de un barril.</li>
+                    <li>Los audífonos son ruidosos. A menos que me encuentre en una habitación silenciosa, recogen todo tipo de ruidos que producen distracciones.</li>
+                    <li>¿Mejorará mi condición con el paso del tiempo?</li>
+                  </ul>
+                </li>
+                <li class="mb-3">A continuación se describe un ejemplo de cómo su cerebro categoriza los sonidos y se acostumbra poco a poco a ellos.<br />Había una bella casa en un lindo vecindario la cual estaba en venta pero tenía rieles de tren que pasaban cerca de ella. Una pareja interesada fue informada por su agente de bienes raíces que el tren pasaba dos veces al día, pero que no lo escucharían. “¡Sólo pregunten a los vecinos que han vivido en este vecindario por años!” Entonces, la pareja adquirió la casa y se mudó. Las primeras noches se despertaron a las 2:15 de la madrugada cuando el tren pasaba a toda velocidad. Varias semanas después, llegó un amigo de visita por una noche. Durante el desayuno preguntó, “¿Cómo pueden dormir con el ruido de ese tren?” “Es gracioso que lo menciones”, dijo la pareja. “Nosotros ya no lo escuchamos.” ¿Hubo algún cambio en su audición? No, el ruido se convirtió en parte de su ambiente y sus cerebros lo categorizaron así y se acostumbraron.</li>
+                <li class="mb-3">Debido a que no ha percibido sonidos y ruidos normales durante un largo tiempo, portar audífonos será como mudarse a una nueva casa. Al principio, los sonidos amplificados por su audífono serán agudos, metálicos, artificiales y no naturales.<br />
+                Pero, esto sucede porque está escuchando los sonidos de frecuencias agudas (somo /s/, /f/, /k/, etc.), que no escuchaba hacía añoso sonaban diferentes.<br />
+                Esta calidad de sonido no natural ayudará a mejorar su comprensión únicamente si usted es constante al usar sus audífonos hasta que su cerebro se acostumbre. Con el tiempo y la práctica su cerebro se acostumbrará. La audición y la comprensión involucran más que el órgano auditivo; su audición es una función compleja que requiere de la participación del cerebro y de otros sentidos.
+                </li>
+                <li class="mb-3">La comprensión ocurre en su cerebro, no en sus oídos. Acostumbrar a su cerebro a sonidos reales, es como arrancar una bomba de agua, debe perseverar el tiempo necesario para que el agua fluya. Una vez que fluye el agua - lo cual sucederá - termina la etapa más difícil.
+                  <ul>
+                    <li>Desde los primeros años de la niñez, los sonidos de las palabras y ruidos son transmitidos al cerebro para reunir imágenes visuales. Esta información se guarda en comportamientos de la memoria conocidos como “vocabulario de sonidos.”</li>
+                    <li>Cuando uno pierde parte de su audición, el lado correspondiente del cerebro - el cual no recibe señales de su oído - ofrece otra tarea a esa parte del cerebro.</li>
+                    <li>Después de un tiempo de no oír, el cerebro necesita un período de tiempo para familiarizarse con los sonidos de voz de frecuencias agudas y del ambiente. Esta es la etapa más difícil para la persona que comienza a usar audífonos.</li>
+                    <li>Cuando comienza a usar audífonos, su cerebro hará poco uso de la información de nuevos sonidos por cinco o seis semanas, después de este tiempo comenzará a usarla gradualmente.</li>
+                    <li>La habilidad para desarrollar la asociación instantánea depende de oír repetidamente la palabra. Si no escucha una palabra por un período de tiempo extenso, ocurre la dificultad para asociar el sonido de la palabra con su significado.</li>
+                  </ul>
+                </li>
+                <li class="mb-3">La “Confusión Auditiva” es causada por el exceso de sonidos, ruidos y voces auténticas que entran en su conciencia de manera repentina después de muchos años de no escucharlas. Estos sonidos formarán parte de su subconsciente una vez que su cerebro los escuche diariamente a través de los audífonos. Por ejemplo:
+                  <ul>
+                    <li>El tono real del timbre de su teléfono</li>
+                    <li>El sonido que produce su ropa cuando camina.</li>
+                    <li>El ruido de la ventilación de su aire acondicionado o sonido del motor de su   refrigreador.</li>
+                    <li>El crujido de las páginas del periódico.			</li>
+                    <li>El zumbido de su computadora.</li>
+                    <li>Su habilidad para oír y asociar estos sonidos con su significado aumentará con la práctica.</li>
+                  </ul>
+                </li>
+                <h5>“Aprender es un proceso activo. Aprendemos haciendo. Por eso, si usted decide dominar los principios que está estudiando, haga algo al respecto. Aplíquelos en cada momento”</h5><span>Dale Carnegie</span><br /><br />
+                <h5>“El cerebro humano puede ser entrenado siempre y cuando pertenezca a una persona que quiere aprender” </h5><span>Isaac Newton</span><br /><br />
+                <h5>“Buena voluntad, honestidad y mente abierta son esenciales e indispensables para una recuperación”</h5><span>Herbert Spencer</span><br /><br />
+                <h5>“Cualquiera que deje de aprender es viejo, sea de veinte o de ochenta años”</h5><span>Henry Ford</span><br /><br />
+                <h5>“El propósito de la educación es reemplazar una mente vacía por una mente abierta”</h5><span>Malcom Forbes</span><br /><br />
+              </ol>
+            </div>
+          </div>
+
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">CUARTO PASO</h4>
+              <h3 class="mb-3">Establecer expectativas reales.</h3>
+              <h5 class="mb-2">Me concentro en oír y entender mejor.</h5>
+              <p>Porque el esperar oír perfectamente bien, sería decepcionante.</p>
+              <ol>
+                <li class="mb-3">Si perdió su audición repentinamente o gradualmente, no volverá a oír como antes, como con su audición normal. Esto es cierto independientemente de su tipo de pérdida o el tipo de audífonos que lleva. Los audífonos como los anteojos, sólo son sustitutos del original, con ellos podrá vivir una vida cercana a lo normal; sin ellos seguramente tendrá una discapacidad.</li>
+                <li class="mb-3">Concéntrese en mejorar, no en esos momentos negativos en los que sus audífonos no le permiten oír lo que usted desea oír. Si se siente desanimado, recurra a los grados de su audiograma CON y SIN audífonos. Es posible que esté logrando un porcentaje de mejora en comparación con su audición sin audífonos. El trabajo de sus audífonos es ayudarle a oír mejor, no perfectamente.</li>
+                <li class="mb-3">El 10% del tiempo, las cápsulas o moldes de los audífonos son devueltos para ser reemplazados para una mejor adaptación, esto es normal. Avísenos si le lastima su oído, porque esto se puede remediar.</li>
+                <li class="mb-3">Los sonidos agudos y metálicos que escucha son normales. Estos son los sonidos suaves de frecuencias agudas que había dejado de oír. Sus audífonos le están devolviendo estos sonidos. Pueden ser molestos al principio pero escucharlos, le permitirá que usted entienda mejor poco a poco. Sea paciente mientras que su cerebro va reconociendo estos sonidos. </li>
+                <li class="mb-3">Un miembro de nuestro personal hará poco a poco algunos ajustes en la programación del procesador durante varias semanas para ayudar a su cerebro a aclimatarse otra vez a los niveles de audición normales. Estor requerirá de varias visitas. Estos ajustes se harán al audífono utilizando la información que usted brinde.</li>
+                <li class="mb-3">Al principio, su voz le puede sonar extraña. Algunos usuarios dicen que al principio se oyen como si estuviesen dentro de un barril. 	Con el tiempo, el sonido será más natural.</li>
+                <li class="mb-3">El ruido de fondo es normal. Las personas con audición normal también lo escuchan. No debe darse por vencido porque el ruido le molesta. Mejorar su audición requerirá que usted supere algunos inconvenientes.</li>
+                <li class="mb-3">La compra de audífonos no dará resultados instantáneos.  Existe una curva de aprendizaje que usualmente toma desde seis semanas hasta seis meses. El éxito se logra con la práctica y el compromiso de portarlos todo el día. Sea constante, tendrá éxito. Los usuarios de medio tiempo no reciben el beneficio total de los audífonos.</li>
+                <li class="mb-3">Si sus audífonos dejan de funcionar, no se alarme, estos es normal. El canal del oído interno es 100% 	húmedo y mantiene una temperatura de 37 grados celsius. La cera del oído es una combinación de sal y ácido corrosivo del cuerpo. Estas condiciones son dañinas para lo electrónico, pero es en este ambiente en el que los audífonos deben operar. Necesitará traerlos para darle mantenimiento profesional de rutina en los períodos indicados por el técnico que lo atiende</li>
+              </ol>
+              <h5>“Si todavía no puede escuchar a su amigo cuando le habla en un restaurante o en una cena familiar, no se desanime. Una persona con audición normal también tendría problemas en esas circunstancias”</h5><span>Thomas Jones</span><br /><br />
+              <card class="mt-3 card bg-info text-white p-4">
+                <p class="card-text">Enfoque: Para comprender que un audífono es un instrumento que puede proveer valiosa mejoría en la audición y entendimiento del usuario, hay que entender que la tecnología no es un sustituto para la audición normal.</p>
+                <p class="card-text">Aplicación: ¿Cooperará con su profesional de la audición para lograr el objetivo de oír mejor sin esperar milagros?</p>
+                <p class="card-text">¿Está dispuesto a aprender formas para realzar y mejorar su comprensión de palabras?</p>
+                <p class="card-text">Durante este proceso, ¿Comunicará sus frustraciones a su profesional de la audición?</p>
+              </card>
+            </div>
+          </div>
+
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">QUINTO PASO</h4>
+              <h3 class="mb-3">Práctica, tiempo y paciencia: sus claves para el éxito.</h3>
+              <h5 class="mb-2">Me concentro en oír y entender mejor.</h5>
+                <ol>
+                  <li class="mb-3">Existe una disciplina común que todos los hombres y mujeres siguen durante la transición al uso de audífonos, se conoce como práctica. Es una inversión que usualmente le constará tiempo y paciencia. Es una inversión que comienza a pagar dividendos en un período de 45 días. Una vez que haya dedicado suficientes horas para que su cerebro se acostumbre a los sonidos del ambiente, podrá continuar con su vida sin tener que pensar mucho en su audición.</li><li>Recomendamos a nuevos usuarios comenzar en su casa a un paso lento, pero su objetivo principal deberá ser 	usar sus audífonos todo el día, todos los días. Incluso en momentos silenciosos, ruidosos y aún cuando piense que no tiene que usarlos.</li>
+                  <li class="mb-3">Después de completar su primera semana o dos semanas de uso gradual de sus audífonos, deberá ponerse sus audífonos al momento de levantarse y quitárselos al momento de ir a dormir. Sería un error usarlos únicamente cuando asiste a eventos sociales, porque su cerebro se sentirá inundado y sorprendido por los sonidos de ambientes desconocidos.</li>
+                  <li class="mb-3">A menos que el uso diario de audífonos se convierta en un hábito para usted, su cerebro no será estimulado lo suficiente para aprender a interpretar los sonidos reales de su mundo; en estos casos sus audífonos siempre harán que su ambiente suene raro y probablemente los comenzará a guardar en su cajón. El uso frecuente y la consistencia los comenzará a guardar en su cajón. El uso frecuente y la consistencia son necesarias para que su cerebro se ajuste y para que usted logre nuevamente comunicarse de una manera efectiva.</li>
+                  <li class="mb-3">Sea paciente y no se dé por vencido. Descanse temporalmente si se siente cansado, pero no se dé por vencido. Continúe trabajando, será más sencillo. Llámenos cuando necesite ayuda o alguien que lo anime.</li>
+                  <li class="mb-3">Es su responsabilidad el mantenerse en contacto con nosotros en relación a cualquier asunto sobre ruido excesivo o carencia del beneficio percibido. En promedio, nuevos usuarios deberán regresar tres o cuatro veces durante los primeros 30 días para que hagamos ajustes, revisemos el progreso y los ayudemos a superar situaciones auditivas difíciles.</li>
+                </ol>
+                <h4 class="mt-4">Algunas cosas no son instantáneas y requieren de tiempo y paciencia...</h4>
+                <h4>...¡las satisfacciones que brinda seguir el plan hacen que valga la pena el esfuerzo!</h4>
+            </div>
+          </div>
+
+          <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">PRIMERA TAREA</h4>
+              <h3 class="mb-3">Situaciones auditivas sencillas.</h3>
+                <ol>
+                  <li class="mb-2">Escoja un ambiente silencioso al comenzar a usar sus audífonos.</li>
+                  <li class="mb-2">No use sus audífonos en ambientes concurridos o ruidosos hasta que se haya acostumbrado a ellos en su propia casa.</li>
+                  <li class="mb-2">Escuche cuidadosamente los sonidos de su casa que había olvidado. Camine de habitación a habitación. Identifique los ruidos de su refrigerador, aire acondicionado, computador y reloj. Trate de acostumbrarse a los sonidos de la vajilla y al crujir de las páginas del periódico al hojearlo. Estos sonidos son parte de su ambiente. Se acostumbrará a escucharlos de nuevo.</li>
+                  <li class="mb-2">Practique conversando con su cónyuge o ser querido. Asegúrese de que su televisor y radio estén apagados. Siéntese frente a frente a no más de 2 metros de distancia. Enfoque su atención en la boca del parlante, recuerde que el 20% de la comunicación es visual.</li>
+                  <li class="mb-2">Practique escuchando su propia voz, hágalo leyendo en voz alta. Usted ajustará lentamente la intensidad de su voz a un nivel cómodo mientras usa sus audífonos. Es normal que la primera vez su voz suene diferente, no se preocupe que pronto le sonará familiar otra vez.</li>
+                  <li class="mb-2">Practique escuchando los diferentes patrones de voz de diferentes personas. El objetivo es encontrar un nivel cómodo de audición, no tratar de entender todo lo que se dice. La audición y comprensión mejora con el tiempo. Es como un turista que visita un lugar diferente del país, en donde el idioma es el mismo pero el acento o dialecto es diferente. Una persona de España habla distinto a una persona de América del Sur. Sin embargo después de escuchar el dialecto por un período de tiempo, el receptor se familiarizará con los patrones de voz locales.</li>
+                  <li class="mb-2">Si los sonidos de los ambientes le incomodan o le causan fatiga, tómese su tiempo y descanse. Vuelva a ponerse sus audífonos después de un par de horas. Así como acostumbrares a usar lentes de contacto, un período de ajuste similar es necesario para cualquiera que usa audífonos por primera vez.</li>
+                  <li class="mb-2">Practique un poco todos los días el acostumbrarse a usar audífonos, sea paciente. No use sus audífonos todo el día durante este período de adaptación, su progreso dependerá de su afán de oír mejor.</li>
+                </ol>
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text font-weight-bold">PRIMERA TAREA - Situaciones auditivas sencillas.</p>
+                  <p class="card-text">Comenzar a usar sus audífonos 2 horas, aumentando de a 1 hora por día. Primero 4 días en ambientes tranquilos y luego probarlos en situaciones más ruidosas, aumentando la cantidad de horas hasta completar la semana.</p>
+                  <p class="card-text">Algunos sonidos que quizás no recuerde</p>
+                  <p class="card-text">A· Sonidos del mecanismo de relojes.</p>
+                  <p class="card-text">B· El ruido de la licuadora.</p>
+                  <p class="card-text">C· El crujir de las cosas..</p>
+                  <p class="card-text">D· Los diferentes ruidos que produce la radio.</p>
+                  <p class="card-text">E· El sonido de la vajilla.</p>
+                  <p class="card-text">F· El zumbido del motor del horno microondas.</p>
+                  <p class="card-text">G· El silbido de la tetera..</p>
+                  <p class="card-text">H· El ruido de los líquidos</p>
+                  <p class="card-text">I· Sonidos metálicos de los utensilios de cocina.</p>
+                </card>
+            </div>
+          </div>
+          
+          <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">SEGUNDA TAREA</h4>
+              <h3 class="mb-3">Situaciones auditivas difíciles.</h3>
+                <ol>
+                  <li class="mb-2">Empiece usando sus audífonos cuando esté con un grupo pequeño de personas y fuera de su casa en ambientes auditivos un poco más difíciles. Antes de intentar esto, ya deberá estar usando sus audífonos un mínimo de cuatro horas al día en su casa y haber alcanzado un nivel de confianza adecuado al escuchar a parlantes individuales.</li>
+                  <li class="mb-2">Intente aumentando el espacio entre usted y el interlocutor. No ajuste el volumen de sus audífonos. Al aumentar la distancia, también aumenta la dificultad de oír. Con la práctica, aprenderá técnicas para oír y entender a un nivel en el que se encuentre cómodo.</li>
+                  <li class="mb-2">Participe en conversaciones simultáneas con otras dos personas en ambientes silenciosos. No se preocupe si no puede entenderlos a los dos, intente enfocarse en uno a la vez. Recuerde, hasta una persona con audición normal batalla para entender cuando varias personas están hablando al mismo tiempo.</li>
+                  <li class="mb-2">A medida que participa en ambientes auditivos más difíciles, es aceptable que ocasionalmente diga: “No capté lo que dijo.” Practique fijar su mirada en la cara del que habla. Su cerebro aprenderá de nuevo los sonidos que había dejado de oír. Los sonidos le permanecerán extraños al principio, con la práctica se volverán familiares.</li><li>Aumente gradualmente el tiempo de uso de sus audífonos, usándolos en su automóvil, en el  supermercado y durante algún mandado. Siga los nuevos sonidos hasta encontrar su origen. Al aprender a usar sus audífonos en su rutina diaria, su cerebro pronto “ignorará” los ruidos normales que inicialmente le parecían molestos. A medida que se va acostumbrando al uso de audífonos, pronto estará dispuesto a usarlos todo el día y no tendrá necesidad de ajustar su volumen.</li>
+                  <li class="mb-2">Comience a  escuchar las noticias en el televisor. Pida a su cónyuge o amigo con audición normal que ajuste el volumen del televisor. Enfoque su atención en la persona que tiene la palabra. Pida a las demás personas en la habitación que por favor no hablen durante el programa. Enfoque su atención en toda la historia, no en palabras específicas.</li>
+                  <li class="mb-2">Escuchar el televisor es más difícil que oír a la persona en la misma habitación. La práctica de escuchar el televisor facilitará otras situaciones auditivas difíciles. </li>
+                  <li class="mb-2">Use sus audífonos por períodos de tiempo prolongados, no se exceda. Si se siente fatigado, quíteselos por un momento pero vuelva a ponérselos. No se dé por vencido, así como aprender un deporte o tocar un instrumento musical, la perfección exige la práctica diaria.</li>
+                </ol>
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text font-weight-bold">SEGUNDA TAREA - Situaciones auditivas difíciles.</p>
+                  <p class="card-text">Use sus audífonos 8 horas al día.</p>
+                </card>
+            </div>
+          </div>
+
+          <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+            <div class="card-body">
+              <h4 class="mb-1">TERCER TAREA</h4>
+              <h3 class="mb-3">Situaciones auditivas muy difíciles.</h3>
+              <ol>
+                <li class="mb-2">Comience a usar sus audífonos en lugares públicos. Úselos en el trabajo, iglesia, fiestas, reuniones, eventos deportivos y restaurantes. Estos son ambientes difíciles, de manera que necesitará ser paciente y aprender algunas técnicas para mejorar su situación auditiva.</li>
+                <li class="mb-2">Comience incrementando las distancias entre usted y el interlocutor. En ambientes auditivos con ruidos de fondo, intente concentrarse en la voz de una persona, vea sus expresiones y los movimientos de sus labios. Escuchará otros ruidos, pero concéntrese en el habla. Con el tiempo, su cerebro inconscientemente categorizará los sonidos e ignorará el ruido de fondo y se enfocará el en interlocutor.</li><li>En caso de ser necesario, mueva su cabeza lentamente hacia la persona que esté hablando. No se sienta incómodo. Aunque para usted sean notorios esos movimientos, para otros pasarán desapercibidos.</li>
+                <li class="mb-2">Elija asientos óptimos para oír bien. Por ejemplo, elija el asiento delantero de un auditorio. Solicite una mesa en una esquina silenciosa en un restaurante. En los restaurantes es mejor sentarse dando la espalda hacia la pared. De esta manera, los sonidos se presentarán a 180 grados y no a 360. También, restaurantes alfombrados son acústicamente más silenciosos.</li>
+                <li class="mb-2">El oír mejor dependerá de: a) su compromiso por hacer que sus audífonos funcionan en su rutina diaria, b) el tiempo utilizado para acostumbrarse a usarlos en diferentes ambientes y c) su paciencia mientras su cerebro se acostumbra a sonidos desconocidos.</li>
+                <li class="mb-2">Llámenos si tiene preguntas durante este proceso. Conocemos las dificultades que enfrenta al lidiar con su problema auditivo. Estamos para ayudarlo.</li>
+              </ol>
+              <card class="mt-4 card bg-info text-white p-4">
+                <p class="card-text font-weight-bold">TERCER TAREA - Situaciones auditivas muy difíciles.</p>
+                <p class="card-text">Use sus audífonos 10 horas al día.</p>
+                <p class="card-text">Recuerde, el trabajo de sus audífonos es cambiar el nivel de audición de su cerebro y esto sólo exige práctica, tiempo y paciencia.</p>
+              </card>
+            </div>
+          </div>
+            
+          <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+            <div class="card-body">
+              <h3 class="mb-3">SISTEMA ROGER</h3>
+                <ul>
+                  <li class="mb-2">¿Sigue teniendo problemas para oír en determinadas situaciones? Quizás en restaurantes ruidosos, hablando por teléfono, en reuniones o en el auto.</li>
+                  <li class="mb-2">Un Sistema Roger inalámbrico trabaja junto con un audífono para mejorar la comprensión. Llevando el sonido que usted quiere oír directamente a sus oídos, independientemente de dónde se encuentre. Evitando así la reverberación y eliminando la distancia entre la fuente sonora y su oído. Esto  es especialmente útil en situaciones de clases, conferencias o ambientes muy ruidosos.</li>
+                  <li class="mb-2">El Sistema Roger es un accesorio opcional. Consulte con nuestros profesionales para realizar una prueba domiciliaria sin cargo.</li>
+                </ul>
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text font-weight-bold">SISTEMA ROGER</p>
+                  <p class="card-text">Soluciones para oír en situaciones con ruido y a distancia.</p>
+                  <p class="card-text">La tecnología inalámbrica le ayudará a comprender mejor en ambientes reverberantes.</p>
+                </card>
+            </div>
+          </div>
+            
+          <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+            <div class="card-body">
+              <h3 class="mb-3">CONEXIONES INALÁMBRICAS</h3>
+              <ul>
+                <li class="mb-2">Soluciones para oír en situaciones difíciles.</li>
+                <li class="mb-2">Usted puede seguir teniendo algunas dificultades al mirar la televisión, usar teléfonos celulares y otros dispositivos de audio. Pero la comunicación inalámbrica mediante Bluetooth ha revolucionado la industria de los audífonos.</li>
+                <li class="mb-2">¡Es el complemento ideal para sus audífonos! Con este sistema sin cables, ver la televisión, escuchar música y hablar por teléfono en más sencillo y placentero.</li>
+                <li class="mb-2">Ahora usted podrá disfrutar del sonido claro y potente de la televisión o de una llamada telefónica. Y al mismo tiempo participar en las conversaciones y ser conciente de los sonidos que le rodean.</li>
+                <li class="mb-2">La comunicación inalámbrica es un accesorio opcional. Consulte con nuestros profesionales para realizar una prueba domiciliaria sin cargo.</li>
+              </ul>
+              <card class="mt-4 card bg-info text-white p-4">
+                <p class="card-text font-weight-bold">CONEXIONES INALÁMBRICAS</p>
+                <p class="card-text">Soluciones para oír en situaciones difíciles.</p>
+                <p class="card-text">Participe de todas las actividades y obtenga una vida más activa.</p>
+              </card>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row mb-5 mt-5 d-block d-sm-none">
+
+      <div class="card col-12">
+
+        <div class="card">
+
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                PRIMER PASO - Aceptar que tengo un problema auditivo permanente.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">PRIMER PASO</h4>
+                <h3 class="mb-3">Aceptar que tengo un problema auditivo permanente.</h3>
+                <h5 class="mb-2">Tuve que aceptar que tengo un problema auditivo permanente.</h5>
+                <ol>
+                  <li class="mb-3">Su audición en estos momentos ya fue revisada por un profesional y le ha informado que usted efectivamente tiene un problema auditivo permanente. Ahora, usted tiene dos opciones:(1) Rehusarse a aceptar o (2) Aceptar. Es normal que la mayoría de las personas pasen por la etapa en que se rehusan a aceptar. Lo lamentable es que muchas personas esperan de cinco a siete años para resolver su problema auditivo. Estas personas siguen un proceso típico de razonamiento.
+                    <ul>
+                      <li>“Oigo bien, lo que sucede es que la gente murumura; ya no habla claro.”</li>
+                      <li>“En los lugares ruidosos es en donde tengo problemas para oír. Solo dejaré de frecuentar esos lugares y estaré bien.”</li>
+                      <li>“Mi audición mejorará con el tiempo.”</li>
+                      <li>“Escucho lo que tengo que escuchar. De otra manera, pediré que lo repitan.”</li>
+                      <li>“Puedo manejarlo. Sólo me concentraré un poco más.”</li>
+                      <li>“Aún no es tan grave como para usa audífonos.”</li>
+                      <li>“El portar audífonos no va con mi imagen.”</li>
+                      <li>“Si mi audición empeora, entonces buscaré ayuda.”</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">Lo cierto es que no puede esconder su pérdida auditiva. Es más notoria que cualquier par de audífonos. Sus socios, clientes, amigos y personas queridas saben que usted tiene un problema. Usted puede ignorar el hecho de que existe el problema, pero sólo se estará engañando. Puede intentar esconder el problema, pero sus síntomas ya han revelado su secreto.
+                    <ul>
+                      <li>Responde a las preguntas equivocadas.</li>
+                      <li>Confunde palabras similares como “barco” y “banco”, “fresa” y “mesa”, “dime” y “cine”.</li>
+                      <li>Sube el volumen del televisor demasiado alto para las personas con audición normal.</li>
+                      <li>Ha hecho costumbre el pedir a las personas que repitan lo que han dicho.</li>
+                      <li>Su expresión muestra confusión cuando está escuchando.</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">Si continúa escondiendo su problema, será como una persona que se ve en el espejo y encuentra migajas de pan en su cara y tercamente se rehusa a removerlas.<br />Su empeño de esconder el problema afectará de manera negativa su vida social.<br />A continuación listamos las consecuencias más comunes. Con el tiempo usted...
+                    <ul>
+                      <li>Dejará de realizar sus actividades favoritas para no sentirse avergonzado de su problema auditivo.</li>
+                      <li>Evitará todas las situaciones que pueden resultar complicadas.</li>
+                      <li>Perderá su ingeniosidad, su vivacidad.</li>
+                      <li>Inconscientemente afectará a sus seres queridos con sus molestias, será una carga para ellos.</li>
+                      <li>Causará que sus seres queridos se den por vencidos.</li>
+                      <li>Se convertirá en una víctima de su decisión de no hacer nada.</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">El primer paso para resolver su problema de comunicación es admitir a usted mismo a sus seres queridos que:
+                    <ul>
+                      <li>Tiene un problema auditivo irreversible.</li>
+                      <li>Su problema auditivo está afectando su vida de manera significativa.</li>
+                      <li>El medicamento no “abrirá” sus oídos.</li>
+                      <li>No existe ninguna cirugía que corrija las pérdidas auditivas neurosensoriales o mixtas.</li>
+                      <li>Sus amigos, seres queridos, clientes y socios, ya están enterados de que tiene un problema auditivo.</li>
+                      <li>La única opción positiva es usar audífonos.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <div class="mt-4 mb-3">
+                  <h5>“Muchas personas invierten más tiempo y energía inmersos en sus problemas en vez de tratar de resolverlos”</h5> <span>Henry Ford</span><br /><br />
+                  <h5>“Una crítica honesta es difícil de aceptar, especialmente si viene de un pariente, amigo, conocido o extraño”</h5> <span>Franklin P. Jones</span><br /><br />
+                  <card class="mt-4 card bg-info text-white p-4">
+                    <p class="card-text">Enfoque: No existe ayuda para un problema de audición hasta que no se acepte que persiste el problema.</p>
+                    <p class="card-text">Aplicación: ¿Ha admitido a usted mismo y a sus seres queridos que tiene un problema auditivo permanente?</p>
+                    <p class="card-text">¿Ha elegido la manera más sencilla y directa de comunicarlo a otros? Esto puede lograrse en una o dos oraciones.</p>
+                    <p class="card-text">Ejemplo: “Tantos años de exponerme al ruido de mi trabajo y en mis pasatiempos han deteriorado gradualmente mi habilidad para captar las consonantes en las palabras. Tengo una pérdida en el nervio auditivo para las frecuencias agudas. He decidido usar audífonos.”</p>
+                    <p class="card-text">Practique estas oraciones hasta que no requieran esfuerzo.</p>
+                  </card>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                SEGUNDO PASO - Compromiso personal de buscar ayuda con una actitud positiva.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">SEGUNDO PASO</h4>
+                <h3 class="mb-3">Compromiso personal de buscar ayuda con una actitud positiva.</h3>
+                <h5 class="mb-2">Tuve que aceptar que tengo un problema auditivo permanentes</h5>
+                <ol>
+                  <li class="mb-3">No es la compra de un producto nuevo la que mejorará su audición. Sólo el 20% del éxito dependerá del funcionamiento de los productos que usted adquirió.</li>
+                  <li class="mb-3">El requisito fundamental para superar su problema auditivo es su profundo deseo de aprender y su voluntad de incrementar su habilidad para oír. Las seis características que presentan las personas que deciden finalmente usar audífonos son:
+                    <ul>
+                      <li>Actitud positiva.</li>
+                      <li>Deseo de aprender.</li>
+                      <li>Un serio compromiso de no renunciar.</li>
+                      <li>Tiempo dedicado a la práctica del uso de audífonos.</li>
+                      <li>Paciencia mientras que su cerebro se acostumbra a los ruidos y sonidos del medio ambiente.</li>
+                      <li>El esfuerzo del usuario equivale al deseo de incrementar su habilidad para oír.</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">Si Los audífonos no le darán resultados inmediatos. No son como los anteojos, que al colocarlos en nuestros ojos nos dan una visión clara. Los audífonos son más como patines; el comprar un buen par es sólo el comienzo. Un buen entrenador que sabe cómo enseñar a patinar es el segundo paso. El tiempo dedicado a la práctica con un paciente y la actitud positiva del estudiante, es el tercer y más importante paso.</li>
+                  <li class="mb-3">Para lograr una mejor audición, necesita trabajar diariamente. La habilidad para volver a oír la 	puede aprender de nuevo, no puede comprarla. Los usuarios que han tenido éxito, con gusto le dirán que su afán de aprender y el tiempo dedicado a practicar, fue el precio que pagaron por oír mejor.</li>
+                  <li class="mb-3">La decisión de tomar una actitud positiva durante el proceso de mejorar su audición deberá tomarla usted, no su cónyuge, hijo o hija. Nosotros como profesionales de la audición no podemos hacer este compromiso por usted; es su decisión. Abraham Lincoln (décimo sexto presidente de los EE.UU.) una vez dijo: “la mayoría de la gente es tan feliz como decide serlo”. A medida que se embarca en el proceso de oír mejor, una actitud alegre no solamente afectará el éxito que obtenga, si no que servirá de aliciente para todas las personas que usted conoce.</li>
+                </ol>
+                <h5 class="mt-4">“Cualquier cosa positiva será mejor que una cosa negativa”</h5><span>Elbert Hubbard</span><br /><br />
+                <h5>“La habilidad para volver a oír puede ser aprendida nuevamente, no puede ser comprada”</h5><span>Thomas Jones</span><br /><br />
+                <h5>“Mantenga una actitud mental positiva, actitudes como valor, sinceridad y alegría. Pensar correctamente es crear. Todas las cosas vienen si las deseamos y toda plegaria sincera será escuchada”</h5><span>Elbert Hubbard</span><br /><br />
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text">Enfoque: La determinación y disposición del usuario son necesarias para acostumbrarse al uso de audífonos.</p>
+                  <p class="card-text">Aplicación: Algunas personas buscan ayuda para su problema auditivo sólo por la insistencia de algún miembro de la familia, sin poner empeño personal en ello. ¿Está usted interesado personalmente en su problema auditivo?</p>
+                  <p class="card-text">¿Tiene usted la voluntad suficiente de visitar a su profesional de la audición y tomar la decisión de usar audífonos diariamente?</p>
+                </card>
+              </div>
+            </div>
+
+          </div>
+        
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                TERCER PASO - EDUCACIÓN PERSONAL: Aprender todo lo que pueda sobre mi problema auditivo.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">TERCER PASO</h4>
+                <h3 class="mb-3">EDUCACIÓN PERSONAL: Aprender todo lo que pueda sobre mi problema auditivo.</h3>
+                <ol>
+                  <li class="mb-3">El remedio más efectivo a la pérdida auditiva es la educación personal. Usted necesitará aprender todo lo que pueda sobre su pérdida en particular. Para comenzar necesitará saber:     <li>El requisito fundamental para superar su problema auditivo es su profundo deseo de aprender y su voluntad de incrementar su habilidad para oír. Las seis características que presentan las personas que deciden finalmente usar audífonos son:
+                    <ul>
+                      <li>¿Qué tipo de pérdida auditiva tengo?</li>
+                      <li>¿Cuál es el grado de pérdida auditiva en mi oído izquierdo y derecho?</li>
+                      <li>¿Cómo ha sido afectado mi cerebro?</li>
+                      <li>¿En qué forma compensan la pérdida los audífonos?</li>
+                      <li>¿Qué puedo hacer para mejorar mi audición?</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">¿De qué manera ha sido afectado mi cerebro? Si usted ha perdido su habilidad para oír gradualmente con el  paso del tiempo, entonces, su cerebro ha estado privado del estímulo de las frecuencias de los sonidos que no percibe a un volumen normal.<br />
+                  Entonces, cuando usted comienza a usar audífonos, su cerebro se asombra al recibir señales que ha dejado de percibir. Hasta que se acostumbre a estos sonidos, usted pensará...
+                    <ul>
+                      <li>Todas las voces suenan raras.</li>
+                      <li>Mi voz me molesta. Suena como si estuviese hablando dentro de un barril.</li>
+                      <li>Los audífonos son ruidosos. A menos que me encuentre en una habitación silenciosa, recogen todo tipo de ruidos que producen distracciones.</li>
+                      <li>¿Mejorará mi condición con el paso del tiempo?</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">A continuación se describe un ejemplo de cómo su cerebro categoriza los sonidos y se acostumbra poco a poco a ellos.<br />Había una bella casa en un lindo vecindario la cual estaba en venta pero tenía rieles de tren que pasaban cerca de ella. Una pareja interesada fue informada por su agente de bienes raíces que el tren pasaba dos veces al día, pero que no lo escucharían. “¡Sólo pregunten a los vecinos que han vivido en este vecindario por años!” Entonces, la pareja adquirió la casa y se mudó. Las primeras noches se despertaron a las 2:15 de la madrugada cuando el tren pasaba a toda velocidad. Varias semanas después, llegó un amigo de visita por una noche. Durante el desayuno preguntó, “¿Cómo pueden dormir con el ruido de ese tren?” “Es gracioso que lo menciones”, dijo la pareja. “Nosotros ya no lo escuchamos.” ¿Hubo algún cambio en su audición? No, el ruido se convirtió en parte de su ambiente y sus cerebros lo categorizaron así y se acostumbraron.</li>
+                  <li class="mb-3">Debido a que no ha percibido sonidos y ruidos normales durante un largo tiempo, portar audífonos será como mudarse a una nueva casa. Al principio, los sonidos amplificados por su audífono serán agudos, metálicos, artificiales y no naturales.<br />
+                  Pero, esto sucede porque está escuchando los sonidos de frecuencias agudas (somo /s/, /f/, /k/, etc.), que no escuchaba hacía añoso sonaban diferentes.<br />
+                  Esta calidad de sonido no natural ayudará a mejorar su comprensión únicamente si usted es constante al usar sus audífonos hasta que su cerebro se acostumbre. Con el tiempo y la práctica su cerebro se acostumbrará. La audición y la comprensión involucran más que el órgano auditivo; su audición es una función compleja que requiere de la participación del cerebro y de otros sentidos.
+                  </li>
+                  <li class="mb-3">La comprensión ocurre en su cerebro, no en sus oídos. Acostumbrar a su cerebro a sonidos reales, es como arrancar una bomba de agua, debe perseverar el tiempo necesario para que el agua fluya. Una vez que fluye el agua - lo cual sucederá - termina la etapa más difícil.
+                    <ul>
+                      <li>Desde los primeros años de la niñez, los sonidos de las palabras y ruidos son transmitidos al cerebro para reunir imágenes visuales. Esta información se guarda en comportamientos de la memoria conocidos como “vocabulario de sonidos.”</li>
+                      <li>Cuando uno pierde parte de su audición, el lado correspondiente del cerebro - el cual no recibe señales de su oído - ofrece otra tarea a esa parte del cerebro.</li>
+                      <li>Después de un tiempo de no oír, el cerebro necesita un período de tiempo para familiarizarse con los sonidos de voz de frecuencias agudas y del ambiente. Esta es la etapa más difícil para la persona que comienza a usar audífonos.</li>
+                      <li>Cuando comienza a usar audífonos, su cerebro hará poco uso de la información de nuevos sonidos por cinco o seis semanas, después de este tiempo comenzará a usarla gradualmente.</li>
+                      <li>La habilidad para desarrollar la asociación instantánea depende de oír repetidamente la palabra. Si no escucha una palabra por un período de tiempo extenso, ocurre la dificultad para asociar el sonido de la palabra con su significado.</li>
+                    </ul>
+                  </li>
+                  <li class="mb-3">La “Confusión Auditiva” es causada por el exceso de sonidos, ruidos y voces auténticas que entran en su conciencia de manera repentina después de muchos años de no escucharlas. Estos sonidos formarán parte de su subconsciente una vez que su cerebro los escuche diariamente a través de los audífonos. Por ejemplo:
+                    <ul>
+                      <li>El tono real del timbre de su teléfono</li>
+                      <li>El sonido que produce su ropa cuando camina.</li>
+                      <li>El ruido de la ventilación de su aire acondicionado o sonido del motor de su   refrigreador.</li>
+                      <li>El crujido de las páginas del periódico.			</li>
+                      <li>El zumbido de su computadora.</li>
+                      <li>Su habilidad para oír y asociar estos sonidos con su significado aumentará con la práctica.</li>
+                    </ul>
+                  </li>
+                  <h5>“Aprender es un proceso activo. Aprendemos haciendo. Por eso, si usted decide dominar los principios que está estudiando, haga algo al respecto. Aplíquelos en cada momento”</h5><span>Dale Carnegie</span><br /><br />
+                  <h5>“El cerebro humano puede ser entrenado siempre y cuando pertenezca a una persona que quiere aprender” </h5><span>Isaac Newton</span><br /><br />
+                  <h5>“Buena voluntad, honestidad y mente abierta son esenciales e indispensables para una recuperación”</h5><span>Herbert Spencer</span><br /><br />
+                  <h5>“Cualquiera que deje de aprender es viejo, sea de veinte o de ochenta años”</h5><span>Henry Ford</span><br /><br />
+                  <h5>“El propósito de la educación es reemplazar una mente vacía por una mente abierta”</h5><span>Malcom Forbes</span><br /><br />
+                </ol>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                CUARTO PASO - Establecer expectativas reales.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">CUARTO PASO</h4>
+                <h3 class="mb-3">Establecer expectativas reales.</h3>
+                <h5 class="mb-2">Me concentro en oír y entender mejor.</h5>
+                <p>Porque el esperar oír perfectamente bien, sería decepcionante.</p>
+                <ol>
+                  <li class="mb-3">Si perdió su audición repentinamente o gradualmente, no volverá a oír como antes, como con su audición normal. Esto es cierto independientemente de su tipo de pérdida o el tipo de audífonos que lleva. Los audífonos como los anteojos, sólo son sustitutos del original, con ellos podrá vivir una vida cercana a lo normal; sin ellos seguramente tendrá una discapacidad.</li>
+                  <li class="mb-3">Concéntrese en mejorar, no en esos momentos negativos en los que sus audífonos no le permiten oír lo que usted desea oír. Si se siente desanimado, recurra a los grados de su audiograma CON y SIN audífonos. Es posible que esté logrando un porcentaje de mejora en comparación con su audición sin audífonos. El trabajo de sus audífonos es ayudarle a oír mejor, no perfectamente.</li>
+                  <li class="mb-3">El 10% del tiempo, las cápsulas o moldes de los audífonos son devueltos para ser reemplazados para una mejor adaptación, esto es normal. Avísenos si le lastima su oído, porque esto se puede remediar.</li>
+                  <li class="mb-3">Los sonidos agudos y metálicos que escucha son normales. Estos son los sonidos suaves de frecuencias agudas que había dejado de oír. Sus audífonos le están devolviendo estos sonidos. Pueden ser molestos al principio pero escucharlos, le permitirá que usted entienda mejor poco a poco. Sea paciente mientras que su cerebro va reconociendo estos sonidos. </li>
+                  <li class="mb-3">Un miembro de nuestro personal hará poco a poco algunos ajustes en la programación del procesador durante varias semanas para ayudar a su cerebro a aclimatarse otra vez a los niveles de audición normales. Estor requerirá de varias visitas. Estos ajustes se harán al audífono utilizando la información que usted brinde.</li>
+                  <li class="mb-3">Al principio, su voz le puede sonar extraña. Algunos usuarios dicen que al principio se oyen como si estuviesen dentro de un barril. 	Con el tiempo, el sonido será más natural.</li>
+                  <li class="mb-3">El ruido de fondo es normal. Las personas con audición normal también lo escuchan. No debe darse por vencido porque el ruido le molesta. Mejorar su audición requerirá que usted supere algunos inconvenientes.</li>
+                  <li class="mb-3">La compra de audífonos no dará resultados instantáneos.  Existe una curva de aprendizaje que usualmente toma desde seis semanas hasta seis meses. El éxito se logra con la práctica y el compromiso de portarlos todo el día. Sea constante, tendrá éxito. Los usuarios de medio tiempo no reciben el beneficio total de los audífonos.</li>
+                  <li class="mb-3">Si sus audífonos dejan de funcionar, no se alarme, estos es normal. El canal del oído interno es 100% 	húmedo y mantiene una temperatura de 37 grados celsius. La cera del oído es una combinación de sal y ácido corrosivo del cuerpo. Estas condiciones son dañinas para lo electrónico, pero es en este ambiente en el que los audífonos deben operar. Necesitará traerlos para darle mantenimiento profesional de rutina en los períodos indicados por el técnico que lo atiende</li>
+                </ol>
+                <h5>“Si todavía no puede escuchar a su amigo cuando le habla en un restaurante o en una cena familiar, no se desanime. Una persona con audición normal también tendría problemas en esas circunstancias”</h5><span>Thomas Jones</span><br /><br />
+                <card class="mt-3 card bg-info text-white p-4">
+                  <p class="card-text">Enfoque: Para comprender que un audífono es un instrumento que puede proveer valiosa mejoría en la audición y entendimiento del usuario, hay que entender que la tecnología no es un sustituto para la audición normal.</p>
+                  <p class="card-text">Aplicación: ¿Cooperará con su profesional de la audición para lograr el objetivo de oír mejor sin esperar milagros?</p>
+                  <p class="card-text">¿Está dispuesto a aprender formas para realzar y mejorar su comprensión de palabras?</p>
+                  <p class="card-text">Durante este proceso, ¿Comunicará sus frustraciones a su profesional de la audición?</p>
+                </card>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                QUINTO PASO - Práctica, tiempo y paciencia: sus claves para el éxito.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">QUINTO PASO</h4>
+                <h3 class="mb-3">Práctica, tiempo y paciencia: sus claves para el éxito.</h3>
+                <h5 class="mb-2">Me concentro en oír y entender mejor.</h5>
+                  <ol>
+                    <li class="mb-3">Existe una disciplina común que todos los hombres y mujeres siguen durante la transición al uso de audífonos, se conoce como práctica. Es una inversión que usualmente le constará tiempo y paciencia. Es una inversión que comienza a pagar dividendos en un período de 45 días. Una vez que haya dedicado suficientes horas para que su cerebro se acostumbre a los sonidos del ambiente, podrá continuar con su vida sin tener que pensar mucho en su audición.</li><li>Recomendamos a nuevos usuarios comenzar en su casa a un paso lento, pero su objetivo principal deberá ser 	usar sus audífonos todo el día, todos los días. Incluso en momentos silenciosos, ruidosos y aún cuando piense que no tiene que usarlos.</li>
+                    <li class="mb-3">Después de completar su primera semana o dos semanas de uso gradual de sus audífonos, deberá ponerse sus audífonos al momento de levantarse y quitárselos al momento de ir a dormir. Sería un error usarlos únicamente cuando asiste a eventos sociales, porque su cerebro se sentirá inundado y sorprendido por los sonidos de ambientes desconocidos.</li>
+                    <li class="mb-3">A menos que el uso diario de audífonos se convierta en un hábito para usted, su cerebro no será estimulado lo suficiente para aprender a interpretar los sonidos reales de su mundo; en estos casos sus audífonos siempre harán que su ambiente suene raro y probablemente los comenzará a guardar en su cajón. El uso frecuente y la consistencia los comenzará a guardar en su cajón. El uso frecuente y la consistencia son necesarias para que su cerebro se ajuste y para que usted logre nuevamente comunicarse de una manera efectiva.</li>
+                    <li class="mb-3">Sea paciente y no se dé por vencido. Descanse temporalmente si se siente cansado, pero no se dé por vencido. Continúe trabajando, será más sencillo. Llámenos cuando necesite ayuda o alguien que lo anime.</li>
+                    <li class="mb-3">Es su responsabilidad el mantenerse en contacto con nosotros en relación a cualquier asunto sobre ruido excesivo o carencia del beneficio percibido. En promedio, nuevos usuarios deberán regresar tres o cuatro veces durante los primeros 30 días para que hagamos ajustes, revisemos el progreso y los ayudemos a superar situaciones auditivas difíciles.</li>
+                  </ol>
+                  <h4 class="mt-4">Algunas cosas no son instantáneas y requieren de tiempo y paciencia...</h4>
+                  <h4>...¡las satisfacciones que brinda seguir el plan hacen que valga la pena el esfuerzo!</h4>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingSix">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                PRIMERA TAREA - Situaciones auditivas sencillas.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">PRIMERA TAREA</h4>
+                <h3 class="mb-3">Situaciones auditivas sencillas.</h3>
+                  <ol>
+                    <li class="mb-2">Escoja un ambiente silencioso al comenzar a usar sus audífonos.</li>
+                    <li class="mb-2">No use sus audífonos en ambientes concurridos o ruidosos hasta que se haya acostumbrado a ellos en su propia casa.</li>
+                    <li class="mb-2">Escuche cuidadosamente los sonidos de su casa que había olvidado. Camine de habitación a habitación. Identifique los ruidos de su refrigerador, aire acondicionado, computador y reloj. Trate de acostumbrarse a los sonidos de la vajilla y al crujir de las páginas del periódico al hojearlo. Estos sonidos son parte de su ambiente. Se acostumbrará a escucharlos de nuevo.</li>
+                    <li class="mb-2">Practique conversando con su cónyuge o ser querido. Asegúrese de que su televisor y radio estén apagados. Siéntese frente a frente a no más de 2 metros de distancia. Enfoque su atención en la boca del parlante, recuerde que el 20% de la comunicación es visual.</li>
+                    <li class="mb-2">Practique escuchando su propia voz, hágalo leyendo en voz alta. Usted ajustará lentamente la intensidad de su voz a un nivel cómodo mientras usa sus audífonos. Es normal que la primera vez su voz suene diferente, no se preocupe que pronto le sonará familiar otra vez.</li>
+                    <li class="mb-2">Practique escuchando los diferentes patrones de voz de diferentes personas. El objetivo es encontrar un nivel cómodo de audición, no tratar de entender todo lo que se dice. La audición y comprensión mejora con el tiempo. Es como un turista que visita un lugar diferente del país, en donde el idioma es el mismo pero el acento o dialecto es diferente. Una persona de España habla distinto a una persona de América del Sur. Sin embargo después de escuchar el dialecto por un período de tiempo, el receptor se familiarizará con los patrones de voz locales.</li>
+                    <li class="mb-2">Si los sonidos de los ambientes le incomodan o le causan fatiga, tómese su tiempo y descanse. Vuelva a ponerse sus audífonos después de un par de horas. Así como acostumbrares a usar lentes de contacto, un período de ajuste similar es necesario para cualquiera que usa audífonos por primera vez.</li>
+                    <li class="mb-2">Practique un poco todos los días el acostumbrarse a usar audífonos, sea paciente. No use sus audífonos todo el día durante este período de adaptación, su progreso dependerá de su afán de oír mejor.</li>
+                  </ol>
+                  <card class="mt-4 card bg-info text-white p-4">
+                    <p class="card-text font-weight-bold">PRIMERA TAREA - Situaciones auditivas sencillas.</p>
+                    <p class="card-text">Comenzar a usar sus audífonos 2 horas, aumentando de a 1 hora por día. Primero 4 días en ambientes tranquilos y luego probarlos en situaciones más ruidosas, aumentando la cantidad de horas hasta completar la semana.</p>
+                    <p class="card-text">Algunos sonidos que quizás no recuerde</p>
+                    <p class="card-text">A· Sonidos del mecanismo de relojes.</p>
+                    <p class="card-text">B· El ruido de la licuadora.</p>
+                    <p class="card-text">C· El crujir de las cosas..</p>
+                    <p class="card-text">D· Los diferentes ruidos que produce la radio.</p>
+                    <p class="card-text">E· El sonido de la vajilla.</p>
+                    <p class="card-text">F· El zumbido del motor del horno microondas.</p>
+                    <p class="card-text">G· El silbido de la tetera..</p>
+                    <p class="card-text">H· El ruido de los líquidos</p>
+                    <p class="card-text">I· Sonidos metálicos de los utensilios de cocina.</p>
+                  </card>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingSeven">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                SEGUNDA TAREA - Situaciones auditivas difíciles.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">SEGUNDA TAREA</h4>
+                <h3 class="mb-3">Situaciones auditivas difíciles.</h3>
+                  <ol>
+                    <li class="mb-2">Empiece usando sus audífonos cuando esté con un grupo pequeño de personas y fuera de su casa en ambientes auditivos un poco más difíciles. Antes de intentar esto, ya deberá estar usando sus audífonos un mínimo de cuatro horas al día en su casa y haber alcanzado un nivel de confianza adecuado al escuchar a parlantes individuales.</li>
+                    <li class="mb-2">Intente aumentando el espacio entre usted y el interlocutor. No ajuste el volumen de sus audífonos. Al aumentar la distancia, también aumenta la dificultad de oír. Con la práctica, aprenderá técnicas para oír y entender a un nivel en el que se encuentre cómodo.</li>
+                    <li class="mb-2">Participe en conversaciones simultáneas con otras dos personas en ambientes silenciosos. No se preocupe si no puede entenderlos a los dos, intente enfocarse en uno a la vez. Recuerde, hasta una persona con audición normal batalla para entender cuando varias personas están hablando al mismo tiempo.</li>
+                    <li class="mb-2">A medida que participa en ambientes auditivos más difíciles, es aceptable que ocasionalmente diga: “No capté lo que dijo.” Practique fijar su mirada en la cara del que habla. Su cerebro aprenderá de nuevo los sonidos que había dejado de oír. Los sonidos le permanecerán extraños al principio, con la práctica se volverán familiares.</li><li>Aumente gradualmente el tiempo de uso de sus audífonos, usándolos en su automóvil, en el  supermercado y durante algún mandado. Siga los nuevos sonidos hasta encontrar su origen. Al aprender a usar sus audífonos en su rutina diaria, su cerebro pronto “ignorará” los ruidos normales que inicialmente le parecían molestos. A medida que se va acostumbrando al uso de audífonos, pronto estará dispuesto a usarlos todo el día y no tendrá necesidad de ajustar su volumen.</li>
+                    <li class="mb-2">Comience a  escuchar las noticias en el televisor. Pida a su cónyuge o amigo con audición normal que ajuste el volumen del televisor. Enfoque su atención en la persona que tiene la palabra. Pida a las demás personas en la habitación que por favor no hablen durante el programa. Enfoque su atención en toda la historia, no en palabras específicas.</li>
+                    <li class="mb-2">Escuchar el televisor es más difícil que oír a la persona en la misma habitación. La práctica de escuchar el televisor facilitará otras situaciones auditivas difíciles. </li>
+                    <li class="mb-2">Use sus audífonos por períodos de tiempo prolongados, no se exceda. Si se siente fatigado, quíteselos por un momento pero vuelva a ponérselos. No se dé por vencido, así como aprender un deporte o tocar un instrumento musical, la perfección exige la práctica diaria.</li>
+                  </ol>
+                  <card class="mt-4 card bg-info text-white p-4">
+                    <p class="card-text font-weight-bold">SEGUNDA TAREA - Situaciones auditivas difíciles.</p>
+                    <p class="card-text">Use sus audífonos 8 horas al día.</p>
+                  </card>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingEight">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                TERCER TAREA - Situaciones auditivas muy difíciles.
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+              <div class="card-body">
+                <h4 class="mb-1">TERCER TAREA</h4>
+                <h3 class="mb-3">Situaciones auditivas muy difíciles.</h3>
+                <ol>
+                  <li class="mb-2">Comience a usar sus audífonos en lugares públicos. Úselos en el trabajo, iglesia, fiestas, reuniones, eventos deportivos y restaurantes. Estos son ambientes difíciles, de manera que necesitará ser paciente y aprender algunas técnicas para mejorar su situación auditiva.</li>
+                  <li class="mb-2">Comience incrementando las distancias entre usted y el interlocutor. En ambientes auditivos con ruidos de fondo, intente concentrarse en la voz de una persona, vea sus expresiones y los movimientos de sus labios. Escuchará otros ruidos, pero concéntrese en el habla. Con el tiempo, su cerebro inconscientemente categorizará los sonidos e ignorará el ruido de fondo y se enfocará el en interlocutor.</li><li>En caso de ser necesario, mueva su cabeza lentamente hacia la persona que esté hablando. No se sienta incómodo. Aunque para usted sean notorios esos movimientos, para otros pasarán desapercibidos.</li>
+                  <li class="mb-2">Elija asientos óptimos para oír bien. Por ejemplo, elija el asiento delantero de un auditorio. Solicite una mesa en una esquina silenciosa en un restaurante. En los restaurantes es mejor sentarse dando la espalda hacia la pared. De esta manera, los sonidos se presentarán a 180 grados y no a 360. También, restaurantes alfombrados son acústicamente más silenciosos.</li>
+                  <li class="mb-2">El oír mejor dependerá de: a) su compromiso por hacer que sus audífonos funcionan en su rutina diaria, b) el tiempo utilizado para acostumbrarse a usarlos en diferentes ambientes y c) su paciencia mientras su cerebro se acostumbra a sonidos desconocidos.</li>
+                  <li class="mb-2">Llámenos si tiene preguntas durante este proceso. Conocemos las dificultades que enfrenta al lidiar con su problema auditivo. Estamos para ayudarlo.</li>
+                </ol>
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text font-weight-bold">TERCER TAREA - Situaciones auditivas muy difíciles.</p>
+                  <p class="card-text">Use sus audífonos 10 horas al día.</p>
+                  <p class="card-text">Recuerde, el trabajo de sus audífonos es cambiar el nivel de audición de su cerebro y esto sólo exige práctica, tiempo y paciencia.</p>
+                </card>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingNine">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                SISTEMA ROGER
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+          
+            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="mb-3">SISTEMA ROGER</h3>
+                  <ul>
+                    <li class="mb-2">¿Sigue teniendo problemas para oír en determinadas situaciones? Quizás en restaurantes ruidosos, hablando por teléfono, en reuniones o en el auto.</li>
+                    <li class="mb-2">Un Sistema Roger inalámbrico trabaja junto con un audífono para mejorar la comprensión. Llevando el sonido que usted quiere oír directamente a sus oídos, independientemente de dónde se encuentre. Evitando así la reverberación y eliminando la distancia entre la fuente sonora y su oído. Esto  es especialmente útil en situaciones de clases, conferencias o ambientes muy ruidosos.</li>
+                    <li class="mb-2">El Sistema Roger es un accesorio opcional. Consulte con nuestros profesionales para realizar una prueba domiciliaria sin cargo.</li>
+                  </ul>
+                  <card class="mt-4 card bg-info text-white p-4">
+                    <p class="card-text font-weight-bold">SISTEMA ROGER</p>
+                    <p class="card-text">Soluciones para oír en situaciones con ruido y a distancia.</p>
+                    <p class="card-text">La tecnología inalámbrica le ayudará a comprender mejor en ambientes reverberantes.</p>
+                  </card>
+              </div>
+            </div>
+          
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="headingTen">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                CONEXIONES INALÁMBRICAS
+              </button>
+            </h5>
+          </div>
+
+          <div id="accordion">
+
+            <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+              <div class="card-body">
+                <h3 class="mb-3">CONEXIONES INALÁMBRICAS</h3>
+                <ul>
+                  <li class="mb-2">Soluciones para oír en situaciones difíciles.</li>
+                  <li class="mb-2">Usted puede seguir teniendo algunas dificultades al mirar la televisión, usar teléfonos celulares y otros dispositivos de audio. Pero la comunicación inalámbrica mediante Bluetooth ha revolucionado la industria de los audífonos.</li>
+                  <li class="mb-2">¡Es el complemento ideal para sus audífonos! Con este sistema sin cables, ver la televisión, escuchar música y hablar por teléfono en más sencillo y placentero.</li>
+                  <li class="mb-2">Ahora usted podrá disfrutar del sonido claro y potente de la televisión o de una llamada telefónica. Y al mismo tiempo participar en las conversaciones y ser conciente de los sonidos que le rodean.</li>
+                  <li class="mb-2">La comunicación inalámbrica es un accesorio opcional. Consulte con nuestros profesionales para realizar una prueba domiciliaria sin cargo.</li>
+                </ul>
+                <card class="mt-4 card bg-info text-white p-4">
+                  <p class="card-text font-weight-bold">CONEXIONES INALÁMBRICAS</p>
+                  <p class="card-text">Soluciones para oír en situaciones difíciles.</p>
+                  <p class="card-text">Participe de todas las actividades y obtenga una vida más activa.</p>
+                </card>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+{% block extra_js %}
+
+<script type="text/javascript">
+//Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 500; // For Safari
+  document.documentElement.scrollTop = 500; // For Chrome, Firefox, IE and Opera
+}
+</script>
+
+{% endblock %}

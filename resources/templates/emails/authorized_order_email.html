@@ -1,0 +1,157 @@
+{% extends "emails/base.html" %}
+{% block content %}
+    <div class="container">
+        <h3>Notificacion de Orden</h3>
+        <p>Se ha procesado el pago para la orden: <strong>{{order.code}}</strong></p>
+        <div class="table">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Codigo</td>
+                        <td>{{order.code}}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>{{order.first_name}} {{order.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{order.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Teléfono</td>
+                        <td>{{order.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>CI</td>
+                        <td>{{order.document}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Producto</strong></td>
+                    </tr>
+                    {% for item in order.order_items.all %}
+                    <tr>
+                        <td>Nombre</td>
+                        <td>{{item.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Precio</td>
+                        <td>{{item.currency}} {{item.price}}</td>
+                    </tr>
+                    {% endfor %}
+                    {% if order.gift_card_info.count > 0 %}
+                    {% with data=order.gift_card_info.first %}
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Datos Beneficiario</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>{{data.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Apellido</td>
+                        <td>{{data.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Documento</td>
+                        <td>{{data.document}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{data.email}}</td>
+                    </tr>
+                    {% endwith %}
+                    {% endif %}
+                    <tr>
+                        <td colspan="2" class="text-center"><strong>Envio</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Envio</td>
+                        <td>{{order.get_shipping_type_display}}</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>Servicio</td>
+                        <td>{{order.shipping_info.service }}</td>
+                    </tr>
+                    <tr>
+                        <td>Precio</td>
+                        <td>{{order.shipping_info.service_rate }}</td>
+                    </tr>
+                    <tr>
+                        <td>Regla</td>
+                        <td>{{order.shipping_info.rule }}</td>
+                    </tr>
+                    <tr>
+                        <td>Departamento</td>
+                        <td>{{order.shipping_info.department }}</td>
+                    </tr>
+                    <tr>
+                        <td>Localidad</td>
+                        <td>{{order.shipping_info.location }}</td>
+                    </tr>
+                    {% comment %}                        
+                    <tr>
+                        <td>pickup</td>
+                        <td>{{order.shipping_info.pickup }}</td>
+                    </tr>
+                    {% endcomment %}
+                    <tr>
+                        <td>Horario</td>
+                        <td>{{order.shipping_info.time_window }}</td>
+                    </tr>
+                    <tr>
+                        <td>Calle</td>
+                        <td>{{order.shipping_info.street }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nro de puerta</td>
+                        <td>{{order.shipping_info.door_number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nro. Apto</td>
+                        <td>{{order.shipping_info.apto }}</td>
+                    </tr>
+                    <tr>
+                        <td>Observaciones</td>
+                        <td>{{order.shipping_info.notes }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre destinatario</td>
+                        <td>{{order.shipping_info.addressee_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Destinatario</td>
+                        <td>{{order.shipping_info.addressee_email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefono Destinatario</td>
+                        <td>{{order.shipping_info.addressee_phone }}</td>
+                    </tr>
+
+
+                    <tr>
+                        {% if order.shipping_type == "audical-pickup" %}
+                        <td>Pick Up</td>
+                        <td>{{order.audical_pickup}}</td>
+                        {% else %}
+                        <td colspan="2" class="text-center">
+                            <a href="{{order.shipping_info.tag_link}}">Obtener Etiqueta UES</a> 
+                        </td>
+                        {% comment %}
+                        <tr>
+                            <td>Costo UES</td>
+                            <td>UYU {{order.shipping_info.service_rate.price_with_taxes}}</td>
+                        </tr>
+                        {% endcomment %}
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>
+            Por mas información haga <a href="https://audical.com.uy/clk/products/order/{{order.pk}}/">CLICK AQUI</a> para ir a el detalle de la orden.
+        </p>
+    </div>
+{% endblock %}

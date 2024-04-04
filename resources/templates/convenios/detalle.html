@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}Convenios{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+<div id="audifonos" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right pt-md-5"><b>CONVENIO</b></h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static 'images/adultos-img.png' %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Contenido -->
+<div id="text_position" class="container py-5">
+
+  <div class="row mb-4">
+    <div class="col-12">
+      <ul class="navbar-nav d-inline-block list-inline float-left">
+          <li class="list-inline-item">
+            <a class="text-white btn-agenda btn-nav-small font-weight-bold mr-3" href="javascript:history.back()">Volver</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <hr/>
+
+
+  <div class="row mt-5">
+    <div class="col-3">
+      <p><img src="{{object.image.url}}"></p>
+    </div>
+    <div class="col-8 offset-1">
+      <h3>{{object.name}}</h3>
+      {% if object.agreement_type %}<p><small>{{object.agreement_type}}</small></p>{% endif %}
+      {% if object.discount %}<p class="h5 text-success">{{object.discount}}</p>{% endif %}
+      {% if object.description %}<p>{{object.description}}</p>{% endif %}
+      {% if object.start_date %}<p>Desde: {{object.start_date}}</p>{% endif %}
+      {% if object.end_date %}<p>Hasta: {{object.end_date}}</p>{% endif %}
+    </div>
+  </div>
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load highlights_tags maplocation_tags static %}
+
+{% block extra_js %}
+{% getmaps_js %}
+{% endblock extra_js %}
+
+{% block title %}Donde Encontrarnos{% endblock %}
+
+{% block body_class%}donde_encontrarnos{% endblock body_class%}
+
+
+{% block main_content %}
+
+  <!--Dónde encontrarnos-->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-3 mt-2 d-none d-md-block">
+        <img src="{% static 'images/icon-ubicacion-01.svg' %}" class="img-fluid">
+      </div>
+      <div class="col-md-9 findus mt-3">
+        <h2 class="text-uppercase font-weight-bold title-test pt-5">Estamos en todo el Uruguay</h2>
+        <p class="">Hay un centro Audical cerca de tu casa. Te esperamos.</p>
+      </div>
+    </div>
+  </div>
+  <!--End Dónde encontrarnos-->
+
+
+  <!--Mapa-->
+<div class="container-fluid mt-5 py-0 py-2 back_mapa">
+<div class="container">
+<div class="form-horizontal form_mapa">
+<div class="row">
+    <!--Ticket 27206, se quita el combo de la distancia
+    <div class="col-md-4">
+      <div class="form-group row">
+      <label class="col-md-4 control-label text-right" for="selectbasic">Distancia</label>
+      <div class="col-md-4">
+        <select id="range" name="range  " class="form-control">
+          <option value="5 km">5 km</option>
+          <option value="10 km">10 km</option>
+          <option value="100 km">100 km</option>
+          <option value="500 km">500 km</option>
+        </select>
+      </div>
+    </div>
+    </div>-->
+
+    <div class="col-md-8">
+      <div class="form-group row">
+        <label class="col-md-2 control-label" for="address"></label>  
+        <div class="col-md-6">
+        <input id="address" name="address" type="text" placeholder="Escribí tu dirección" class="form-control input-md">
+        </div>
+        <div class="col-md-4">
+         <button class="text-white btn-where font-weight-bold" id="search_location">Buscar Centro</button>
+         </div>
+      </div>
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+<div style="position: relative; min-height: calc(100vh - 226px);">
+  <div id="map1" style="width: 100%; height: 100%; position: absolute;"></div>
+
+  {# <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d209629.29897960377!2d-56.37029113158263!3d-34.819580603195014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f80ffc63bf7d3%3A0x6b321b2e355bec99!2sMontevideo!5e0!3m2!1ses-419!2suy!4v1463173166309" frameborder="0" style="border:0" allowfullscreen></iframe> #}
+</div>
+  <!--End mapa-->
+
+
+  <div class="container-fluid py-3 py-md-5 px-md-5">
+
+      <h3 class="font-weight-bold text-uppercase business_name mb-1">En Montevideo</h3>
+      <hr class="mt-0">
+      {% getpoints_html_by_ubication ubication=montevideo %}
+  
+      <h3 class="font-weight-bold text-uppercase business_name mt-3 mb-1">En El Interior</h3>
+      <hr class="mt-0">
+      {% getpoints_html_by_ubication ubication=interior %}
+{% comment %}
+      <h3 class="font-weight-bold text-uppercase business_name mt-3 mb-1">Distribuidores autorizados</h3>
+      <hr class="mt-0">
+      {% getpoints_html_by_ubication ubication=dist-interior %}
+{% endcomment %}
+  </div>
+
+
+{% include 'includes/agende-test.html' %}
+
+{% endblock %}

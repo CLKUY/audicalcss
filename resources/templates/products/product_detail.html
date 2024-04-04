@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}Audífonos{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block extra_head %}
+{% if product.signia_code%}
+<script type='text/javascript' src='https://origin-media.sivantos.com/apps/snippets.js'></script>
+{% endif %}
+{% endblock extra_head %}
+
+{% block main_content %}
+
+  <!--Test-->
+<div id="{{ header_div_id }}" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-left title text-md-right">{% autoescape off %}{{page_title}}{% endautoescape %}</h2>
+          <img class="img-fluid pt-0 pb-4" src="/static/images/linea-azul.png">
+        </div>
+        {% comment %}
+          <div class="col-md-4 d-none d-md-block">
+            {% if product.header_image %}
+            <img src="{{product.header_image.url}}" class="img-fluid pt-0 img-adultos">
+            {% endif %}
+          </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+<!-- Contenido -->
+<div class="container py-5">
+
+
+  <div class="col-12 breadcum">
+    <ul class="list-unstyled">
+      {% if category.parent %}
+      {% if category.parent.parent %}
+      <li class="list-inline-item"><a href="{% url 'product_list' category_slug=category.parent.slug parent_slugs=category.parent.parent.slug|add:'/' %}">{{category.parent.name}}</a></li>      
+      {% else %}
+      <li class="list-inline-item"><a href="{% url 'product_list' category_slug=category.slug parent_slugs=category.parent.slug|add:'/' %}">{{category.name}}</a></li>      
+      {% endif %}
+      {% else %}
+      <li class="list-inline-item"><a href="{% url 'product_list' category_slug=category.slug %}">{{category.name}}</a></li>
+      {% endif %}      
+      <li class="list-inline-item"><span>/</span></li>
+      <li class="list-inline-item">{{product.name}}</li>
+    </ul>
+  </div>
+
+  <div class="row">
+
+      <div class="col-12 col-sm-6">
+        <section id="gallery" class="simplegallery col-12">
+          <div class="row">
+          {% if product.signia_code%}
+
+          <script type='text/javascript'>load_signia_product_gallery('es','{{product.signia_code}}','100%','800px');</script> 
+
+          {% else %}
+          <!-- Miniaturas -->
+            <div class="thumbnail col-12 col-sm-2">                
+                {% for image in product.get_product_images_qs %} 
+                <div
+                  class="thumb col-3 col-sm-12 float-left px-md-0 {% if forloop.last %}last{% endif %}"
+                  {% if image.display_color %}
+                    data-color="{{image.hex_color}}"
+                    style="display: none;"
+                  {% endif %}  
+                >
+                    <a href="#">
+                        {% thumbnail image.file "60x60" padding=True as im %}
+                            <img
+                              class="img-thumbnail img-fluid mb-2"
+                              id="thumb_{{forloop.counter}}"
+                              src="{{ im.url }}"
+
+                            >
+                        {% empty %}
+                            <!--img class="img-thumbnail img-fluid mb-2" id="thumb_{{forloop.counter}}"  src="ghost100x100.jpg"-->
+                        {% endthumbnail %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- end Miniaturas -->
+
+            <!-- Completas -->
+            <div class="content col-12 col-sm-10">
+              <div class="row">
+                <div class="col-12">
+                  {% for image in product.get_product_images_qs %}   
+                  {% thumbnail image.file "420x420" padding=True as im %}
+                      <img class="img-fluid image_{{forloop.counter}}" {% if forloop.counter > 1 %}style="display:none"{% endif %} src="{{ im.url }}">
+                  {% empty %}
+                      <!--img class="img-fluid image_{{forloop.counter}}" {% if forloop.counter > 1 %}style="display:none"{% endif %} src="ghost100x100.jpg"-->
+                  {% endthumbnail %}
+                  {% endfor %}  
+                </div>
+              </div>
+              
+            </div>
+            <!-- end Completas -->
+            {% endif %}            
+
+          </div>
+        </section>
+      </div>
+
+
+
+      <div class="col-12 col-sm-6">
+        <h1 class="">{{product.name}}</h1>
+        {% if product.brand %}
+        <h3>Marca: {{product.brand}}</h3>
+        {% endif %}
+        {% if product.available_colors %}
+        <h4>Colores:</h4>
+        
+        <div class="colors-container d-flex flex-row justify-content-left flex-wrap">
+        {% for color in product.available_colors %}
+        <div class="box-color">
+          <span class="color-picker" data-color="{{color}}" style="background: {{color}}; "></span>
+        </div>
+        {% endfor %}
+        </div>
+        <br /><br />
+        {% endif %}
+        {% if product.buy_options.count > 0 %}
+          <div class="text-left mb-4 mt-3">
+            <h4 class="mb-4">Compra Online:</h4>
+            {% for option in product.buy_options.all|order_by:'price' %}
+            <a  href="{% url 'buy_product' product_slug=product.slug product_option=option.pk %}" class="btn text-white font-weight-bold btn-where js-buy-option" data-name="{{option.name}}" data-price="{{option.price}}" data-currency="{{option.currency}}" data-variant="{{option.name}}">{{option.name}}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <p class="mb-0">{% autoescape off %}{{product.description|linebreaks}}{% endautoescape %}</p>
+        {% if product.buy_options.count > 0 %}
+          <div class="text-left mb-4 mt-3">
+            <h4 class="mb-4">Compra Online:</h4>
+            {% for option in product.buy_options.all|order_by:'price' %}
+            <a  href="{% url 'buy_product' product_slug=product.slug product_option=option.pk %}" class="btn text-white font-weight-bold btn-where js-buy-option" data-name="{{option.name}}" data-price="{{option.price}}" data-currency="{{option.currency}}">{{option.name}}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% for video in product_videos %}     
+        <div class="video-container">   
+        {% if video.type == 'online' %}      
+        {% autoescape off %}{{video.embed}}{% endautoescape %}        
+        {% endif %}
+        {% if video.type == 'file' %}
+        <video controls src="{{video.url}}">
+        {% endif %}
+        </div>
+        <div class="clearfix"></div>
+        {% endfor %}
+      </div>
+</div>
+
+    {% if product.related.all.count > 0 %}
+    <div class="col-12">
+       <img class="img-fluid py-5" src="{% static 'images/linea-azul.png' %}">
+       <h3 class="text-uppercase font-weight-normal pb-2">Productos <b>Relacionados</b></h3>
+       <div class="row">
+          {% for related in product.related.all %}
+          <div class="col-6 col-sm-2 item_ps mb-4">
+            {% if related.image %}
+            <img class="img-fluid mb-2" src="{{related.image.url}}">
+            {% endif %}
+            {% if category.parent %}
+            {% if category.parent.parent %}
+            <a href="{% url 'product_detail' category_slug=category.parent.slug parent_slugs=category.parent.parent.slug|add:'/' product_slug=related.slug %}">{{related.name}}</a>
+            {% else %}
+            <a href="{% url 'product_detail' category_slug=category.slug parent_slugs=category.parent.slug|add:'/' product_slug=related.slug %}">{{related.name}}</a>  
+            {% endif %}
+            {% else %}
+            <a href="{% url 'product_detail' category_slug=category.slug product_slug=related.slug %}">{{related.name}}</a>
+            {% endif %}      
+          </div>
+          {% endfor %}          
+        </div>
+    </div>
+    {% endif %}
+
+
+  <!-- Payment Method -->
+
+  {% include 'includes/metodo-pago.html' %}
+  
+  <!-- end Payment Method -->
+
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+{% block extra_js %}
+<script>
+  document.addEventListener("DOMContentLoaded", devent => {
+    const rootData = {
+      'name': "{{product.name}}",
+      'id': "{{product.pk}}",
+      'brand': "{{product.brand}}",
+      'category': "{{category}}"
+    };
+
+    let buyOptions = document.querySelectorAll(".js-buy-option");
+    buyOptions.forEach(obj => {
+      obj.addEventListener('click', event => {
+        event.preventDefault();
+        let target = event.currentTarget;
+        let tmp = {
+          'price': target.getAttribute('data-price'),
+          'currency': target.getAttribute('data-currency'),
+          'variant': target.getAttribute('data-variant'),
+          'url': target.getAttribute('href')
+        };
+
+        let product = {...tmp, ...rootData};
+        console.log('pushing to dataLayer');
+        recordClickOnProduct(dataLayer, product);
+      })
+    })
+  })
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", devent => {
+    let product = {
+      'name': '{{product.name}}',
+      'id': '{{product.pk}}',
+      'brand': '{{product.brand}}',
+      'category': '{{product.category}}'
+    };
+
+    console.log('pushing detail view to dataLayer');
+    recordViewOnProductDetail(dataLayer, product);
+  })
+</script>
+<script>
+
+  function filterThumbs(obj) {
+    let thumbs = Array.from(document.querySelectorAll(".thumb[data-color]"));
+    let filteredThumbs =
+      thumbs
+      .filter((thumb) => {
+          if (thumb.getAttribute("data-color") != obj.getAttribute("data-color")){
+            thumb.style.display = "none";
+            return false;
+          }
+
+          thumb.style.display = "inline";
+          return true;
+      });
+    
+    if (filteredThumbs.length > 0){
+      filteredThumbs[0].click()
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const pickers = Array.from(document.querySelectorAll("span.color-picker"));
+    pickers
+      .map(obj => {
+        obj.addEventListener("click", (event) => {
+          let parents = document.querySelectorAll('div.box-color');
+          parents.forEach(obj => obj.classList.remove('active'));
+          event.currentTarget.parentElement.classList.add('active');
+          filterThumbs(event.currentTarget);
+        })
+      })
+  })
+</script>
+{% endblock %}

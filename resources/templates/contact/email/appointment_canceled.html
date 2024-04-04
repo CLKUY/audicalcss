@@ -1,0 +1,8 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+<p>Estimado {{ appointment.name }} {{ appointment.last_name}}, lamentamos comunicarle que no nos es posible agendar su solicitud para el día y hora seleccionados.</p>
+<p>Nuestro equipo de atención al cliente lo contactará lo antes posible para coordinar su cita.</p>
+<p>Desde ya muchas gracias.</p>
+</div>
+{% endblock %}

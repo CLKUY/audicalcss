@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}{{extra.category.name}}{% endblock %}
+{% block body_class %}productos_shop{% endblock %}
+<style type="text/css">
+   header {
+       display: none;
+   }
+</style>
+
+{% block main_content %}
+
+<!-- Contenido -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-12 text-center pt-5 mb-5">
+            <h2 class="">TIENDA ONLINE</h2>
+            <h5 class="">Manténgase conectado y en control con nuestros accesorios.</h5>
+            <p class="">
+            Conozca nuestra Tienda Online, aproveche que los Envíos son GRATIS a todo el país (por tiempo limitado).<br />
+            Pague con todas las tarjetas, en cuotas y nosotros se lo enviamos a su casa en 24 hs o 48 hs (hábiles)!!
+            </p>
+        </div>
+
+        <a class="col-12 text-white text-uppercase font-weight-bold" data-target="#filtros_mobile" data-toggle="modal" href="#">
+            <div class="sidebar-filter d-block d-md-none w-100 bg-dark my-3 p-3">
+                <span>Filtrar <svg class="filter_icon float-right" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="#fff"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span>
+            </div>
+        </a>
+        
+        <div class="filter-shop col-lg-3 col-md-3 d-none d-md-block">
+            <form action="">
+            <h4 class="pb-2">CATEGORÍAS</h4>
+            <ul>
+                {% for cat in categories %}
+                <li {% if cat.pk in selected_category %}class="active"{% endif %}>
+                    <label for="category{{cat.pk}}" class="checkbox mb-0">
+                        <input {% if cat.pk in selected_category %}checked="checked"{% endif %} class="filter" type="radio" id="category{{cat.pk}}" value="{{ cat.pk }}" name="category"> {{cat.name|capfirst}}
+                    </label>
+                </li>
+                {% endfor %}                   
+            </ul>
+            <h4 class="pb-2">SUB CATEGORÍAS</h4>
+            <ul>
+                {% for subcat in subcategories %}
+                <li  class="pb-2{% if subcat.pk in selected_subcategory %} active{% endif %}">
+                    <label for="subcategory{{subcat.pk}}" class="checkbox mb-0">
+                        <input {% if subcat.pk in selected_subcategory %}checked="checked"{% endif %} class="filter" type="checkbox" id="subcategory{{subcat.pk}}" value="{{ subcat.pk }}" name="subcategory"> {{subcat.name|capfirst}}
+                    </label>
+                </li>
+                {% endfor %}
+            </ul>
+            
+            <h4 class="pb-2">MARCAS</h4>
+            <ul>
+                {% for bra in brands %}
+                <li  class="pb-2{% if bra.pk in selected_brand %} active{% endif %}">
+                    <label for="brands{{bra.pk}}" class="checkbox mb-0">
+                        <input {% if bra.pk in selected_brand %}checked="checked"{% endif %} class="filter" type="checkbox" id="brands{{bra.pk}}" value="{{ bra.pk }}" name="brand"> {{bra.name|capfirst}}
+                    </label>
+                </li>
+                {% endfor %}
+            </ul>
+        </form>
+        </div>
+        <div class="content-shop col-lg-9 col-md-9 col-12">
+            <div class="products">
+            {% for product in page_obj %}
+            {% thumbnail product.image "167x167" padding=True as im %}
+            <div class="content-product mb-3">
+                <div class="col col-lg-3 col-md-3 float-left">
+                    <img class="w-100 img-fluid p-1 pt-3" src="{{ im.url }}" >
+                </div>
+                <div class="col col-lg-9 col-md-9 pt-3 pb-3">
+                {% if product.label_image %}
+                    <img class="img-fluid p-1 d-none d-sm-none d-md-block" style="position: absolute;top: -5px;right: 10px;" src="/media/{{ product.label_image }}" >
+                {% endif %}
+                    <span>{{ product.brand }}</span>
+                    <h5>{{ product.name }}</h5>
+                    <div class="">
+                        {% if product.buy_options.count > 0 %}
+                        <div class="text-left mb-1 mt-3">
+                          <span>Comprar ahora</span><br />
+                          {% for option in product.buy_options.all|order_by:'price' %}
+                          <a  href="{% url 'buy_product' product_slug=product.slug product_option=option.pk %}" class="btn text-white font-weight-bold btn-where js-buy-option" data-name="{{option.name}}" data-price="{{option.price}}" data-currency="{{option.currency}}">{{option.name}}</a>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                      {% if product.price_label %}
+                        <div class="price-before">Antes: <span>{{ product.price_label }}</span></div>
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+              <!--img class="img-fluid mb-2" src="ghost100x100.jpg"-->
+            {% endthumbnail %}
+            {% endfor %}
+            </div>
+            <nav aria-label="Page navigation example">
+                {% if page_obj.has_other_pages %}
+                <ul class="pagination pagination-lg justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                    {% endif %}
+                    {% for i in page_obj.paginator.page_range %}
+                    {% if page == i %}
+                        <li class="active page-item"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?{% param_replace page=i %}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a></li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </nav>
+        </div>
+
+        
+
+    </div>
+</div>
+
+<!-- end Contenido -->
+
+  <!-- Payment Method -->
+
+  {% include 'includes/metodo-pago.html' %}
+  
+  <!-- end Payment Method -->
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+ <script type="text/javascript">
+$('.filter').change(function () {
+    $(this).closest('form').submit()
+})
+</script>
+{% endblock%}

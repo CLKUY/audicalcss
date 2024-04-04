@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+{% load static thumbnail%}
+
+
+{% block main_content %}
+
+<div id="header" class="">
+   {{home_principal}}
+</div>
+
+<!-- Highligts - Products -->
+<section id="products">
+   <div id="header" class="row pb-5 d-none d-sm-block">
+   </div>
+   <div class="mt-lg-n5 container mt-3">
+      <div class="row">
+         <div class="col-6 col-md-3 col-lg-3 mb-3">
+            {{home_imagen_1}}
+         </div>
+         <div class="col-6 col-md-3 col-lg-3 mb-3">
+            {{home_imagen_2}}
+         </div>
+         <div class="col-6 col-md-3 col-lg-3 mb-3">
+            {{home_imagen_3}}
+         </div>
+         <div class="col-6 col-md-3 col-lg-3 mb-3">
+            {{home_imagen_4}}
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End Highligts - Products -->
+
+<!-- Por que Audical -->
+
+<section class="py-5" id="why">
+   <div class="container">
+      <div class="row">
+      </div>
+      <div class="row">
+         <div class="col-lg-4">
+            <img class="img-fluid mb-3" src="{% static '2020/images/foto-bps.webp' %}" alt="BPS">
+         </div>
+         <div class="col-lg-8">
+            <h2 class="text-lg text-uppercase pt-4 mb-4 pt-lg-0">Subsidio de BPS para activos:</h2>
+            <ul class="list-unstyled pb-1">
+               <li class="d-flex h5 mb-2"><span class="material-icons mr-1">check</span>Audífono básico.</li>
+               <li class="d-flex h5 mb-2"><span class="material-icons mr-1">check</span>Dos años de garantía.</li>
+               <li class="d-flex h5 mb-2"><span class="material-icons mr-1">check</span>Blister de pilas incluído.</li>
+               <li class="d-flex h5 mb-1"><span class="material-icons mr-1">check</span>Estudio de campo libre incluído.</li>
+            </ul>
+            <hr>
+            <h4>Conozca nuestros planes de mejora bonificados.</h4>
+            <h5 class="mb-4">Mejore su equipo y su calidad de vida</h5>
+            <a class="btn btn-outline-primary rounded-pill" href="/audifonos-bps/">más información</a>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- End Por que Audical -->
+
+<!-- Servicios Online -->
+
+<section class="bg-danger" id="services">
+      <img class="w-100 img-bar-top" src="{% static '2020/images/top.svg' %}">
+      <img class="w-100 img-bar-bottom" src="{% static '2020/images/bottom.svg' %}">
+      <div class="container">
+         <div class="row">
+            <div class="col-xl-8 pb-5 mb-lg-5 pr-0">
+               <h2 class="text-lg text-uppercase pt-4 mb-4 pt-lg-0">Servicios Online</h2>
+               {% comment %}<p class="text-md font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore</p>{% endcomment %}
+               <div class="pb-5">
+                  <a class="btn btn-primary rounded-pill mr-1 mb-1" href="/cita/">Agendar tu cita</a>
+                  {% comment %}<a class="btn btn-outline-primary rounded-pill mr-1 mb-1" href="#">Chat</a>{% endcomment %}
+                  <a class="btn btn-outline-primary rounded-pill mr-1 mb-1" href="/donde-encontrarnos/">Buscador de Centros Audicial</a>
+                  <a class="btn btn-outline-primary rounded-pill mr-1 mb-1" href="/test/">Test online</a>
+                  <a class="btn btn-outline-primary rounded-pill mr-1 mb-1" href="/5-pasos/">5 PASOS PARA OÍR MEJOR CON AUDÍFONOS</a>
+                  <a class="btn btn-outline-primary rounded-pill mr-1 mb-1" href="/contacto/">Contacto</a>
+               </div>
+            </div>
+            <div class="col-auto d-none d-xl-block align-self-end ml-auto pl-0">
+               <img class="img-fluid woman" src="{% static '2020/images/woman.png' %}">
+            </div>
+         </div>
+      </div>
+   </section>
+
+ <!-- End Servicios Online -->
+
+<!-- Por que Audical -->
+
+   <section id="why">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-6">
+               <h2 class="text-lg text-uppercase pt-4 mb-5 pt-lg-0">¿Por qué audical?</h2>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-lg-6">
+               <ul class="list-unstyled">
+                  <li class="d-flex h5 mb-3"><span class="material-icons mr-1">check</span>Los mejores profesionales</li>
+                  <li class="d-flex h5 mb-3"><span class="material-icons mr-1">check</span>Soluciones personalizadas</li>
+                  <li class="d-flex h5 mb-3"><span class="material-icons mr-1">check</span>Representamos las marcas de audífonos líderes a nivel mundial</li>
+                  <li class="d-flex h5 mb-3"><span class="material-icons mr-1">check</span>25 años brindando soluciones auditivas</li>
+               </ul>
+            </div>
+            <div class="col-lg-6 text-center mb-4">
+               <img class="img-fluid mb-3" src="{% static '2020/images/cap.png' %}" alt="Centro de audiología pediatrica">
+               <div class="w-100">
+                  <a class="btn btn-outline-primary rounded-pill" href="/servicios/cap/">más info</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+<!-- End Por que Audical -->
+
+<!-- Novedases y Videos -->
+<section class="py-5" id="featured">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="row">
+               <div class="col align-self-center d-flex">
+                  <span class="material-icons mr-1">star</span>
+                  <h3 class="text-md text-uppercase">Novedades</h3>
+               </div>
+               {% comment %}
+               <div class="col-auto align-self-center">
+                  <a class="btn btn-outline-primary rounded-pill" href="/noticias/">Más novedades</a>
+               </div>
+               {% endcomment %}
+            </div>
+            {{home_news}}
+         </div>
+         <div class="col-lg-6">
+            <div class="row">
+               <div class="col align-self-center d-flex">
+                  <span class="material-icons mr-1">play_circle_filled</span>
+                  <h3 class="text-md text-uppercase">Videos</h3>
+               </div>
+               <div class="col-auto align-self-center">
+                  <a class="btn btn-outline-primary rounded-pill" href="https://www.youtube.com/user/Audical1996">Más Videos</a>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-12 mt-1">
+                  <div class="embed-responsive embed-responsive-16by9">
+                     <iframe
+                        width="700" height="415"
+                        src="https://www.youtube.com/embed/?list=PLcXDheE1sYcdU-jRM4ZmPpMHiJ_6ECsbh&rel=0"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        ></iframe>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- End Novedases y Videos -->
+
+{% comment %}
+<!-- Noticias -->
+
+   <section id="news">
+      <img class="w-100 img-bar-top" src="{% static '2020/images/top.svg' %}">
+      <div class="container pb-3">
+         <div class="row mb-3 pt-4">
+            <div class="col align-self-center d-flex pt-lg-0">
+               <span class="material-icons mr-1 icon-big">chat</span>
+               <h2 class="text-lg text-uppercase">Noticias</h2>
+            </div>
+            <div class="col-auto align-self-center pl-0">
+               <a class="btn btn-outline-primary rounded-pill" href="{% url 'article_list' %}">Más noticias</a>
+            </div>
+         </div>
+         <div class="row">
+            <!-- News Item -->
+            {% for article in articles %}
+            <div class="col-md-4 mb-4">
+               {% if article.image %}
+                  {% thumbnail article.image "700x400" crop="center" as img %}
+                  <img class="img-fluid rounded-lg mb-3" src="{{ img.url }}" onerror="this.onerror=null;this.src='{% static "images/noimg.png" %}';">
+                  {% empty  %}
+                  <img src="{% static "images/noimg.png" %}" alt="" class="img-fluid">
+                  {% endthumbnail %}
+                  {% else %}
+                  <img class="img-fluid" src="{% static "images/noimg.png" %}">
+                  {% endif %}                  
+                  <h4>{{article.title}}</h4>
+                  <div class="divider gradient-green"></div>
+                  <p>{{article.summary}}</p>
+                  <a class="btn btn-outline-primary rounded-pill mr-1" href="{% url 'article_detail' article.slug %}">Ver</a>
+            </div>
+            {% endfor %}
+            <!-- End News Item -->
+         </div>
+      </div>
+   </section>
+
+<!-- End Noticias -->
+{% endcomment %}
+
+<!-- Encontrarnos -->
+
+       <div class="container py-4">
+      <div class="row">
+         <div class="col-md-4 align-self-center d-none d-md-block d-lg-block">
+            <img class="img-fluid" src="https://www.audical.com.uy/static/images/icon-ubicacion-01.svg">
+         </div>
+         <div class="col-md-8 align-self-center">
+            <h2 class="text-uppercase text-lg">Estamos en todo el Uruguay</h2>
+            <p>Hay un centro Audical cerca de tu casa. Te esperamos.</p>
+            <p><small>Nuestro Horario de Atención es de Lunes a Viernes de 09:00 a 18:00 hs.</small></p><br>
+            <a class="btn btn-primary rounded-pill" href="/donde-encontrarnos/">Buscar Centro</a>
+         </div>
+      </div>
+   </div>
+<!-- End Encontrarnos -->
+
+<!-- Metodos de pago -->
+{% include "includes/metodos-de-pagos.html"%}
+<!-- End Metodos de pago -->
+
+{% endblock main_content %}

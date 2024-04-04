@@ -1,0 +1,57 @@
+{% load thumbnail markup static %}
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
+  </head>
+  <body style="color: #BBBBBB; background-color: #FFFFFF; margin-top:30px;">
+    <div style="margin: 0 auto;width: 600px;">
+
+      <table style="width: 600px;text-align:center; background-color: #FFF;" border="0" cellspacing="0" cellpadding="0">
+        <tr><td colspan="2"><div style="background-color:#FFFFFF">&nbsp;</div></td></tr>
+        <tr>
+          <td align="center">
+
+            <table width="600" border="0" cellspacing="0" cellpadding="0">
+              <!-- LOGO Audical. -->
+              <tr>
+                <td align="center">
+                  {% include "templates/contact/email/includes/pre_header.html" %}
+                </td>
+              </tr>
+
+              <!-- CONTENIDO -->
+              <tr>
+                <td valign="top" class="body" style="padding: 10px 15px; background-color: #FFFFFF;" >
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <!-- TEXTO DESCRIPTION -->
+                      <td colspan="2" valign="top" class="mainbar" align="left">
+                        {% block content %}
+                            <div class="intro" style="font-size: 13px; font-family: Verdana, sans-serif; color: #666; text-align: center;">
+                            {% block content_text %}{% endblock content_text %}
+
+                            </div>
+                        {% endblock content %}
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              {% block email_footer %}
+              <!-- FOOTER  -->
+              {% include "templates/contact/email/includes/footer_audical.html" %}
+
+              <!-- DISCLAIMER -->
+              {% include "templates/contact/email/disclaimer.html" %}
+
+              <!-- FOOTER CLK -->
+              {% include "templates/contact/email/footer_clk.html" %}
+              {% endblock email_footer %}
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

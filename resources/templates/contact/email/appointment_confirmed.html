@@ -1,0 +1,8 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+<p>Estimado {{ appointment.name }} {{ appointment.last_name}}, gracias por su solicitud. Le comunicamos que la misma ha sido confirmada para el día {{ appointment.appointment_date|date:"j/n/Y" }} hora {{ appointment.appointment_date|date:"G:i" }}, en el Centro de atención en {{ appointment.attention_center.name }}.</p>
+<p>Por cualquier consulta puede comunicarse al 18899.</p>
+<p>Desde ya muchas gracias.</p>
+</div>
+{% endblock %}

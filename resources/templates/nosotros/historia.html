@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}Historia{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+<div id="audifonos" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right pt-md-5"><b>NOSOTROS</b></h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static 'images/adultos-img.png' %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Contenido -->
+<div id="text_position" class="container py-5">
+<div class="row">
+
+    <div class="col-12 col-sm-3 nav_servicios">
+      <ul class="list-unstyled text-left text-uppercase">
+      	  <li class="active"><a href="{% url 'historia' %}#text_position">Historia</a></li>
+          <li><a href="{% url 'que-nos-diferencia' %}#text_position">Qué nos diferencia</a></li>         
+      </ul>
+    </div>
+
+    <div class="col-12 col-sm-9 px-md-5">
+      <h1 class="pb-0">Más de 20 años brindando soluciones auditivas</h1>
+      <p class="mb-4">Nos dedicamos a la venta y adaptación de prótesis auditivas. En 1996 abrimos nuestras puertas en Montevideo y hoy estamos en todo el país a través de nuestros Centros de Atención y una extensa red de distribuidores autorizados.</p>
+
+      <h1 class="pb-0">Los mejores profesionales</h1>
+      <p class="mb-4">La especialización y la alta capacitación de nuestro personal garantiza una estructura ideal para ejercer con el debido compromiso una efectiva rehabilitación auditiva.</p>
+
+      <h1 class="pb-0">Soluciones personalizadas</h1>
+      <p class="mb-4">Nuestra prioridad es brindar un servicio profesional y personalizado, comprometido, que entienda, guíe y acompañe a quien padece de pérdida auditiva.</p>
+
+      <h1 class="pb-0">Productos de primer nivel mundial</h1>
+      <p class="mb-4">Representamos y ofrecemos marcas líderes a nivel mundial para que nuestros pacientes tengan una amplia gama de opciones y el mejor producto para cada caso específico.</p>
+    </div>
+
+</div>
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}

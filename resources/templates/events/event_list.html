@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block body_class %}productos_servicios event_list{% endblock %}
+
+{% block main_content %}
+
+
+<!--FILTROS -->
+<section class="pb-5">
+  <!--Notice-->
+  <div class="notice">
+      <div class="container">
+
+        <div class="row pt-2 pb-2">
+          <div class="col-xs-12 col-md-2 pt-md-4 bg-white mb-3 bg_filter">           
+            <div class="search_left js_search_left">
+              <form>
+              {{filter_form}}
+              </form>
+            </div>
+          </div>
+
+        <div class="col-xs-12 col-md-10">
+        <div class="row">
+              {% for event in object_list %}
+        <div class="col-md-4">
+          <a href="{% url 'event_detail' event.slug %}">
+            {% if event.image %}
+             {% thumbnail event.image "350x229" crop="center" as img %}
+              <img class="img-fluid" src="{{ img.url }}" onerror="this.onerror=null;this.src='{% static "images/noimg.png" %}';">
+            {% empty  %}
+              <img src="{% static "images/noimg.png" %}" alt="" class="img-fluid">
+            {% endthumbnail %}
+            {% else %}
+            <img class="img-fluid" src="{% static "images/noimg.png" %}">
+            {% endif %}
+          </a>
+          <div class="item_news event_l mx-0 pt-2 pb-4 mb-3 bg-light px-3 {{ event.category.name }}">
+            <a href="{% url 'event_detail' event.slug %}">
+
+
+              <h2 class="font-weight-bold">{{event.name}}</h2>
+              <p class="pdate"><b>{% if event.show_date %}{{ event.start_date|date:"d" }} {{ event.start_date|date:"M" }} al {{ event.end_date|date:"d" }} {{ event.end_date|date:"M" }}</b><br>{% endif %}{{ event.place }}</p>
+
+              <div class="category_div col-12 py-2 px-0 position-absolute">
+                <p class="m-0 text-uppercase catname {{ event.category.name }}">
+                  {% if event.category %}
+                    <small class="font-weight-bold">{{ event.category.name }}</small><small class=""> | {{ event.type.name }}</small>
+                  {% endif %}
+                </p>
+              </div>        
+        
+            </a>
+          </div>
+        </div>
+              {% endfor %}
+              </div>          
+          </div>
+         </div>
+
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    $(document).ready(function(){
+
+      $('.search_left input').click(function () {
+        $(this).closest('form').submit();
+      });      
+    })
+    var tagSelect = $('.search_left label input:checked');    
+
+    var listSelect ="";
+    if (tagSelect.length > 0) {
+      tagSelect.each(function(index, el) {
+        listSelect += '<li><a href="#" data-target-ref=' + $(this).attr('id')+ '>' + $(this).parent('label').text() + '</a></li>';
+      });
+      $('.js_cont_tags').append(listSelect)
+    }
+    
+    $('.js_cont_tags a').on('click touchstart', function(event) {
+      event.preventDefault();
+      var linkRef = $(this).attr('data-target-ref');
+      $('.search_left input#'+ linkRef).trigger('click');
+    });
+  </script>
+{% endblock %}

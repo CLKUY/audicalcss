@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+    <style>
+        html {
+            font-family: Helvetica, sans-serif;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+            th, td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="max-width: 600px;" >
+  <table style="max-width: 600px;">
+<thead>
+  <tr>
+  <td style="padding: 0px"><img src="https://audical.com.uy/static/img/email_header.jpg"/></td>
+  </tr>
+  </thead>
+<tbody style="max-width: 600px;">
+<tr>
+<td style="max-width:600px;">
+  {% block content %}
+  {% endblock %}
+</td>
+</tr>
+</tbody>
+ <tfoot>
+   <tr><td style="padding: 0px;"><img src="https://audical.com.uy/static/img/email_footer.jpg"/></td></tr>
+  <tfoot>
+</table>
+</body>
+</html>

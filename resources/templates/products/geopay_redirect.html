@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AUDICAL</title>
+  <script type="text/javascript">
+    function submit(){
+        window.document.geopay.submit();
+        return;
+    }
+
+    function _submit(){
+      setTimeout(
+        submit, 2000
+      )
+    }
+  </script>
+  <style>
+
+    * {
+      font-family: Helvetica, sans-serif;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+    .text-white {
+      color: white;
+    }
+
+    .bounce {
+      display: block;
+      height: 24px;
+      width: 24px;
+      background: linear-gradient(to right, #58ead8 0%,#3fd0e1 100%);
+      margin: 15px;
+      border-radius: 50%;
+      animation-name: scaleItems;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+
+    .bounce-item-1 {
+      animation-delay: 500ms;
+    }
+    .bounce-item-2 {
+      animation-delay: 1000ms;
+    }
+    .bounce-item-3 {
+      animation-delay: 1500ms;
+    }
+
+    .d-flex {
+      display: flex;
+      justify-content: center;
+    }
+
+    @keyframes scaleItems {
+      0% {
+        scale: 100%
+      }
+
+      50% {
+        scale: 135%
+      }
+
+      100% {
+        scale: 100%
+      }
+
+    }
+
+    .img-responsive {
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+    }
+
+  </style>
+</head>
+<body style='background-color: #fff;' onload="_submit()">
+  <div class="message-container" style='display: flex; justify-content: center;'>
+    <img class="" src="https://audical.clk.com.uy/static/images/logo-header.png" alt="">
+  </div>
+  <div class="text-center">
+    <h2>Usted será redireccionado a la plataforma de pago.</h2>
+    <h2>Por favor espere</h2>
+  </div>
+  <div class="d-flex">
+    <span class="bounce bounce-item-1"></span>
+    <span class="bounce bounce-item-2"></span>
+    <span class="bounce bounce-item-3"></span>
+  </div>
+  <form name="geopay" method="post" action="{{urls.payment}}">
+    <input type="hidden" name="token" value="{{response.token}}" />
+  </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load highlights_tags maplocation_tags static %}    
+
+{% block main_content %}
+<div class="container back-promo pt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-12">
+            <img class="img-fluid mt-5" src="{% static '2020/images/foto-app.jpg' %}">
+        </div>
+        <div class="col-lg-7 col-md-7 col-12 col-centered mt-5 mb-3">
+            <h4 class="text-lg text-left mb-4">¡Nueva aplicación Audical!</h4>
+                <p class="text-justify">
+                    Para que mejores tu experiencia Audical, ahora tenés la posibilidad de <strong>agendar tu consulta</strong> a través de nuestra aplicación.<br />
+                    Además, podrás ver videos que te expliquen cómo hacer el <strong>mantenimiento básico</strong> de tu audífono sin salir de tu casa.<br /><br />
+
+                    En la aplicación encontrarás <strong>descuentos, beneficios y sorpresas</strong> ¡No te las pierdas!<br /><br />
+
+                    Porque somos líderes, también en la comunicación con nuestros pacientes, es que tiene sentido que nos elijas.<br /><br />
+
+                    Descargá nuestra APP disponible para iOS y Android.
+                </p>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-6 float-left">
+                        <a href="https://play.google.com/store/apps/details?id=clubs.zerotwo.com.audical&pli=1" target="_blank">
+                            <img class="img-fluid mt-3" src="{% static '2020/images/appstore_logo.jpg' %}">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-6 float-left">
+                        <a href="https://apps.apple.com/uy/app/audical/id1591120464?l=es" target="_blank">
+                            <img class="img-fluid mt-3" src="{% static '2020/images/google_play.jpg' %}">
+                        </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

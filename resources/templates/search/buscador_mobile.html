@@ -1,0 +1,20 @@
+<div class="collapse navbar-collapse" id="mobileSearchContainer">
+  <hr>
+  <div style="display:flex;">
+    <div id="searchInputs" class="w-100">
+    <select name="{{ AUDICAL_SEARCH_MENU_PARAM_NAME }}" id="{{ AUDICAL_SEARCH_MENU_PARAM_NAME }}" class="form-control search-header" style="width: 110px;" hidden>
+      {% for menu in AUDICAL_SEARCH_MENU %}
+        <option value="{{ menu.index_param_value }}" {% if menu.selected%} selected="true" {% endif %}>{{ menu.verbose_name }}</option>
+      {% endfor %}
+    </select>
+    <input name="q" id="mobileSearchBy" class="form-control search-header" type="search" placeholder="Buscar...">
+    </div>
+    <button
+      type="submit"
+      style="border: 0px; border-radius:30px; background-color: white; margin-left: 5px; color: #666;"
+    >
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+<div class="container-fluid back-bases pt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-12 mb-4">
+            <h1>Bases y Condiciones</h1>
+            <hr />
+        </div>
+        <div class="col-lg-6 col-md-6 col-12">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% static 'pdf/bases-promocion-audical-mes-de-la-audicion-2024.pdf' %}" target="_blank"> Bases promoción "Audical mes de la audición"</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

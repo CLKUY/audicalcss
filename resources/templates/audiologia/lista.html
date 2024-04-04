@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags shuffle %}
+
+{% block title %}Servicios Audiologicos{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+<div id="audifonos" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2 class="text-uppercase text-center title text-md-center pt-md-5"><b>SERVICIOS AUDIOLOGICOS</b></h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static 'images/adultos-img.png' %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Contenido -->
+<div id="text_position" class="container py-5">
+
+  <div class="row mb-4 text-center">
+    <div class="col-12">
+
+    <p>Todos los estudios auditivos necesarios para encontrar la solución más adecuada según su pérdida auditiva, con la mayor confianza y tranquilidad, sabiendo que está en manos de profesionales y expertos que lo acompañarán y asesorarán durante todo el proceso de adaptación.</p>
+    
+    <p>Audical pone a su alcance los siguientes servicios:</p>
+
+    </div>
+  </div>
+
+  <div class="row">
+{% comment %}
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" name="live-search" placeholder="Buscar" aria-label="Buscar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+{% endcomment %}
+{% comment %}
+    {% regroup object_list by agreement_type as convenio_list %}
+    {% for convenio in convenio_list %}
+      <div class="col-12 convenio-group">
+        <h4 class="mt-5 mb-4">{{convenio.grouper}}</h4> 
+        <hr/>      
+        <div class="row">          
+          {% for convenio in convenio.list %}
+          <div class="col-3 mb-3">
+            <div class="card" style="height:430px;">
+              <a href="{% url 'convenio' convenio.pk %}"><img src="{{convenio.image.url}}" class="w-100 card-img-top py-4 px-4"></a>
+              <div class="card-body pt-0 bg-light pt-3">
+                {% if convenio.discount %}<p class="card-title text-success text-center">{{convenio.discount|truncatechars:30}}</p>{% endif %}
+                {% if convenio.description %}<p class="card-text" style="line-height:normal;"><small>{{convenio.description|truncatechars:150}}</small></p>{% endif %}
+                {% if convenio.start_date %}<p class="mb-0"><small>Desde: {{convenio.start_date}}</small></p>{% endif %}
+                {% if convenio.end_date %}<p class="mb-0"><small>Hasta: {{convenio.end_date}}</small></p>{% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    {% endcomment %}
+    <div class="col-12 servicio-group">      
+        <div class="row">
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/audiogramas.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Audiogramas</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/campo.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Campo libre</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/despistaje-auditivo.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Despistajes auditivos (Audiometrías de rastreo):</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/foto-servicio-audio-4.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Audiometría laboral en empresas</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+  
+        <div class="row">
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/audiometrias-computarizadas.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Audiometrías computarizadas</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/logo.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Logoaudiometrías</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/foto-servicio-audio-7.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Verificación de oído real</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/foto-servicio-audio-8.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Visible speach map (mapa de habla visible)</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/foto-servicio-audio.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Medición de parámetros acústicos en oído artificial</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/medicion-ganancia.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Medición de ganancia funcional de audífonos de pacientes equipados</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/impedanciometria.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Impedanciometría</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/emisiones-otoacusticas.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Emisiones otoacústicas</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+                <div class="row">
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/potenciales-evocados.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Potenciales evocados</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/foto-servicio-audio-6.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Potenciales evocados de estado estable</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-6 mb-4">
+            <div class="card bg-dark text-white">
+              <img class="card-img img-fluid" src="{% static 'images/servicios/cabina.png' %}" alt="Card image">
+              <div class="card-img-overlay">
+                <h5 class="card-title text-center">Cabina Sonoamortiguada</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <div class="row mt-5 mb-5">
+        <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-12 text-center">
+          <a class="text-white btn-where font-weight-bold" href="{% url 'contact' %}">Consulte por más información</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 no-results"  style="display: none">
+      <h4>Sin resultados</h4>
+    </div>
+  </div>
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock extra_js %}

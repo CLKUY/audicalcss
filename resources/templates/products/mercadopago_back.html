@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n static thumbnail highlights_tags %}
+
+{% block title %}{% trans 'Bienvenido' %}{% endblock %}
+
+
+{% block main_content %}
+  <div class="checkout-ok pb-3 text-center py-4">
+    <div class="container">
+        <div class="checkout-list col-12 pt-0 pt-lg-4 text-center">
+          {% if instance.status == 'approved' %}
+          <h1 class="mt-5 text-uppercase font-weight-bold text-primary">Gracias! En breve recibira un email</h1>
+          <a href="/" class="my-5 btn btn-primary">{% trans 'Continuar navegando' %}</a>
+          {% else %}
+          <h1 class="mt-5 text-uppercase font-weight-bold text-primary">Error durante el proceso de pago!</h1>
+          <a href="/" class="my-5 btn btn-primary">{% trans 'Continuar navegando' %}</a>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+
+{% block extra_js %}
+{% if redirect %}
+<script>
+    var url = window.location.toString();
+    url = url.split('?')[0] + '?collection_id={{instance.ipn_id}}&topic={{instance.topic}}';
+    window.location.href = url;
+</script>
+{% endif %}
+{% endblock extra_js %}
+    

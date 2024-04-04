@@ -1,0 +1,26 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+
+<p>Estimado/a, gracias por agendarse, en breve nos comunicaremos telefónicamente para confirmarle su cita.</p>
+
+<p></p>
+En caso de que sea su primer visita, le sugerimos leer los siguientes artículos de información, que le pueden ser útiles.
+<a href="https://www.audical.com.uy/noticias/?categories=1">Prepárese para su cita</a>
+</p>
+
+<strong>Datos de su Cita</strong>
+<br>
+Día: {{ date }}<br>
+Hora: {{ hour }}<br>
+Centro de Atención: {{ attention_center }}<br>
+Atiende: {{ attention_option }}<br>
+Nombre: {{ name }}<br>
+Apellido: {{ last_name }}<br>
+Teléfono: {{ telephone }}<br>
+Correo Electrónico: {{ email }}<br>
+Motivo de la Consulta: {{ reason }}<br>
+<br>
+<p>Gracias por su correo, nos comunicaremos con usted a la brevedad.</p>
+</div>
+{% endblock %}

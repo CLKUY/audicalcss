@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks %}
+{% load i18n %}
+{% block title %}Registro{% endblock %}
+{% block body_class %}test_cita{% endblock %}
+
+{% block main_content %}
+<div class="container pt-2 pb-5">
+<div class="col-12 col-md-10 mx-auto">
+<h1 class="text-center mb-3 pb-1 font-weight-bold text-uppercase registroh1">{% trans 'Registrarse' %}</h1>
+<form class="form-horizontal" action="" method="post">
+{% csrf_token %}
+{{ form.non_field_errors }}
+<div class="row">
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Nombre' %} *</label>  
+    <div class="">    
+      {% render_field form.first_name class="form-control input-md" %} 
+      {{ form.first_name.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Apellido' %} *</label>  
+    <div class="">    
+      {% render_field form.last_name class="form-control input-md" %} 
+      {{ form.last_name.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Profesión' %} *</label>  
+    <div class="">    
+      {% render_field form.occupation class="form-control input-md" %} 
+      {{ form.occupation.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Empresa donde trabaja' %} *</label>  
+    <div class="">    
+      {% render_field form.company class="form-control input-md" %} 
+      {{ form.company.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Departamento' %} *</label>  
+    <div class="">    
+      {% render_field form.state class="form-control input-md" %} 
+      {{ form.state.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Ciudad' %} *</label>  
+    <div class="">    
+      {% render_field form.city class="form-control input-md" %} 
+      {{ form.city.errors }}
+  </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="te:xtinput">{% trans 'Teléfono' %} *</label>  
+    <div class="">    
+      {% render_field form.telephone class="form-control input-md" %} 
+      {{ form.telephone.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Correo electrónico' %} *</label>  
+    <div class="">    
+      {% render_field form.email class="form-control input-md" type="email" %} 
+      {{ form.email.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Contraseña' %} *</label>  
+    <div class="">    
+      {% render_field form.password1 class="form-control input-md" type="password" %} 
+      {{ form.password1.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-6 ">
+    <label class="control-label" for="textinput">{% trans 'Confirmar contraseña' %} *</label>  
+    <div class="">    
+      {% render_field form.password2 class="form-control input-md" type="password" %} 
+      {{ form.password2.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 col-sm-12 ">
+    <label class="control-label" for="textinput">{% trans 'Datos de Interés' %}</label>  
+    <div class="">    
+      {% render_field form.data_of_interest class="form-control input-md" %} 
+      {{ form.data_of_interest.errors }}
+    </div>
+  </div>
+  <div class="form-group col-12 col-sm-12 ">
+    <label class="control-label" for="textinput">{% trans 'Captcha' %}</label>  
+    <div class="">    
+      {% render_field form.captcha class="form-control input-md" %} 
+      {{ form.captcha.errors }}
+    </div>
+  </div>
+
+  <div class="form-group col-12 text-center">
+    <button id="singlebutton" name="enviar" class="text-white btn-send font-weight-bold mt-1">{% trans 'Registrarse' %}</button>
+  </div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+{% endblock %}

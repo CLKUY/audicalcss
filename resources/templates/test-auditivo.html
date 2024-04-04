@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static thumbnail%}
+
+{% block title %}Test Auditivo{% endblock %}
+{% block body_class %}soluciones test_auditivo{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+  <div id="test" class="mt-5">
+    <div class="container-fluid">
+      <div class="container">
+
+      <img src="{% static 'images/icon-test.png' %}" class="img-fluid d-block mx-auto service_img">
+        
+          <h2 class="text-uppercase title-test text-light text-center pt-3">Test auditivo</h2>
+          <p class="text-light text-center col-md-8 col-sm-12  mx-auto">La pérdida de audición es lenta y difícil de percibir, por lo tanto es probable que usted no sea consciente hasta que alguien le llame la atención. <br>
+De ser necesario, es apropiado que se realice algún estudio profesional con un especialista de la audición. <br>
+Aquí tenemos una pequeña lista de preguntas sencillas que le ayudarán a saber rápidamente si tiene algún síntoma de pérdida auditiva.</p>
+          
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Preguntas -->
+<div class="container py-5">
+
+<iframe class="hearing-screener-iframe" src="https://hearing-screener.beyondhearing.org/3E7rVh/" seamless></iframe>
+ 
+</div>
+<!-- end Preguntas -->
+
+
+
+
+
+<!--Cita y test-->
+
+
+  <div id="cita" class="py-1 half_cita">
+          <h2 class="text-uppercase text-light title text-md-center">Agende su cita</h2>
+          <p class="text-light description pt-2 pb-3 text-md-center">Si lo desea puede agendar su próxima<br>cita con nuestras fonoaudiólogas.</p>
+          <div class="text-md-center pb-5"><a class="text-light btn-cita btn-cita-inner" href="{% url 'cita' %}">Agendar cita</a></div>
+  </div>
+  
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_static %}
+
+{% block object-tools-items %}
+<li>
+    <a href="export/google/" class="btn btn-high btn-success">Exportar para Google</a>
+</li>
+{{ block.super }}
+{% endblock %}

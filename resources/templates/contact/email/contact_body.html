@@ -1,0 +1,9 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+<p>De: {{ name }} {{last_name}}, {{ email }}</p>
+<p>Motivo del Contacto: {{ subject|default:"---" }}</p>
+<p>Centro de Atención Audical : {{ store|default:"---"}}</p>
+<p>Mensaje: {% autoescape off %}{{ message|default:"---" }}{% endautoescape %}</p>
+</div>
+{% endblock %}

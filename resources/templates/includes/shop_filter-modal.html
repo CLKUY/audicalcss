@@ -1,0 +1,26 @@
+{% load static thumbnail products_tags %}
+
+<!-- Modal -->
+<div class="modal fade" id="filtros_mobile" tabindex="-1" role="dialog" aria-labelledby="filtros_mobileLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filtros_mobileLabel">Filtrar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      {% with extra.category.slug|get_categories_childs:parent_category as category_childs %}
+       <ul class="list-unstyled text-left text-uppercase pt-3 pt-md-5">
+          {% for cat in category_childs %}
+            <li {% if category_slug.0 == cat.slug %}class="active"{% endif %}><a href="{% url 'product_brand_list' brand_slug=brand.slug %}?category={{cat.slug}}" >{{cat.name|capfirst}}</a></li>
+          {% endfor %}                   
+      </ul>      
+      {% endwith %}
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

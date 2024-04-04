@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}Qué nos diferencia{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+<div id="audifonos" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right pt-md-5"><b>NOSOTROS</b></h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static 'images/adultos-img.png' %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Contenido -->
+<div id="text_position" class="container py-5">
+<div class="row">
+
+    <div class="col-12 col-sm-3 nav_servicios">
+      <ul class="list-unstyled text-left text-uppercase">
+          <li><a href="{% url 'historia' %}#text_position">Historia</a></li>         
+          <li class="active"><a href="{% url 'que-nos-diferencia' %}#text_position">Qué nos diferencia</a></li>      
+      </ul>
+    </div>
+
+    <div class="col-12 col-sm-9 px-md-5">
+      <h1 class="pb-3">La experiencia, el equipo y el compromiso Audical</h1>
+<ul class="pl-3 diferencia">
+<li><span>Estamos 100% al servicio de la persona con problemas auditivos.</span></li>
+<li><span>Interpretamos fielmente los dictámenes médicos del especialista otorrinolaringólogo.</span></li>
+<li><span>Mantenemos actualizado al especialista de todas las innovaciones tecnológicas.</span></li>
+<li><span>Informamos, guiamos y aconsejamos al paciente sobre la ayuda auditiva para cada caso concreto.</span></li>
+<li><span>Proponemos una prueba entre distintas ayudas auditivas para que el paciente constate la mejora conseguida. </span></li>
+<li><span>Ayudamos y asesoramos en el proceso de reeducación auditiva.</span></li>
+<li><span>Ofrecemos un servicio de orientación y asistencia técnica de sus ayudas auditivas.</span></li>
+<li><span>Capacitamos continuamente a nuestro servicio técnico y disponemos de un stock de repuestos que responde a los plazos exigidos por las normas de CE.</span></li>
+</ul>
+    </div>
+
+</div>
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags %}
+
+{% block title %}{{brand.name}}{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+  <!--Test-->
+<div id="{{ header_div_id }}" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right">{% autoescape off %}{{page_title}}{% endautoescape %}</h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static header_div_image %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+<!-- Contenido -->
+<div class="container py-2 py-md-4">
+<div class="row">
+
+
+
+    <div class="col-12 col-sm-3 nav_servicios px-0 px-md-3">
+      <div class="d-none d-md-block">
+        <ul class="list-unstyled text-left text-uppercase pt-3 pt-md-5">      
+            {% for key, cat in categories.items %}
+            <li {% if category_slug.0 == cat.slug %}class="active"{% endif %}><a href="{% url 'product_brand_list' brand_slug=brand.slug %}?category={{cat.slug}}" >{{cat.name|capfirst}}</a></li>
+            {% endfor %}                          
+        </ul>
+      </div>
+
+      <a class="text-white text-uppercase font-weight-bold" data-target="#filtros_mobile" data-toggle="modal" href="#"><div class="sidebar-filter d-block d-md-none w-100 bg-dark my-3 p-3">
+        <span>Filtrar <svg class="filter_icon float-right" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="#fff"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span>
+      </div></a>
+       {% include "includes/brand_filter-modal.html" %}
+
+    </div>
+
+    <div class="col-12 col-sm-9 px-md-5">
+      
+      <p class="mb-0">{{brand.product_list_description|default_if_none:""|linebreaks}}</p>
+      <img class="img-fluid pt-0 pb-4" src="{% static 'images/linea-azul.png' %}">
+      <div class="row">
+      {% for product in products %}
+      	<div class="col-6 col-sm-3 item_ps mb-4 item-page item-page-{% page_for_item forloop.counter0 paginate_by %}" >
+          {% thumbnail product.image "167x167" padding=True as im %}
+              <a href="{{product.get_absolute_url}}"><img class="img-fluid mb-2"  src="{{ im.url }}"></a>
+          {% empty %}
+          {% endthumbnail %}
+          <a href="{{product.get_absolute_url}}">{{ product.name }}</a>          
+        </div>
+      {% empty %}  
+      {% endfor %}       
+      </div>
+      <div class="row py-3" id="product_list_paginator">
+      </div>   
+    </div>
+
+</div>
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.twbsPagination.min.js' %}"></script>
+ <script type="text/javascript">
+$(document).ready(function() {
+  {% if products %}
+  $('#product_list_paginator').twbsPagination({
+      first : "Primero",
+      prev: "Anterior",
+      next: "Siguiente",
+      last: "Último",
+      hideOnlyOnePage : true,
+      totalPages: {{total_pages}},
+      visiblePages: 7,
+      onPageClick: function (event, page) {
+          $('.item-page').hide();
+          $('.item-page-'+page).show();
+      }
+  });
+  {% endif %}
+});
+</script>
+{% endblock%}

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static thumbnail products_tags shuffle %}
+
+{% block title %}Convenios{% endblock %}
+{% block body_class %}productos_servicios{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+<div id="audifonos" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right pt-md-5"><b>CONVENIOS</b></h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static 'images/adultos-img.png' %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Contenido -->
+<div id="text_position" class="container py-5">
+  <div class="row">
+{% comment %}
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" name="live-search" placeholder="Buscar" aria-label="Buscar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+{% endcomment %}
+{% comment %}
+    {% regroup object_list by agreement_type as convenio_list %}
+    {% for convenio in convenio_list %}
+      <div class="col-12 convenio-group">
+        <h4 class="mt-5 mb-4">{{convenio.grouper}}</h4> 
+        <hr/>      
+        <div class="row">          
+          {% for convenio in convenio.list %}
+          <div class="col-3 mb-3">
+            <div class="card" style="height:430px;">
+              <a href="{% url 'convenio' convenio.pk %}"><img src="{{convenio.image.url}}" class="w-100 card-img-top py-4 px-4"></a>
+              <div class="card-body pt-0 bg-light pt-3">
+                {% if convenio.discount %}<p class="card-title text-success text-center">{{convenio.discount|truncatechars:30}}</p>{% endif %}
+                {% if convenio.description %}<p class="card-text" style="line-height:normal;"><small>{{convenio.description|truncatechars:150}}</small></p>{% endif %}
+                {% if convenio.start_date %}<p class="mb-0"><small>Desde: {{convenio.start_date}}</small></p>{% endif %}
+                {% if convenio.end_date %}<p class="mb-0"><small>Hasta: {{convenio.end_date}}</small></p>{% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    {% endcomment %}
+    <div class="col-12 convenio-group">      
+        <div class="row">         
+        {% for convenio in object_list|shuffle %}      
+          <div class="col-12 col-sm-6 col-md-3 mb-3 flip-card">
+            <div class="card flip-card-inner">
+              <div class="flip-card-front"> 
+                <img src="{{convenio.image.url}}" class="w-100 card-img-top py-4 px-4">
+                <p class="flip-card-more-info p-1 d-block d-lg-none">Más información</p>
+              </div>
+              <div class="flip-card-back card-body bg-light">                
+                {% if convenio.discount %}<p class="card-title text-success text-center">{{convenio.discount}}</p>{% endif %}
+                {% if convenio.description %}<p class="card-text" style="line-height:normal;"><small>{{convenio.description}}</small></p>{% endif %}
+                {% if convenio.start_date %}<p class="mb-0"><small>Desde: {{convenio.start_date}}</small></p>{% endif %}
+                {% if convenio.end_date %}<p class="mb-0"><small>Hasta: {{convenio.end_date}}</small></p>{% endif %}                
+              </div>              
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+    <div class="col-12 no-results"  style="display: none">
+      <h4>Sin resultados</h4>
+    </div>
+  </div>
+</div>
+<!-- end Contenido -->
+
+
+
+
+
+<!--Cita y test-->
+{% include 'includes/agende-test.html' %}
+    
+  
+ 
+  <!--End Cita y Test-->
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function(){
+  $('input[name="live-search"').keyup(function(){
+    let filter = $('input[name="live-search"').val();
+    $(".convenio-item").each(function(){
+      if ($(this).find('a').text().search(new RegExp(filter, "i")) < 0) {
+        $(this).fadeOut(hideShowGroup);
+      } else {
+        $(this).fadeIn(hideShowGroup);            
+      }
+    });
+  });
+});
+function hideShowGroup(){
+  $(".convenio-group").each(function(){
+    if($(this).find('.convenio-item:not([style*="display: none"])').length <= 0){
+      $(this).hide();
+    }else{
+      $(this).show();
+    }
+  });
+  if($('.convenio-group:not([style*="display: none"])').length > 0){
+    $('.no-results').hide();
+  }else{
+    $('.no-results').show();
+  }
+}
+</script>
+{% endblock extra_js %}

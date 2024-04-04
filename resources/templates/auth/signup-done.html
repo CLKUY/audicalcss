@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks %}
+
+{% block title %}Test Su cita{% endblock %}
+{% block body_class %}soluciones test_cita{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+  <div id="cita" class="mt-3 mb-0">
+    <div class="container-fluid">
+      <div class="container">
+
+      <div class="row">
+        <div class="col-md-9">          
+        <h2 class="text-uppercase title-test text-light pt-3">Cuenta creada</h2>
+            <h5 class="text-light">Gracias por su registro.</h5>
+            <h5 class="text-light">Le enviamos un correo electrónico con un link para confirmar su cuenta.</h5>
+            <h5 class="text-light">En el caso de no recibirlo, contactenos a: <a href="mailto:comunicacion@audical.com.uy">comunicacion@audical.com.uy</a></h5>
+        </div>  
+
+        <div class="col-md-3">  
+            <img src="{% static 'images/doctora.png' %}" class="img-fluid d-block mx-auto">
+        </div> 
+      </div>     
+          
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+<!--Cita y test-->
+
+
+  <div id="test" class="py-1 half_test">
+          <h2 class="text-uppercase text-light title-test text-md-center">Test auditivo</h2>
+          <p class="text-light description pt-2 pb-3 text-md-center">Sepa rápidamente si tiene algún síntoma<br>de pérdida auditiva.</p>
+          <div class="text-md-center pb-5"><a class="text-light btn-cita btn-cita-inner" href="{% url 'test' %}">Realizar test</a></div>
+  </div>
+  
+    
+  
+ 
+  <!--End Cita y Test-->
+
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}

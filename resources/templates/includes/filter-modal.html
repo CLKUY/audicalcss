@@ -1,0 +1,77 @@
+{% load static thumbnail products_tags %}
+
+<!-- Modal -->
+<div class="modal fade" id="filtros_mobile" tabindex="-1" role="dialog" aria-labelledby="filtros_mobileLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filtros_mobileLabel">Filtrar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <ul class="list-unstyled text-left text-uppercase pt-3 pt-md-5">
+          {% if primary_category %}
+          <span>{{primary_category.name}}</span>
+          {% for cat in primary_category.slug|get_categories_childs %}
+          <li {% if category.slug == cat.slug %}class="active"{% endif %}><a href="{% url 'product_list' category_slug=cat.slug parent_slugs=primary_category.slug|add:'/' %}" >{{cat.name|capfirst}}</a></li>
+          {% endfor %}                   
+          {% elif parent_category %}
+          {% for cat in parent_category.slug|get_categories_childs %}
+          <li {% if category.slug == cat.slug %}class="active"{% endif %}><a href="{% url 'product_list' category_slug=cat.slug parent_slugs=parent_category.slug|add:'/' %}" >{{cat.name|capfirst}}</a></li>
+          {% endfor %}                   
+          {% elif category %}
+          {% for cat in category.slug|get_categories_childs %}
+          <li {% if category.slug == cat.slug %}class="active"{% endif %}><a href="{% url 'product_list' category_slug=cat.slug parent_slugs=category.slug|add:'/' %}" >{{cat.name|capfirst}}</a></li>
+          {% endfor %}   
+          {% endif %}
+          {% if secondary_category %}
+          <br>
+          <span>{{secondary_category.name}}</span>
+          {% for cat in secondary_category.slug|get_categories_childs %}
+          <li {% if category.slug == cat.slug %}class="active"{% endif %}><a href="{% url 'product_list' category_slug=cat.slug parent_slugs=secondary_category.slug|add:'/' %}" >{{cat.name|capfirst}}</a></li>
+          {% endfor %}                
+          {% endif %}
+          {% if contact_url %}
+          <li><a href="{{ contact_url }}">Soporte técnico</a></li> 
+          {% endif %}
+      </ul>
+
+      <form method="GET" action="" class="pt-0 pt-md-5">
+      {% with extra.category.slug|get_categories_childs:parent_category as category_childs %}
+      {% if category_childs and parent_category %}
+      <span class="categorias text-white w-100 d-block text-uppercase font-weight-bold py-1 px-2 mb-2">Sub categorias:</span>
+      <ul class="list-unstyled">          
+          {% for cat in category_childs %}
+          <li class="pb-1">
+            <label class="checkbox mb-0"><input class="" type="checkbox" id="inlineCheckbox{{forloop.counter}}" value="{{cat.slug}}" name="category" {% if cat.pk in selectedSubcategories %} checked="" {% endif %} data-name="{{cat.slug}}"> {{cat.name}}</label>
+          </li>
+          {% endfor %} 
+          <input style="display: none" class="" type="checkbox" checked="checked" id="inlineCheckbox{{category_childs|length|add:1}}" value="" name="category">  <!-- Para saber si se aplica filtro -->
+      </ul>
+      {% endif %}      
+      {% if brands and brands|length > 0 %}
+      <span class="categorias text-white w-100 d-block text-uppercase font-weight-bold py-1 px-2 mb-2">Marcas:</span>
+      <ul class="list-unstyled"> 
+      {% for brand in brands%}
+        <li class="pb-1">
+          <label class="checkbox mb-0"><input class="" type="checkbox" id="inlineCheckbox{{forloop.counter}}" value="{{brand.slug}}" name="brand" {% if brand.pk in selectedBrands %} checked="checked" {% endif %} data-name="{{brand.slug}}"> {{brand.name}}</label>        
+        </li>       
+      {% endfor %}
+       <input style="display: none" class="" type="checkbox" checked="checked" id="inlineCheckbox{{brands|length|add:1}}" value="" name="brand">   <!-- Para saber si se aplica filtro -->
+      </ul>
+      {% endif %}
+      {% if brands and brands|length > 0 or category_childs and parent_category %}
+      <input class="btn btn-sm btn-aplicar-filtros font-weight-bold text-uppercase text-white mb-3" type="submit" value="Aplicar filtros">
+      {% endif %}
+      {% endwith %}
+      </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+

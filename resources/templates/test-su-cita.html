@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks %}
+
+{% block title %}Test Su cita{% endblock %}
+{% block body_class %}soluciones test_cita{% endblock %}
+
+{% block main_content %}
+
+
+  <!--Test-->
+  <div id="cita" class="mt-3 mb-0">
+    <div class="container-fluid">
+      <div class="container">
+
+      <div class="row">
+        <div class="col-md-8">          
+        <h2 class="text-uppercase title-test text-light pt-3">Agende su cita</h2>
+            <h5 class="text-light">Si Usted desea agendar su próxima cita con nuestras Fonoaudiólogas,<br>por favor complete el siguiente formulario. Muchas gracias. <br><br>
+
+            <b>Importante:</b><br><br>
+            1) Se requiere agendar con anticipación mínima de 2 días hábiles. <br>
+            2) Aguarde la confirmación telefónica de Audical.<br><br>
+            En caso de que sea su primer visita, le sugerimos leer estos artículos de información, que le pueden ser útiles.<br><br>
+            <a class="text-light btn-cita btn-cita-inner" href="{% url 'article_list' %}?categories=1">Prepárese para su cita</a></h5><br><br>
+        </div>  
+
+        <div class="col-md-4">  
+            <img src="{% static 'images/doctora.png' %}" class="img-fluid d-block mx-auto">
+        </div> 
+      </div>     
+          
+      </div>
+    </div>
+  </div>
+  <!--End Test-->
+
+
+
+
+
+<!-- Preguntas -->
+<div class="container py-5">
+<div class="col-md-8 col-sm-12 mx-auto">
+<form class="form-horizontal" action="" method="post">
+{% csrf_token %}
+{{ form.non_field_errors }}
+<div class="row">
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Día <span>(solamente de lunes a viernes)</span> *</label>  
+  <div class="">
+    {% render_field form.appointment_day class="form-control" %} 
+    {{ form.appointment_day.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Hora *</label>
+  <div class="">    
+    {% render_field form.appointment_hour class="form-control" %} 
+    {{ form.appointment_hour.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Centro de Atención *</label>
+  <div class="">    
+    {% render_field form.attention_center class="form-control" %} 
+    {{ form.attention_center.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">¿Quién le atiende? *</label>
+  <div class="">    
+    {% render_field form.attention_option class="form-control" %} 
+    {{ form.attention_option.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Nombre *</label>  
+  <div class="">    
+    {% render_field form.name class="form-control input-md" %} 
+    {{ form.name.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Apellido *</label>  
+  <div class="">    
+    {% render_field form.last_name class="form-control input-md" %} 
+    {{ form.last_name.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Teléfono *</label>  
+  <div class="">    
+    {% render_field form.telephone class="form-control input-md" %} 
+    {{ form.telephone.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Correo electrónico</label>  
+  <div class="">    
+    {% render_field form.email class="form-control input-md" type="email" %} 
+    {{ form.email.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput"></label>  
+  <div class="">    
+    {{ form.captcha }}
+    {{ form.captcha.errors }}
+
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Motivo de consulta *</label>
+  <div class="">    
+    {% render_field form.reason class="form-control" %} 
+    {{ form.reason.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 text-center">
+    <button id="singlebutton" name="enviar" class="text-white btn-send font-weight-bold mt-1">Enviar</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+<!-- end Preguntas -->
+
+
+
+
+
+<!--Cita y test-->
+
+
+  <div id="test" class="py-1 half_test">
+          <h2 class="text-uppercase text-light title-test text-md-center">Test auditivo</h2>
+          <p class="text-light description pt-2 pb-3 text-md-center">Sepa rápidamente si tiene algún síntoma<br>de pérdida auditiva.</p>
+          <div class="text-md-center pb-5"><a class="text-light btn-cita btn-cita-inner" href="{% url 'test' %}">Realizar test</a></div>
+  </div>
+  
+    
+  
+ 
+  <!--End Cita y Test-->
+
+{% include 'includes/buscar-centro.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $( document ).ready(function() {
+    {% autoescape off %}
+    var holidays = {{holidays}}
+    {% endautoescape %}
+      $( "#id_appointment_day" ).datepicker({
+        beforeShowDay: function(date){
+            var datestring = jQuery.datepicker.formatDate('dd/mm/yy', date);
+            return [ holidays.indexOf(datestring) == -1 && date.getDay() != 0 && date.getDay() != 6 ]
+            /*        feriados                                   domingos          sabados*/
+        },
+        dateFormat: 'dd/mm/yy',
+        minDate : 2
+     });
+    //Para cargar quien lo atiende según el centro de atención
+    $('#id_attention_center').change(function(){      
+      $("#id_attention_option option").each(function(index) {
+        if(index > 0){
+          $(this).remove();
+        }        
+      });
+      if(!$(this).val()){return;}
+      $.get("{% url 'attention_option' %}", {'center':$(this).val()}, function( data ) {
+        $.each(JSON.parse(data), function(index, object) {
+          key = object.id;
+          value = object.name;          
+          $("#id_attention_option").append($('<option>', {value: key}).text(value));
+        });
+      });
+    });
+    $('#id_attention_center').trigger('change');
+ });
+</script>
+{% endblock extra_js %}

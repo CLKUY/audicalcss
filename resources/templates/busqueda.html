@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block extra_head %}
+
+{% endblock extra_head %}
+
+{% block main_content %}
+
+
+<div class="container container-fluid custom_padding_CF">
+  
+        <h1 class="title-search mb-5">Resultados de búsqueda</h1>
+
+    <form>
+        <div class="col-md-8 input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2" name="q" value="{{ request.GET.q }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Realizar Búsqueda</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script id="search_container" type="text/template">
+    <div class="search-results-container">
+        <div class="hr-line-dashed"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="paginator text-center"></div>
+</script>
+
+<div class=" container container-fluid custom_padding_CF bootstrap snippet">
+    <div class="row">
+        <div class="col-lg-12" id='noresults' style="display:none">
+            <p>
+                B&uacute;squeda sin resultados.
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div id="all_searches">
+                        <ul class="nav nav-tabs">
+                        </ul>
+                        <div class="tab-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/elasticsearch/14.1.0/elasticsearch.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/elasticsearch/14.1.0/elasticsearch.jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    {% verbatim %}<script id="default" type="text/template">
+    <div class="col-xs-12 item_search">
+      <div class="row">
+      <div class="col-md-4">
+        <img src="//audical.com.uy/" alt="" class="img-fluid hidden-xs" width="200px">
+      </div>
+      <div class="col-md-6">
+        <h5><a href="{{full_url}}">{{name}}</a></h5>
+        <p>{{search_short_description}}</p>
+      </div>
+      </div>
+    </div>
+    </script>{% endverbatim %}
+    {% for menu in AUDICAL_SEARCH_MENU %}{% if menu.template_id %}
+    {{ menu.template|safe }}{% endif %}{% endfor %}
+    <script type="text/javascript">
+    (function($) {
+    $.fn.iappend = function(str) {
+            var $this = $(this);
+            $this.html($this.html() + str);
+    };
+})(jQuery);
+    var searching = 0;
+    var global_all_html = '';
+    var global_count = 0;
+    String.prototype.replaceAll = function(search, replacement) {
+        var target = this;
+        return target.split(search).join(replacement);
+    };
+    var Latinise={};Latinise.latin_map={"Á":"A","Ă":"A","Ắ":"A","Ặ":"A","Ằ":"A","Ẳ":"A","Ẵ":"A","Ǎ":"A","Â":"A","Ấ":"A","Ậ":"A","Ầ":"A","Ẩ":"A","Ẫ":"A","Ä":"A","Ǟ":"A","Ȧ":"A","Ǡ":"A","Ạ":"A","Ȁ":"A","À":"A","Ả":"A","Ȃ":"A","Ā":"A","Ą":"A","Å":"A","Ǻ":"A","Ḁ":"A","Ⱥ":"A","Ã":"A","Ꜳ":"AA","Æ":"AE","Ǽ":"AE","Ǣ":"AE","Ꜵ":"AO","Ꜷ":"AU","Ꜹ":"AV","Ꜻ":"AV","Ꜽ":"AY","Ḃ":"B","Ḅ":"B","Ɓ":"B","Ḇ":"B","Ƀ":"B","Ƃ":"B","Ć":"C","Č":"C","Ç":"C","Ḉ":"C","Ĉ":"C","Ċ":"C","Ƈ":"C","Ȼ":"C","Ď":"D","Ḑ":"D","Ḓ":"D","Ḋ":"D","Ḍ":"D","Ɗ":"D","Ḏ":"D","ǲ":"D","ǅ":"D","Đ":"D","Ƌ":"D","Ǳ":"DZ","Ǆ":"DZ","É":"E","Ĕ":"E","Ě":"E","Ȩ":"E","Ḝ":"E","Ê":"E","Ế":"E","Ệ":"E","Ề":"E","Ể":"E","Ễ":"E","Ḙ":"E","Ë":"E","Ė":"E","Ẹ":"E","Ȅ":"E","È":"E","Ẻ":"E","Ȇ":"E","Ē":"E","Ḗ":"E","Ḕ":"E","Ę":"E","Ɇ":"E","Ẽ":"E","Ḛ":"E","Ꝫ":"ET","Ḟ":"F","Ƒ":"F","Ǵ":"G","Ğ":"G","Ǧ":"G","Ģ":"G","Ĝ":"G","Ġ":"G","Ɠ":"G","Ḡ":"G","Ǥ":"G","Ḫ":"H","Ȟ":"H","Ḩ":"H","Ĥ":"H","Ⱨ":"H","Ḧ":"H","Ḣ":"H","Ḥ":"H","Ħ":"H","Í":"I","Ĭ":"I","Ǐ":"I","Î":"I","Ï":"I","Ḯ":"I","İ":"I","Ị":"I","Ȉ":"I","Ì":"I","Ỉ":"I","Ȋ":"I","Ī":"I","Į":"I","Ɨ":"I","Ĩ":"I","Ḭ":"I","Ꝺ":"D","Ꝼ":"F","Ᵹ":"G","Ꞃ":"R","Ꞅ":"S","Ꞇ":"T","Ꝭ":"IS","Ĵ":"J","Ɉ":"J","Ḱ":"K","Ǩ":"K","Ķ":"K","Ⱪ":"K","Ꝃ":"K","Ḳ":"K","Ƙ":"K","Ḵ":"K","Ꝁ":"K","Ꝅ":"K","Ĺ":"L","Ƚ":"L","Ľ":"L","Ļ":"L","Ḽ":"L","Ḷ":"L","Ḹ":"L","Ⱡ":"L","Ꝉ":"L","Ḻ":"L","Ŀ":"L","Ɫ":"L","ǈ":"L","Ł":"L","Ǉ":"LJ","Ḿ":"M","Ṁ":"M","Ṃ":"M","Ɱ":"M","Ń":"N","Ň":"N","Ņ":"N","Ṋ":"N","Ṅ":"N","Ṇ":"N","Ǹ":"N","Ɲ":"N","Ṉ":"N","Ƞ":"N","ǋ":"N","Ñ":"N","Ǌ":"NJ","Ó":"O","Ŏ":"O","Ǒ":"O","Ô":"O","Ố":"O","Ộ":"O","Ồ":"O","Ổ":"O","Ỗ":"O","Ö":"O","Ȫ":"O","Ȯ":"O","Ȱ":"O","Ọ":"O","Ő":"O","Ȍ":"O","Ò":"O","Ỏ":"O","Ơ":"O","Ớ":"O","Ợ":"O","Ờ":"O","Ở":"O","Ỡ":"O","Ȏ":"O","Ꝋ":"O","Ꝍ":"O","Ō":"O","Ṓ":"O","Ṑ":"O","Ɵ":"O","Ǫ":"O","Ǭ":"O","Ø":"O","Ǿ":"O","Õ":"O","Ṍ":"O","Ṏ":"O","Ȭ":"O","Ƣ":"OI","Ꝏ":"OO","Ɛ":"E","Ɔ":"O","Ȣ":"OU","Ṕ":"P","Ṗ":"P","Ꝓ":"P","Ƥ":"P","Ꝕ":"P","Ᵽ":"P","Ꝑ":"P","Ꝙ":"Q","Ꝗ":"Q","Ŕ":"R","Ř":"R","Ŗ":"R","Ṙ":"R","Ṛ":"R","Ṝ":"R","Ȑ":"R","Ȓ":"R","Ṟ":"R","Ɍ":"R","Ɽ":"R","Ꜿ":"C","Ǝ":"E","Ś":"S","Ṥ":"S","Š":"S","Ṧ":"S","Ş":"S","Ŝ":"S","Ș":"S","Ṡ":"S","Ṣ":"S","Ṩ":"S","Ť":"T","Ţ":"T","Ṱ":"T","Ț":"T","Ⱦ":"T","Ṫ":"T","Ṭ":"T","Ƭ":"T","Ṯ":"T","Ʈ":"T","Ŧ":"T","Ɐ":"A","Ꞁ":"L","Ɯ":"M","Ʌ":"V","Ꜩ":"TZ","Ú":"U","Ŭ":"U","Ǔ":"U","Û":"U","Ṷ":"U","Ü":"U","Ǘ":"U","Ǚ":"U","Ǜ":"U","Ǖ":"U","Ṳ":"U","Ụ":"U","Ű":"U","Ȕ":"U","Ù":"U","Ủ":"U","Ư":"U","Ứ":"U","Ự":"U","Ừ":"U","Ử":"U","Ữ":"U","Ȗ":"U","Ū":"U","Ṻ":"U","Ų":"U","Ů":"U","Ũ":"U","Ṹ":"U","Ṵ":"U","Ꝟ":"V","Ṿ":"V","Ʋ":"V","Ṽ":"V","Ꝡ":"VY","Ẃ":"W","Ŵ":"W","Ẅ":"W","Ẇ":"W","Ẉ":"W","Ẁ":"W","Ⱳ":"W","Ẍ":"X","Ẋ":"X","Ý":"Y","Ŷ":"Y","Ÿ":"Y","Ẏ":"Y","Ỵ":"Y","Ỳ":"Y","Ƴ":"Y","Ỷ":"Y","Ỿ":"Y","Ȳ":"Y","Ɏ":"Y","Ỹ":"Y","Ź":"Z","Ž":"Z","Ẑ":"Z","Ⱬ":"Z","Ż":"Z","Ẓ":"Z","Ȥ":"Z","Ẕ":"Z","Ƶ":"Z","Ĳ":"IJ","Œ":"OE","ᴀ":"A","ᴁ":"AE","ʙ":"B","ᴃ":"B","ᴄ":"C","ᴅ":"D","ᴇ":"E","ꜰ":"F","ɢ":"G","ʛ":"G","ʜ":"H","ɪ":"I","ʁ":"R","ᴊ":"J","ᴋ":"K","ʟ":"L","ᴌ":"L","ᴍ":"M","ɴ":"N","ᴏ":"O","ɶ":"OE","ᴐ":"O","ᴕ":"OU","ᴘ":"P","ʀ":"R","ᴎ":"N","ᴙ":"R","ꜱ":"S","ᴛ":"T","ⱻ":"E","ᴚ":"R","ᴜ":"U","ᴠ":"V","ᴡ":"W","ʏ":"Y","ᴢ":"Z","á":"a","ă":"a","ắ":"a","ặ":"a","ằ":"a","ẳ":"a","ẵ":"a","ǎ":"a","â":"a","ấ":"a","ậ":"a","ầ":"a","ẩ":"a","ẫ":"a","ä":"a","ǟ":"a","ȧ":"a","ǡ":"a","ạ":"a","ȁ":"a","à":"a","ả":"a","ȃ":"a","ā":"a","ą":"a","ᶏ":"a","ẚ":"a","å":"a","ǻ":"a","ḁ":"a","ⱥ":"a","ã":"a","ꜳ":"aa","æ":"ae","ǽ":"ae","ǣ":"ae","ꜵ":"ao","ꜷ":"au","ꜹ":"av","ꜻ":"av","ꜽ":"ay","ḃ":"b","ḅ":"b","ɓ":"b","ḇ":"b","ᵬ":"b","ᶀ":"b","ƀ":"b","ƃ":"b","ɵ":"o","ć":"c","č":"c","ç":"c","ḉ":"c","ĉ":"c","ɕ":"c","ċ":"c","ƈ":"c","ȼ":"c","ď":"d","ḑ":"d","ḓ":"d","ȡ":"d","ḋ":"d","ḍ":"d","ɗ":"d","ᶑ":"d","ḏ":"d","ᵭ":"d","ᶁ":"d","đ":"d","ɖ":"d","ƌ":"d","ı":"i","ȷ":"j","ɟ":"j","ʄ":"j","ǳ":"dz","ǆ":"dz","é":"e","ĕ":"e","ě":"e","ȩ":"e","ḝ":"e","ê":"e","ế":"e","ệ":"e","ề":"e","ể":"e","ễ":"e","ḙ":"e","ë":"e","ė":"e","ẹ":"e","ȅ":"e","è":"e","ẻ":"e","ȇ":"e","ē":"e","ḗ":"e","ḕ":"e","ⱸ":"e","ę":"e","ᶒ":"e","ɇ":"e","ẽ":"e","ḛ":"e","ꝫ":"et","ḟ":"f","ƒ":"f","ᵮ":"f","ᶂ":"f","ǵ":"g","ğ":"g","ǧ":"g","ģ":"g","ĝ":"g","ġ":"g","ɠ":"g","ḡ":"g","ᶃ":"g","ǥ":"g","ḫ":"h","ȟ":"h","ḩ":"h","ĥ":"h","ⱨ":"h","ḧ":"h","ḣ":"h","ḥ":"h","ɦ":"h","ẖ":"h","ħ":"h","ƕ":"hv","í":"i","ĭ":"i","ǐ":"i","î":"i","ï":"i","ḯ":"i","ị":"i","ȉ":"i","ì":"i","ỉ":"i","ȋ":"i","ī":"i","į":"i","ᶖ":"i","ɨ":"i","ĩ":"i","ḭ":"i","ꝺ":"d","ꝼ":"f","ᵹ":"g","ꞃ":"r","ꞅ":"s","ꞇ":"t","ꝭ":"is","ǰ":"j","ĵ":"j","ʝ":"j","ɉ":"j","ḱ":"k","ǩ":"k","ķ":"k","ⱪ":"k","ꝃ":"k","ḳ":"k","ƙ":"k","ḵ":"k","ᶄ":"k","ꝁ":"k","ꝅ":"k","ĺ":"l","ƚ":"l","ɬ":"l","ľ":"l","ļ":"l","ḽ":"l","ȴ":"l","ḷ":"l","ḹ":"l","ⱡ":"l","ꝉ":"l","ḻ":"l","ŀ":"l","ɫ":"l","ᶅ":"l","ɭ":"l","ł":"l","ǉ":"lj","ſ":"s","ẜ":"s","ẛ":"s","ẝ":"s","ḿ":"m","ṁ":"m","ṃ":"m","ɱ":"m","ᵯ":"m","ᶆ":"m","ń":"n","ň":"n","ņ":"n","ṋ":"n","ȵ":"n","ṅ":"n","ṇ":"n","ǹ":"n","ɲ":"n","ṉ":"n","ƞ":"n","ᵰ":"n","ᶇ":"n","ɳ":"n","ñ":"n","ǌ":"nj","ó":"o","ŏ":"o","ǒ":"o","ô":"o","ố":"o","ộ":"o","ồ":"o","ổ":"o","ỗ":"o","ö":"o","ȫ":"o","ȯ":"o","ȱ":"o","ọ":"o","ő":"o","ȍ":"o","ò":"o","ỏ":"o","ơ":"o","ớ":"o","ợ":"o","ờ":"o","ở":"o","ỡ":"o","ȏ":"o","ꝋ":"o","ꝍ":"o","ⱺ":"o","ō":"o","ṓ":"o","ṑ":"o","ǫ":"o","ǭ":"o","ø":"o","ǿ":"o","õ":"o","ṍ":"o","ṏ":"o","ȭ":"o","ƣ":"oi","ꝏ":"oo","ɛ":"e","ᶓ":"e","ɔ":"o","ᶗ":"o","ȣ":"ou","ṕ":"p","ṗ":"p","ꝓ":"p","ƥ":"p","ᵱ":"p","ᶈ":"p","ꝕ":"p","ᵽ":"p","ꝑ":"p","ꝙ":"q","ʠ":"q","ɋ":"q","ꝗ":"q","ŕ":"r","ř":"r","ŗ":"r","ṙ":"r","ṛ":"r","ṝ":"r","ȑ":"r","ɾ":"r","ᵳ":"r","ȓ":"r","ṟ":"r","ɼ":"r","ᵲ":"r","ᶉ":"r","ɍ":"r","ɽ":"r","ↄ":"c","ꜿ":"c","ɘ":"e","ɿ":"r","ś":"s","ṥ":"s","š":"s","ṧ":"s","ş":"s","ŝ":"s","ș":"s","ṡ":"s","ṣ":"s","ṩ":"s","ʂ":"s","ᵴ":"s","ᶊ":"s","ȿ":"s","ɡ":"g","ᴑ":"o","ᴓ":"o","ᴝ":"u","ť":"t","ţ":"t","ṱ":"t","ț":"t","ȶ":"t","ẗ":"t","ⱦ":"t","ṫ":"t","ṭ":"t","ƭ":"t","ṯ":"t","ᵵ":"t","ƫ":"t","ʈ":"t","ŧ":"t","ᵺ":"th","ɐ":"a","ᴂ":"ae","ǝ":"e","ᵷ":"g","ɥ":"h","ʮ":"h","ʯ":"h","ᴉ":"i","ʞ":"k","ꞁ":"l","ɯ":"m","ɰ":"m","ᴔ":"oe","ɹ":"r","ɻ":"r","ɺ":"r","ⱹ":"r","ʇ":"t","ʌ":"v","ʍ":"w","ʎ":"y","ꜩ":"tz","ú":"u","ŭ":"u","ǔ":"u","û":"u","ṷ":"u","ü":"u","ǘ":"u","ǚ":"u","ǜ":"u","ǖ":"u","ṳ":"u","ụ":"u","ű":"u","ȕ":"u","ù":"u","ủ":"u","ư":"u","ứ":"u","ự":"u","ừ":"u","ử":"u","ữ":"u","ȗ":"u","ū":"u","ṻ":"u","ų":"u","ᶙ":"u","ů":"u","ũ":"u","ṹ":"u","ṵ":"u","ᵫ":"ue","ꝸ":"um","ⱴ":"v","ꝟ":"v","ṿ":"v","ʋ":"v","ᶌ":"v","ⱱ":"v","ṽ":"v","ꝡ":"vy","ẃ":"w","ŵ":"w","ẅ":"w","ẇ":"w","ẉ":"w","ẁ":"w","ⱳ":"w","ẘ":"w","ẍ":"x","ẋ":"x","ᶍ":"x","ý":"y","ŷ":"y","ÿ":"y","ẏ":"y","ỵ":"y","ỳ":"y","ƴ":"y","ỷ":"y","ỿ":"y","ȳ":"y","ẙ":"y","ɏ":"y","ỹ":"y","ź":"z","ž":"z","ẑ":"z","ʑ":"z","ⱬ":"z","ż":"z","ẓ":"z","ȥ":"z","ẕ":"z","ᵶ":"z","ᶎ":"z","ʐ":"z","ƶ":"z","ɀ":"z","ﬀ":"ff","ﬃ":"ffi","ﬄ":"ffl","ﬁ":"fi","ﬂ":"fl","ĳ":"ij","œ":"oe","ﬆ":"st","ₐ":"a","ₑ":"e","ᵢ":"i","ⱼ":"j","ₒ":"o","ᵣ":"r","ᵤ":"u","ᵥ":"v","ₓ":"x"};
+    String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
+    String.prototype.latinize=String.prototype.latinise;
+    String.prototype.isLatin=function(){return this==this.latinise()}
+
+    var default_index = null;
+    var use_all_tab = true;
+    var indexes = [
+    {% for menu in AUDICAL_SEARCH_MENU %}{% if menu.index_param_value %}
+        {index:'{{ menu.index_param_value }}', name: '{{ menu.verbose_name }}', template_id: '{{ menu.template_id }}'},{% endif %}{% endfor %}
+    ];
+
+    function tb_for_index(iname) {
+        return iname+'_container';
+    }
+
+    function clearTabs() {
+        $('#all_searches .nav-tabs').html("");
+        $('#all_searches .tab-content').html("");
+    }
+    function addAllTab() {
+        var iid = tb_for_index('all');
+        if(default_index=='all'){is_active='active';}else{is_active='';}
+        var tmpl = $('<li class="nav-item '+is_active+'"><a data-toggle="tab" href="#'+iid+'" class="nav-link">{% trans "Todo" %} <span class="tbcount"></span> <img class="'+iid+'load" src="https://www.masondixonknitting.com/wp-content/themes/orbit-media/images/loading.gif" /> </a></li>');
+        $('#all_searches .nav-tabs').append(tmpl);
+        var tplheader = '<h2 class="mt-5">{% trans "Todo" %}</h2><h5 class="withsearch" style="display:none"><span class="max-results"></span> {% trans "resultados encontrados para" %}:<span class="text-navy">"<span class="search-term"></span>"</span></h5><span class="withspell" style="display:none">{% trans "Usted quizo decir" %}: <span class="search-spell"></span><br><br></span><br><br>';
+        var tmpl_pane = $('<div id="'+iid+'" class="tab-pane '+is_active+'">'+tplheader+'<div id="all_search-results" class="search-results"><img class="'+iid+'load" src="https://www.masondixonknitting.com/wp-content/themes/orbit-media/images/loading.gif" />Loading...</div> </div>');
+        $('#all_searches .tab-content').append(tmpl_pane);
+        return $(tmpl_pane);
+    }
+
+    function addTab(iobj) {
+        var is_active = (default_index == iobj.index);
+        if(is_active){is_active='active';}else{is_active='';}
+        var iid = tb_for_index(iobj.index);
+        var tmpl = $('<li class="nav-item '+is_active+'"><a data-toggle="tab" href="#'+iid+'" class="nav-link">'+iobj.name+' <span class="tbcount"></span> <img class="'+iid+'load" src="https://www.masondixonknitting.com/wp-content/themes/orbit-media/images/loading.gif" /> </a></li>');
+        $('#all_searches .nav-tabs').append(tmpl);
+        var tplheader = '<h2 class="mt-5">'+iobj.name+'</h2><h5 class="withsearch" style="display:none"><span class="max-results"></span> {% trans "resultados encontrados para" %}:<span class="text-navy">"<span class="search-term"></span>"</span></h5><span class="withspell" style="display:none">{% trans "Usted quizo decir" %}: <span class="search-spell"></span><br><br></span><br><br>';
+        var tmpl_pane = $('<div id="'+iid+'" class="tab-pane '+is_active+'">'+tplheader+'<div class="search-results"><img class="'+iid+'load" src="https://www.masondixonknitting.com/wp-content/themes/orbit-media/images/loading.gif" />Loading...</div><div class="clearfix"></div><div class="paginator text-center"></div> </div>');
+        $('#all_searches .tab-content').append(tmpl_pane);
+        return $(tmpl_pane);
+    }
+    $("#s_box").keyup(function(event){
+        if(event.keyCode == 13){
+            search_on_all_indexes();
+        }
+    });
+    function search_on_all_indexes(text, pageNum) {
+        clearTabs();
+        {% comment %} gtag('event', 'search', {'search_term' : text.toLowerCase(), 'non_interaction': true}); {% endcomment %}
+        if(!default_index){default_index='all';}
+        use_all_tab = (default_index == 'all');
+        if(use_all_tab){addAllTab();}
+        if(!text) {
+            text = $("#s_box").val();
+        } else {
+            $("#s_box").val(text);
+        }
+        if(!pageNum) {
+            pageNum=1;
+        }
+
+        $.each(indexes, function (i, iobj) {
+            if(default_index && default_index!='all') {
+                if(iobj.index != default_index) {
+                    return;
+                }
+            }
+            searching += 1;
+            var container = addTab(iobj);
+            search_on_index(container, iobj, pageNum, text);
+        });
+        check_searchfinish();
+    }
+
+    function check_searchfinish() {
+        if(searching>0) {
+            setTimeout('check_searchfinish()', 50);
+            return;
+        }
+        $('#all_search-results').html(global_all_html);
+    }
+
+    function search_on_index(es_container, index_obj, page_num, search_text_value) {
+        var es_index = index_obj.index;
+        {% if ELASTIC_INDEX_SUFFIX %}
+        es_index += "{{ELASTIC_INDEX_SUFFIX}}";
+        {% endif %}
+        var es_domain = '{{ ELASTICSEARCH_DOMAIN }}';
+
+        var pageNum = 1;
+        var perPage = 300;
+        var isSearching = false;
+        var search_text = null;
+
+        var client = new $.es.Client({
+            hosts: [
+                {
+                  protocol: 'https',
+                  host: es_domain,
+                  port: 443,
+                  auth:'{{ ELASTICSEARCH_AUTH_READONLY }}'
+                }
+          ]
+        });
+
+        function search_results(text) {
+            search_text = search_text_value;
+
+            window.location.hash = search_text + ';' + pageNum;
+
+            var operator = "Xor";
+
+            search_text = search_text.replaceAll('-', ' ')
+            search_text = search_text.replaceAll("'", ' ')
+            search_text = search_text.latinize();
+
+            var searchParams = {
+              index: es_index,
+              type: 'objects',
+              from: (pageNum - 1) * perPage,
+              size: perPage,
+              body: {
+                "query": {
+                  "query_string": {
+                    "query": `*${search_text}*`,
+                    "fields": ["title", "name", "full_text"]
+                  }
+                }
+              }
+            };
+
+            isSearching = true;
+
+            client.search(searchParams, function (err, res) {
+                if (err) {
+                    throw err;
+                }
+                $(es_container).find('.search-term').text(search_text);
+                $(es_container).find('.max-time').text(res.took / 100);
+                $(es_container).find('.max-results').text(res.hits.total.value);
+                $(es_container).find('.search-results').html('<div class="hr-line-dashed clearfix"></div>');
+                if(use_all_tab){
+                    $('#all_container').find('.search-results').html('<div class="hr-line-dashed clearfix"></div>');
+                }
+                $(es_container).find('.search-results');
+                $('.'+$(es_container).attr('ID')+'load').remove();
+                if(use_all_tab){
+                    $('.all_containerload').closest('li').addClass('all_container');
+                    $('.all_containerload').remove();
+                }
+                $($('a[href*='+$(es_container).attr('ID')+']')[0]).find('.tbcount').text('(' + res.hits.total.value + ')');
+                global_count += res.hits.total.value;
+                $.each(res.hits.hits, function (i, e) {
+                    AddItem(e._source);
+                });
+                $(es_container).find('.product-container').first().addClass('first');
+                createPaginator(pageNum, res.hits.total.value);
+                $(es_container).find('.withsearch').show();
+                if(use_all_tab){
+                    $('#all_container').find('.withsearch').show();
+                    $('#all_container').find('.search-term').text(search_text);
+                }
+                isSearching = false;
+                searching -= 1;
+            });
+        }
+
+        function createPaginator(page, maxItems) {
+            $(es_container).find('.paginator').html("");
+            if(maxItems == 0) {
+                return;
+            }
+            $(es_container).find('.paginator').html('<div class="page-selection pagination-sm"></div>');
+            $(es_container).find('.page-selection').twbsPagination({
+                totalPages: Math.ceil(maxItems / perPage),
+                visiblePages: 5,
+                startPage: page,
+                onPageClick: function (event, page) {
+                    pageNum = page;
+                    if(!isSearching){
+                        search_results();
+                        $('html, body').animate({
+                            scrollTop: $(es_container).offset().top
+                        }, 100);
+                    }
+                }
+            });
+        }
+
+        function AddItem(data) {
+            var html = $('#'+index_obj.template_id).clone()[0].innerHTML;
+            var theTemplate = Handlebars.compile(html);
+            html = theTemplate(data);
+            $(es_container).find('.search-results').append(html);
+            if(use_all_tab){
+
+                global_all_html += html;
+                $('.all_container').find('.tbcount').text('(' + global_count + ')');
+                $('#all_container').find('.max-results').text(global_count);
+            }
+        }
+
+        search_results(search_text_value)
+    }
+
+
+    if(window.location.search) {
+        let url_params = new URLSearchParams(window.location.search);
+        var search = url_params.get("q");
+        default_index = url_params.get('{{ AUDICAL_SEARCH_MENU_PARAM_NAME }}', "all");
+        search = decodeURIComponent(search);
+        search = search.split(';');
+        text = search[0];
+        if(!text){ $('#noresults').show();}
+        else{
+        pageNum = 1;
+        if(search.length>1) {
+            pageNum = parseInt(search[1]);
+        }
+        search_on_all_indexes(text, pageNum);
+        }
+
+    }
+    else {
+        if(window.location.hash) {
+            var search = window.location.hash.replace('#', '');
+            search = decodeURIComponent(search);
+            search = search.split(';');
+            text = search[0];
+            if(!text){$('#noresults').show();}
+            else{
+            pageNum = 1;
+            if(search.length>1) {
+                pageNum = parseInt(search[1]);
+            }
+            search_on_all_indexes(text, pageNum);
+            }
+        }
+    }
+    </script>
+{% endblock extra_js %}

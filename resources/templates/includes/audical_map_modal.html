@@ -1,0 +1,44 @@
+{% load static thumbnail products_tags %}
+
+<!-- Modal -->
+<div class="modal fade" id="audical-map-modal" tabindex="-1" role="dialog" aria-labelledby=""
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Centros Audical</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid py-0 py-2 back_mapa">
+          <div class="container">
+            <div class="form-horizontal form_mapa">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group d-flex justify-content-center align-items-center">
+                    <div class="col-md-6">
+                      <input id="address" name="address" type="text" placeholder="Escribí tu dirección"
+                        class="form-control input-md">
+                    </div>
+                    <div class="col-md-6">
+                      <button class="text-white btn-where font-weight-bold" id="search_location" >Buscar Centro</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="position: relative; min-height: calc(100vh - 226px);">
+          <div id="map1" style="width: 100%; height: 100%; position: absolute;"></div>
+        </div>
+        <!--End mapa-->
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

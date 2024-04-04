@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n static thumbnail highlights_tags %}
+
+{% block title %}{% trans 'Bienvenido' %}{% endblock %}
+
+
+{% block main_content %}
+  <div class="checkout-ok pb-3 text-center py-4">
+    <div class="container">
+        <div class="checkout-list col-12 pt-0 pt-lg-4 text-center">
+          <h1 class="mt-5 text-uppercase font-weight-bold text-primary">Gracias! En breve recibira un email</h1>
+          <a href="/" class="my-5 btn btn-primary">{% trans 'Continuar navegando' %}</a>
+        </div>
+    </div>
+  </div>
+{% endblock %}

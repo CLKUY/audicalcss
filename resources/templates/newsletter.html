@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block extra_css %}
+<style>
+    .col-centered{
+        float: none;
+        margin: 0 auto;
+    }
+    #antmailform form > * {
+        margin-top:20px;
+        margin-bottom:5px;
+    }
+    #antmailform p {
+        font-size:20px;
+        padding:20px;
+    }
+    #antmailform .antmail-message-text {
+        background:#fbfbfb !important;
+        font-size: 24px !important;
+        height: 100%;
+    }
+    #antmailform .antmail-message {
+        background:#fbfbfb !important;
+    }
+</style>
+{% endblock extra_css %}
+    
+
+{% block main_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-centered text-center mt-5 mb-3">
+            
+            
+            {% if LANGUAGE_CODE == 'es' or not LANGUAGE_CODE %}
+            <h2>Suscripción al newsletter</h2>
+            <p>Estimado cliente, si  desea recibir promociones e información sobre nuestros productos y marcas por favor ingrese su correo electrónico.</p>
+            {% endif %}
+            {% if LANGUAGE_CODE == 'en' %}
+            <h2>Newsletter subscription</h2>
+                <p>Dear customer, if you want to receive information about our products and promotions, please enter your email</p>
+            {% endif %}
+            {% if LANGUAGE_CODE == 'pt' %}
+            <h2>Assinatura de Newsletter</h2>
+                <p>Caro cliente, se pretende receber promoções e informações sobre os nossos produtos e marcas, por favor introduza o seu email</p>
+            {% endif %}
+                
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-6 col-sm-12 col-centered text-center">
+                <script>
+                    window.ant_success_message = 'Gracias, suscripción realizada.';
+                    window.ant_warning_message = 'Ya estabas suscripto.';
+                    window.ant_error_message = 'Error general';
+                </script>
+                <div id="antmailform"></div><script>
+                let endpoint = 'https://mail.anticipate.cc';
+                (function(i,s,o,g,r,a,m){i['AntMailObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script',`${endpoint}/static/form.js`, 'far');
+                far('create', endpoint, 'd6139bfb-6289-4d28-920b-7211145806cc', 'antmailform', {});
+                </script>                
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

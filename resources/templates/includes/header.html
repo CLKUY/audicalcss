@@ -1,0 +1,89 @@
+{% load static thumbnail products_tags %}
+
+<div class="d-none d-lg-block" id="innerNavbar">
+   <div class="container text-sm text-uppercase">
+      <div class="row">
+         <div class="col-auto ml-auto">
+            <ul class="d-flex">
+               {% comment %} <li><a class="mx-2" href="/newsletterfonoaudiologia/">NEWSLETTER FONOAUDIÓLOGOS</a></li> {% endcomment %}
+               <li><a class="mx-2" href="/newsletterfonoaudiologia/">Newsletter Fonoaudiólogos</a></li>
+               <li><a class="mx-2" href="{% url 'convenios' %}">Convenios</a></li>
+               <li><a class="mx-2" href="{% url 'cita' %}">Agende su cita</a></li>
+               <li><a class="mx-2" href="{% url 'test' %}">Test auditivo</a></li>
+               <li><a class="mx-2" href="https://wa.me/+59898126000/?text=Hola, buen día."><img class="navbar-icon mr-1" src="{% static '2020/images/whatsapp.svg' %}">098 126 000</a></li>
+               <li><a class="mx-2" href="https://es-la.facebook.com/AudicalUY/"><img class="navbar-icon" src="{% static '2020/images/facebook.svg' %}"></a></li>
+               <li><a class="mx-2" href="https://www.instagram.com/audicaluy/"><img class="navbar-icon" src="{% static '2020/images/instagram.svg' %}"></a></li>
+               <li><a class="mx-2" href="https://www.youtube.com/user/Audical1996"><img class="navbar-icon" src="{% static '2020/images/youtube.svg' %}"></a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
+ </div>
+
+
+
+
+ <nav class="shadow" id="navbar">
+    <div class="container">
+       <div class="row d-flex align-items-center py-2">
+          <div class="col-auto px-0 navbar-expand-lg">
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="material-icons">menu</span>
+             </button>
+          </div>
+          <div class="col px-1 px-lg-3">
+             <div class="brand">
+               <a href="/">
+                   <img class="img-fluid" src="{% static 'images/logo-header.png' %}" alt="Audical Soluciones Auditivas">
+               </a>
+             </div>
+          </div>
+          <div class="col-auto ml-auto d-flex align-items-center btns-others order-lg-last pl-0 pl-lg-0">
+            <a class="d-flex d-sm-none align-items-center btn-cart mr-3" href="https://wa.me/+59898126000/?text=Hola, buen día.">
+               <span class="material-icons">whatsapp</span>
+            </a>
+            <a class="d-flex align-items-center btn-cart" href="/shops/">
+               <span class="material-icons">shopping_cart</span>
+               <span class="text-sm d-none d-md-inline-block">Tienda<br>Online</span>
+            </a>
+            <a class="d-flex ml-3 btn-search" href="/search/">
+               <span class="material-icons">search</span>
+            </a>
+          </div>
+          <div class="col-12 col-lg-auto navbar-expand-lg">
+             <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav text-sm text-uppercase">
+                   <li class="nav-item"><a class="nav-link" href="/productos/">Productos</a></li>
+                   <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Audiología</a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/audiologia/servicios/">Servicios</a>
+                        <a class="dropdown-item" href="/contacto/producto/">Soporte Técnico</a>
+                        <a class="dropdown-item" href="/servicios/cap/">CAP</a>
+                     </div>
+                   
+                   </li>
+                   <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profesionales</a>
+                     
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/instrumentales/">Instrumental</a>
+                        <a class="dropdown-item" href="/servicios/cap/">CAP</a>
+                        {% comment %}<a class="dropdown-item" href="/servicios/audiologia/">Audiología</a>{% endcomment %}
+                        <a class="dropdown-item" href="/contacto/producto/">Servicio Técnico</a>
+                        <a class="dropdown-item" href="/newsletterfonoaudiologia/">Newsletter Fonoaudiólogos</a>
+                     </div>
+                   </li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'donde-encontrarnos' %}">Sucursales</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contacto</a></li>
+                </ul>
+             </div>
+          </div>
+       </div>
+    </div>
+ </nav>
+
+
+ <header id="header" class="pb-3">
+    
+ </header>

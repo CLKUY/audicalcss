@@ -1,0 +1,9 @@
+{% extends "admin/base_site.html" %}
+{% load admin_static %}
+{% block extrastyle %}
+<link href="{% static "admin/css/clk_style.css" %}" rel="stylesheet" type="text/css" media="all" />
+{% endblock %}
+{% block branding %}
+    <div id="grp-branding"></div> 
+{% endblock %}
+{% block admin_title %}{% endblock %}

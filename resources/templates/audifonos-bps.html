@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load highlights_tags maplocation_tags static %}    
+
+{% block main_content %}
+<div class="container back-promo pt-5 pb-5">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-12">
+            <img class="img-fluid mt-5" src="{% static '2020/images/foto-bps-2.webp' %}">
+        </div>
+        <div class="col-lg-7 col-md-7 col-12 col-centered mt-5 mb-3">
+            <h4 class="text-lg text-left mb-4">Subsidio para activos de BPS</h4>
+                <p class="text-justify">
+                    El Banco de Previsión Social (BPS) cuenta con la modalidad de vouchers para la compra de audífonos. Este voucher es, desde el 1ro de julio, de $15.358 en Montevideo y de $16.894 en el interior.<br /><br />
+                    Como prestador autorizado para recibir este voucher Audical ofrece una gama de audífonos con funcionalidades básicas, suficientes para garantizar la continuidad de la vida laboral del beneficiario. El valor otorgado por BPS puede ser utilizado como método de pago para audífonos más completos y con mejor tecnología. Audical ofrece, además, planes especiales para quien prefiera adquirir audífonos de mayor tecnología.<br /><br />
+                    Agendá tu consulta gratuita, conocé nuestros planes de mejora y te asesoraremos para hacer el trámite más simple.
+                </p>
+                <h5 class="mt-4">¡Tiene sentido que nos elijas!</h5>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

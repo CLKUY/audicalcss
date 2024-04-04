@@ -1,0 +1,824 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks humanize maplocation_tags %}
+{% load i18n %}
+{% block title %}Compra{% endblock %}
+{% block extra_head %}
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+  <style>
+  ul.errorlist {
+      list-style: none;
+      font-size: 11px;
+      color: #ff0202a8;
+      font-style: oblique;
+  }
+  .tachado {
+    text-decoration: line-through !important;
+  }
+  </style>
+{% endblock %}
+{% block body_class %}product-checkout{% endblock %}
+
+{% block header %}
+<!-- Header -->
+  {% include "includes/header-shop.html"%}
+<!-- End Header -->
+{% endblock header %}
+
+{% block main_content %}
+<div class="container pt-2 pb-5 mt-5">
+
+<div class="text-center mb-4 mb-5">
+  <h2 class="">COMPRA ONLINE</h2>
+    <h5 class="">Envío gratis por tiempo limitado</h5>
+</div>
+
+<form id="order-form" class="form-horizontal mt-4" action="" method="post">
+{% csrf_token %}
+{{ form.non_field_errors }}
+
+<div class="row">
+
+  <div class="col-12 mb-4 d-block d-sm-none">
+    <div class="card position-sticky sticky-at-top">
+      <figure class="p-3 mb-2">
+      <div class="col-4 float-left">
+        {% if product.image %}
+        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" >
+        {% else %}
+        <img class="card-img-top" src="https://via.placeholder.com/450x450" alt="">
+        {% endif %}
+      </div>
+      <div class="col-8 float-left">
+        {% if product.brand %}
+          <h5 class="mt-2 mb-0">{{product.brand}}</h5>
+        {% endif %}
+        <h4 class="mb-0">{{product.name}}</h4>
+      </div>
+      </figure>
+      <div class="card-body alert-info mt-2 p-3">
+        <h5 class="text-right">Subtotal: {{buy_option.currency}} <span id="subtotal">{{buy_option.price}}</span></h5>
+        <h6 class="text-right text-danger">Servicio UES:</span> {{buy_option.currency}} <span class="ues-price"></span></h6>
+        <h4 class="text-right"><strong>Total: {{buy_option.currency}} <span id="total">{{buy_option.price}}</span></strong></h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9 col-12 content-steps p-4">
+
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item col p-0" role="presentation">
+        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Datos Personales</a>
+      </li>
+      <li class="nav-item col p-0" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Opciones de Entrega</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+
+      <div data-step="1" class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row">
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="field.auto_id">{{form.first_name.label}} *</label>  
+                  {% if form.first_name.errors %}
+                    {% render_field form.first_name class="form-control with-errors" %} 
+                  {% else %}
+                    {% render_field form.first_name class="form-control" %} 
+                  {% endif %}
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="field.auto_id">{{form.last_name.label}} *</label>  
+                  {% if form.last_name.errors %}
+                    {% render_field form.last_name class="form-control with-errors" %} 
+                  {% else %}
+                    {% render_field form.last_name class="form-control" %} 
+                  {% endif %}
+              </div>
+            </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.email.label}} *</label>  
+                {% if form.email.errors %}
+                  {% render_field form.email class="form-control with-errors" %} 
+                {% else %}
+                  {% render_field form.email class="form-control" %} 
+                {% endif %}
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.phone.label}} *</label>  
+                {% if form.phone.errors %}  
+                  {% render_field form.phone class="form-control with-errors" %}
+                {% else %}
+                  {% render_field form.phone class="form-control" %}
+                {% endif %} 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.document.label}} *</label>  
+                {% if form.document.errors %}  
+                  {% render_field form.document class="form-control with-errors" %}
+                {% else %}
+                  {% render_field form.document class="form-control" %}
+                {% endif %} 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.city.label}} *</label>  
+                {% if form.city.errors %}  
+                  {% render_field form.city class="form-control with-errors" %}
+                {% else %}
+                  {% render_field form.city class="form-control" %}
+                {% endif %} 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.department.label}} *</label>  
+                {% if form.department.errors %}  
+                  {% render_field form.department class="form-control with-errors" %}
+                {% else %}
+                  {% render_field form.department class="form-control" %}
+                {% endif %} 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.address.label}} *</label>  
+                {% if form.address.errors %}  
+                  {% render_field form.address class="form-control with-errors" %}
+                {% else %}
+                  {% render_field form.address class="form-control" %}
+                {% endif %} 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{form.door_number.label}} *</label>  
+                {% if form.door_number.errors %}  
+                  {% render_field form.door_number class="form-control with-errors" %}
+                {% else %}
+                  {% render_field form.door_number class="form-control" %}
+                {% endif %} 
+            </div>
+          </div>
+        </div>
+          {% if product.is_a_gift_card %}
+        <div class="row">
+          <div class="col-md-12">
+            <h5 class="text-info">Datos Beneficiario</h5>
+            <hr />
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{gift_form.first_name.label}} *</label>  
+                {% if gift_form.first_name.errors %}
+                  {% render_field gift_form.first_name class="form-control with-errors" %} 
+                {% else %}
+                  {% render_field gift_form.first_name class="form-control" %} 
+                {% endif %}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{gift_form.last_name.label}} *</label>  
+                {% if gift_form.last_name.errors %}
+                  {% render_field gift_form.last_name class="form-control with-errors" %} 
+                {% else %}
+                  {% render_field gift_form.last_name class="form-control" %} 
+                {% endif %}
+            </div>
+          </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="field.auto_id">{{gift_form.document.label}} *</label>  
+                  {% if gift_form.document.errors %}
+                    {% render_field gift_form.document class="form-control with-errors" %} 
+                  {% else %}
+                    {% render_field gift_form.document class="form-control" %} 
+                  {% endif %}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label class="control-label" for="field.auto_id">{{gift_form.email.label}} *</label>  
+                  {% if gift_form.email.errors %}
+                    {% render_field gift_form.email class="form-control with-errors" %} 
+                  {% else %}
+                    {% render_field gift_form.email class="form-control" %} 
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+          <input type="checkbox" id="id_gift-needs_validation" name="gift-needs_validation" checked hidden>
+          {% endif %}
+
+        <div class="form-group col-12 text-center my-4">
+            <div class="row text-center d-flex align-items-center justify-content-center">
+              <button id="singlebutton2" type="" class="text-white btn-agenda font-weight-bold mt-1" >{% trans 'Siguiente' %}</button>
+            </div>
+        </div>
+      </div>
+
+      <div data-step="2" class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div class="row mt-4">
+          <!-- Asi quiero que quede esteticamente -->
+          <div class="col-md-12 d-flex justify-content-left align-items-center">
+            <div id="shipping-types" class="btn-group-toggle position-relative" data-toggle="buttons">
+              {% for val, label in form.shipping_type.field.choices %}
+              <label class="btn btn-info mb-2 {% if not val == 'audical-pickup' and not buy_option.ues_stripe_id %} disabled {% endif %}" for="id_select_{{val}}">
+                <input
+                  type="radio"
+                  id="id_select_{{val}}"
+                  onchange="showExtraFields('{{val}}')"
+                  name="shipping_type"
+                  value="{{val}}"
+                  data-ues="{{val}}"
+                  {% if not val == 'audical-pickup' and not buy_option.ues_stripe_id %}
+                  disabled
+                  {% endif %}
+              > {{label}}
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          <!-- END Asi quiero que quede esteticamente -->    
+          <div class="col-md-12 ues-shipping audical-pickup text-center">
+            <a class="text-white btn-where btn-nav-small" data-toggle="modal" data-target="#audical-map-modal" href="#">Ver mapa</a>
+            <div class="row">
+              <div class="col-md-10 offset-md-1 text-left">
+                <div class="form-group">
+                  <label class="control-label" for="field.auto_id">{{form.audical_pickup.label}}</label>  
+                  {% render_field form.audical_pickup class="form-control" %} 
+                  {{ form.audical_pickup.errors }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.addressee_name.label}} *</label>  
+                {% render_field ues_form.addressee_name class="form-control ues-delivery" %} 
+                {{ ues_form.addressee_name.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.addressee_email.label}} *</label>  
+                {% render_field ues_form.addressee_email class="form-control ues-delivery" %} 
+                {{ ues_form.addressee_email.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.addressee_phone.label}} *</label>  
+                {% render_field ues_form.addressee_phone class="form-control ues-delivery" %} 
+                {{ ues_form.addressee_phone.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.department.label}} *</label>  
+                {% render_field ues_form.department class="form-control ues-delivery" %} 
+                {{ ues_form.department.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.location.label}} *</label>  
+                {% render_field ues_form.location class="form-control ues-delivery" disabled="true" %} 
+                {{ ues_form.location.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.service.label}} *</label>  
+                {% render_field ues_form.service class="form-control ues-delivery" disabled="true" %} 
+                {{ ues_form.service.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-pickup">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.pickup.label}} *</label>  
+                {% render_field ues_form.pickup class="form-control" disabled="true" %} 
+                {{ ues_form.pickup.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.street.label}} *</label>  
+                {% render_field ues_form.street class="form-control" %} 
+                {{ ues_form.street.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.door_number.label}} *</label>  
+                {% render_field ues_form.door_number class="form-control" maxlength="20"%} 
+                {{ ues_form.door_number.errors }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-delivery">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.apto.label}} </label>  
+                {% render_field ues_form.apto class="form-control" %} 
+                {{ ues_form.apto.erros }}
+            </div>
+          </div>
+          <div class="col-md-4 ues-shipping ues-delivery ues-pickup">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.time_window.label}} *</label>  
+                {% render_field ues_form.time_window class="form-control" %} 
+                {{ ues_form.time_window.erros }}
+            </div>
+          </div>
+          <div class="col-md-8 ues-shipping ues-delivery ues-pickup">
+            <div class="form-group">
+              <label class="control-label" for="field.auto_id">{{ues_form.notes.label}} </label>  
+                {% render_field ues_form.notes class="form-control" %} 
+                {{ ues_form.notes.erros }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-12 text-center my-4">
+            <div class="row text-center d-flex align-items-center justify-content-center">
+                {{form.captcha}}
+            </div>
+            <p class="col-10 offset-1 small">Si la compra web se realiza en un local de Audical, las validaciones del sistema pueden tardar unos minutos.</p>
+            <div class="row text-center d-flex align-items-center justify-content-center" >
+              <button id="singlebutton" type="submit" class="text-white btn-agenda font-weight-bold mt-1" style="display:none !important">{% trans 'Pagar' %}</button>
+            </div>
+        </div> 
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-3 mb-4 d-none d-sm-block d-md-block">
+    <div class="card position-sticky sticky-at-top">
+      <figure class="p-3">
+        {% if product.image %}
+        <img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" >
+        {% else %}
+        <img class="card-img-top" src="https://via.placeholder.com/450x450" alt="">
+        {% endif %}
+        {% if product.brand %}
+          <h5 class="mt-2 mb-0">{{product.brand}}</h5>
+        {% endif %}
+        <h4 class="mb-0">{{product.name}}</h4>
+      </figure>
+      <div class="card-body alert-info mt-2">
+        <h5 class="text-right">Subtotal: {{buy_option.currency}} <span id="subtotal">{{buy_option.price}}</span></h5>
+        <h6 class="text-right text-danger">Servicio UES:</span> {{buy_option.currency}} <span class="ues-price"></span></h6>
+        <h4 class="text-right"><strong>Total: {{buy_option.currency}} <span id="total">{{buy_option.price}}</span></strong></h4>
+      </div>
+      <input type="hidden" id="mp_price" value="{{buy_option.price}}">
+      <input type="hidden" id="mp_shipping" value="">
+    </div>
+  </div>
+
+</div>
+
+</form>
+{% include 'includes/audical_map_modal.html' %}
+</div>
+
+<!-- Metodos de pago -->
+{% include "includes/metodos-de-pagos.html"%}
+<!-- End Metodos de pago -->
+
+{% endblock %}
+{% block extra_js %}
+  {% getmaps_js %}
+  <script>
+    
+
+
+    function activaTab(tab){
+      console.log(tab)
+      $('.nav a[href="#' + tab + '"]').tab('show');
+    };
+
+
+      function step1Next() {
+        event.preventDefault();
+        event.stopPropagation();
+        activaTab('pills-profile');
+      }
+
+      function step2Next() {
+        event.preventDefault();
+        event.stopPropagation();
+        activaTab('pills-contact');
+      }
+
+      
+      $('#singlebutton1').on('click', step1Next);
+      $('#singlebutton2').on('click', step2Next);
+
+      var redirect = false;
+      $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
+        if(redirect){redirect=false; 
+          var inputs = $('#' + e.target.href.split('#')[1]).find('input[required]');
+          for(var i=0; i < inputs.length; i++){
+            if(!inputs[i].checkValidity()){
+              inputs[i].reportValidity();
+              break;
+            }
+          }
+          return;
+        }
+        newStep = $('#' + e.target.href.split('#')[1]).data('step');
+        prevStep = $('#' + e.relatedTarget.href.split('#')[1]).data('step');
+        if(newStep < prevStep) {
+          return;
+        }
+
+        var inputs = $('#' + e.relatedTarget.href.split('#')[1]).find('input[required]');
+        for(var i=0; i < inputs.length; i++){
+          if(!inputs[i].checkValidity()){
+            redirect = true;
+            inputs[i].reportValidity();
+            activaTab(e.relatedTarget.href.split('#')[1]);
+          }
+        }
+      })
+
+
+
+
+
+
+
+    function showExtraFields(data){
+          $('#singlebutton').show();
+          let toHide = document.querySelectorAll("div[class~='ues-shipping']");
+          toHide.forEach(obj => obj.style.display = "none");
+
+          let toShow = document.querySelectorAll(`div[class~=${data}]`);
+          toShow.forEach(obj => obj.style.display = "block");
+
+          if (data === "audical-pickup"){
+            document.querySelectorAll('.ues-price').forEach(function (el) {
+              el.parentElement.style.display = "none";
+            })
+            let subtotal = document.getElementById("subtotal").innerText;
+            document.getElementById("total").innerText = subtotal;
+          }
+
+          fetchServices(document.getElementById("id_ues-department").value);
+
+        }
+  </script>
+  <script>
+    let original_text = null;
+    document.addEventListener("DOMContentLoaded", devent => {
+      let uesServiceSelect = document.getElementById("id_ues-service");
+      uesServiceSelect.addEventListener("change", event => {
+        let uesStripe = "{{buy_option.ues_stripe.pk}}";
+        let uesService = event.currentTarget.value;
+
+        let payload = {
+          body: JSON.stringify({
+            ues_stripe_id: uesStripe,
+            ues_service_id: uesService,
+            buy_option_id: "{{buy_option.pk}}",
+            shipping_type: $('input[name=shipping_type]:checked')[0].value
+          }),
+          method: "POST"
+        };
+
+        fetch("/query/ues-price/", payload)
+          .then(res => {
+            switch(res.status){
+              case 200:
+              document.querySelectorAll('.ues-price').forEach(function (el) {
+                el.parentElement.style.display = "none";
+              })
+              return res.json()
+              break;
+            default:
+              document.querySelectorAll('.ues-price').forEach(function (el) {
+                el.parentElement.style.display = "none";
+              })
+              let subtotal = document.getElementById("subtotal").innerText;
+              document.getElementById("total").innerText = subtotal;
+              
+              return res.json();
+            }
+          }).then( json => {
+            if (!json){return;}
+              let subtotal = document.getElementById("subtotal").innerText;
+              document.querySelectorAll('.ues-price').forEach(function (el) {
+                el.innerText = json.price.replace(".", ",");
+                el.classList.add('tachado');
+              });
+              document.querySelectorAll('.ues-price').forEach(function (el) {
+                el.parentElement.style.display = "block";
+              });
+              if(json.free) {
+                let obj = document.getElementById("pricedesc");
+                if(obj){obj.innerHTML = 'Envío gratis';}
+              }
+              else {
+                let obj = document.getElementById("pricedesc");
+                if(obj){obj.innerHTML = 'Servicio UES:';}
+              }
+              if(json.free) {
+                json.price = 0;
+              }
+              let sum = (parseFloat(subtotal) + parseFloat(json.price));
+              document.getElementById("total").innerText = sum.toFixed(2).replace(".", ",")
+
+              document.getElementById('mp_price').value =  sum.toFixed(2);
+              document.getElementById('mp_shipping').value =  parseFloat(json.price).toFixed(2);
+          })
+      })
+    })
+
+  </script>
+  <script>
+    function fetchServices(department){
+      if(!department){return;}
+      let servicePayload = {
+        body: JSON.stringify({
+          "department_id": department,
+          "ues_strip_id": "{{buy_option.ues_strip.pk}}",
+          "service_type": document.querySelector("input[name=shipping_type]:checked").value
+        }),
+        method: "POST"
+      };
+
+      fetch("/query/ues-services/", servicePayload)
+        .then(res => res.json())
+        .then(json => {
+          let serviceSelect = document.getElementById("id_ues-service");
+          serviceSelect.options.length = 0;
+          let optDefault = document.createElement('option');
+          optDefault.innerText = "--------";
+          optDefault.value = "";
+          serviceSelect.appendChild(optDefault);
+          for (let obj of json.services ){
+            let opt = document.createElement('option');
+            opt.value = obj.pk;
+            opt.innerHTML = obj.name;
+            serviceSelect.appendChild(opt);
+            serviceSelect.removeAttribute("disabled")
+          }
+          if (json.services.length == 0) {
+            serviceSelect.setAttribute("disabled", true)
+          }
+        })
+      }
+
+    document.addEventListener('DOMContentLoaded', (devent) => {
+      let uesDepartmentSelect = document.getElementById("id_ues-department");
+      uesDepartmentSelect.addEventListener("change", event => {
+        payload = {
+          body: JSON.stringify({
+            "department_id": event.currentTarget.value,
+          }),
+          method: "POST"
+        };
+        if(!uesDepartmentSelect.value){return;}
+
+        fetch("/query/ues-locations/", payload)
+          .then(res => res.json())
+          .then(json => {
+            let locationSelect = document.getElementById("id_ues-location");
+            locationSelect.options.length = 0;
+            let optDefault = document.createElement('option');
+            optDefault.innerText = "--------";
+            optDefault.value = "";
+            locationSelect.appendChild(optDefault);
+            for (let obj of json.locations ){
+              let opt = document.createElement('option');
+              opt.value = obj.pk;
+              opt.innerHTML = obj.name;
+              locationSelect.appendChild(opt);
+              locationSelect.removeAttribute("disabled")
+            }
+            if (json.locations.length == 0) {
+              locationSelect.setAttribute("disabled", true)
+            }
+          });
+        
+        fetchServices(event.currentTarget.value);
+
+      })
+    })
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (devent) => {
+      let uesLocationSelect = document.getElementById("id_ues-location");
+      uesLocationSelect.addEventListener("change", event => {
+        payload = {
+          body: JSON.stringify({"location_id": event.currentTarget.value}),
+          method: "POST"
+        };
+
+        fetch("/query/ues-pickups/", payload)
+          .then(res => res.json())
+          .then(json => {
+            let pickupSelect = document.getElementById("id_ues-pickup");
+            pickupSelect.options.length = 0;
+            let optDefault = document.createElement('option');
+            optDefault.innerText = "--------";
+            optDefault.value = "";
+            pickupSelect.appendChild(optDefault);
+            for (let obj of json.pickups ){
+              let opt = document.createElement('option');
+              opt.value = obj.pk;
+              opt.innerHTML = `${obj.name}, ${obj.address}`;
+              pickupSelect.appendChild(opt);
+              pickupSelect.removeAttribute("disabled")
+            }
+            if (json.pickups.length == 0) {
+              pickupSelect.setAttribute("disabled", true)
+            }
+
+          })
+      })
+    })
+  </script>
+  <script>
+
+    function validateShippingType(){
+      let valid = true;
+      let options = document.querySelector("input[name=shipping_type]:checked");
+      if (!options){
+        let div = document.getElementById("shipping-types");
+        div.classList.add("with-errors")
+        valid = valid && false;
+      }
+
+      return valid;
+    }
+
+    function validateAudicalPickUp(){
+      let valid = true;
+      let option = document.querySelector("input[name=shipping_type]:checked");
+      if (option.value != "audical-pickup"){return;}
+
+      let select = document.getElementById("id_audical_pickup");
+      let option_value = select.querySelector("option:checked");
+      if (option_value.value === ""){
+       select.classList.add("with-errors")
+        valid = valid && false;
+      }
+
+      return valid;
+    }
+
+    function validatePickUpUES(){
+      let valid = true;
+      let option = document.querySelector("input[name=shipping_type]:checked");
+      if (option.value != "ues-pickup"){return;}
+      let ids = [
+        "id_ues-department",
+        "id_ues-location",
+        "id_ues-service",
+        "id_ues-pickup",
+        "id_ues-time_window",
+        "id_ues-addressee_name",
+        "id_ues-addressee_email",
+        "id_ues-addressee_phone",
+      ];
+      for (let id of ids){
+        let obj = document.getElementById(id);
+        
+        
+        if (obj.type === "text" && obj.value.length === 0){
+          obj.classList.add("with-errors")
+          valid = valid && false;
+        }
+        else if (obj.type === "select-one" && obj.querySelector("option:checked").value.length === 0){
+          obj.classList.add("with-errors")
+          valid = valid && false;
+        }
+      }
+
+      return valid;
+    }
+
+    function validateDeliveryUES(){
+      let valid = true;
+      let option = document.querySelector("input[name=shipping_type]:checked");
+      if (option.value != "ues-delivery"){return;}
+      let ids = [
+        "id_ues-department",
+        "id_ues-location",
+        "id_ues-service",
+        "id_ues-street",
+        "id_ues-door_number",
+        "id_ues-time_window",
+        "id_ues-addressee_name",
+        "id_ues-addressee_email",
+        "id_ues-addressee_phone",
+      ];
+      for (let id of ids){
+        let obj = document.getElementById(id);
+        if (obj.type === "text" && obj.value.length === 0){
+          obj.classList.add("with-errors")
+          valid = valid && false;
+
+        } else if (obj.type === "select-one" && obj.querySelector("option:checked").value.length === 0){
+          obj.classList.add("with-errors")
+          valid = valid && false;
+        }
+      }
+
+      return valid;
+    }
+
+    function getFormData($form){
+      var unindexed_array = $form.serializeArray();
+      var indexed_array = {};
+  
+      $.map(unindexed_array, function(n, i){
+          indexed_array[n['name']] = n['value'];
+      });
+  
+      return indexed_array;
+  }
+
+  const mp = new MercadoPago('{{ MP_PUBLIC_KEY }}', {locale: 'es-AR'});
+  let checkout;
+
+    document.addEventListener("DOMContentLoaded", devent => {
+      let btn = document.getElementById("singlebutton");
+      btn.addEventListener("click", event => {
+        event.preventDefault();
+        if (!validateShippingType()){return};
+        
+        let option = document.querySelector("input[name=shipping_type]:checked");
+        let valid = true;
+        switch(option.value){
+          case "audical-pickup":
+            valid = valid && validateAudicalPickUp()
+            break
+          case "ues-pickup":
+            valid = valid && validatePickUpUES()
+            break
+          case "ues-delivery":
+            valid = valid && validateDeliveryUES()
+            break
+        }
+        console.log(valid);
+        if (valid){
+
+
+          let total = parseFloat(document.getElementById('mp_price').value).toFixed(2);
+          let shipping = parseFloat(document.getElementById('mp_shipping').value).toFixed(2);
+          let price = total - shipping;
+
+          let priceData = {
+            total: total,
+            shipping: shipping,
+            price: price,
+            buy_option_id: "{{buy_option.pk}}"
+          };
+
+          let formData = getFormData($('#order-form'))
+
+          let payload = {
+            ...priceData,
+            ...formData
+          }
+          
+          var data = new FormData();
+          data.append( "json", JSON.stringify( payload ) );
+          
+          fetch('{% url "mercadopago_response" %}',
+          {
+              method: "POST",
+              body: data
+          }).then(function(res){ return res.json(); })
+          .then(function(response){ 
+            mp.checkout({
+              preference: {
+                  id: response.preference_id
+              },
+              autoOpen: true
+            });
+          })
+        }
+      })
+    })
+
+  </script>
+{% endblock %}

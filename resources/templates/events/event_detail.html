@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static thumbnail %}
+
+{% block title %}Congresos{% endblock %}
+{% block body_class %}noticias noticias_detail event_list{% endblock %}
+
+{% block main_content %}
+<section class="pb-5">
+  <!--Notice-->
+ 	<div class="notice">
+	    <div class="container">
+
+      <div class="row pt-2 pb-2">
+        <div class="col-xs-12 col-md-6">
+          <ul class="navbar-nav d-inline-block list-inline float-md-left">
+              <li class="list-inline-item">
+                <a class="text-white btn-agenda btn-nav-small font-weight-bold mr-3" href="javascript:history.back()">Volver</a>
+              </li>
+            </ul>
+        </div>
+      </div>
+
+<hr class="mt-2 mb-3">
+
+	 		<div class="row">		      	
+		        <div class="col-md-12">
+		        <div class="row">
+			        <div class="col-xs-12 col-md-5">
+			        {% if event.image %}
+			           {% thumbnail event.image "350x229" crop="center" as img %}
+			            <img class="img-fluid" src="{{ img.url }}" onerror="this.onerror=null;this.src='{% static "images/noimg.png" %}';">
+			          {% empty  %}
+			            <img src="{% static "images/noimg.png" %}" alt="" class="img-fluid">
+			          {% endthumbnail %}
+			          {% else %}
+			          <img class="img-fluid" src="{% static "images/noimg.png" %}">
+			          {% endif %}
+			          </div>
+
+			          <div class="col-xs-12 col-md-7 px-3 pb-3 mb-3 {{ event.category }} item_ed">
+			            <h2 class="font-weight-bold title-test pt-3 pt-md-0">{{event.name}}</h2>
+			            <p class="mb-1">Del <b>{{ event.start_date|date:"d m Y" }}</b> al <b>{{ event.end_date|date:"d m Y" }}, {{ event.place }}</b></p>
+			            {% if event.category %}<p class="mb-1">Categoría: <b>{{ event.category }}</b></p>{% endif %}
+			            {% if event.thematics %}<p class="mb-3">Temática: <b>{{ event.thematics }}</b></p>{% endif %}
+			            <p class="article_body">{{event.description|linebreaks}}</p>
+			            <div class="mb-3">
+				            {% if not user_enrolled and event.can_enroll %}
+				            <a class="text-white btn-where btn-nav-small font-weight-bold mb-3" href="{% url 'event_enroll' event.slug %}">Inscribirse</a>
+				            {% endif %}
+				            {% if user_enrolled %}
+				            <div class="alert alert-success" role="alert">
+							  Ya esta inscripto al evento
+							</div>
+				            {% endif %}
+			            </div>
+			            {% for link in event.links.all%}
+			            <div class="mb-3">
+			            	<a class="text-white btn-agenda btn-nav-small font-weight-bold" href="{{link.link}}" target="_blank">{{link.button_label}}</a>
+			            </div>
+			            {% endfor %}
+			            {% for file in event.files.all%}
+			            <div class="mb-3">
+			            	<a class="text-white btn-agenda btn-nav-small font-weight-bold" href="{{file.file.url}}" target="_blank">{{file.button_label}}</a>
+			            </div>
+			            {% endfor %}
+			          </div>
+			    </div>      
+		        </div>
+
+			<div class="col-xs-12 col-md-6 d-block d-md-none">
+	          <ul class="navbar-nav d-inline-block list-inline float-md-right">
+	              <li class="list-inline-item">
+	                <a class="text-white btn-agenda btn-nav-small font-weight-bold mr-3" href="javascript:history.back()">Volver</a>
+	              </li>
+	            </ul>
+	        </div>
+		      	  
+	     	</div>
+
+	    </div>
+	</div>
+</section>
+{% endblock %}

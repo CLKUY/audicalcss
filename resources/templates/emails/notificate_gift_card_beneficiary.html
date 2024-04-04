@@ -1,0 +1,13 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+    <p>Estimado/a {{beneficiary.first_name|title}} {{beneficiary.last_name|title}}</p>
+    <p>Nos ponemos en contacto con usted para informarle que recibió un regalo de {{order.first_name}} {{order.last_name}} el {{order.created_at|date:"d/m/Y"}}</p>
+    {% for item in order.order_items.all %}
+    <p class="text-center"><strong>{{item.name|title}}</strong></p>
+    {% endfor %}
+    <p>En breve nos pondremos en contacto con usted. Por consultas puede contactarnos mencionando el siguiente código de orden: {{order.code}}</p>
+</div>
+{% endblock %}
+
+

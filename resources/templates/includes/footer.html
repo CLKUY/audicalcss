@@ -1,0 +1,47 @@
+{% load static thumbnail products_tags %}
+
+<footer class="gradient-blue py-5" id="footer">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-4 align-self-center pb-5">
+               <div class="brand">
+                  <img class="img-fluid" src="{% static 'images/logo-footer.png' %}" alt="Audical">
+               </div>
+            </div>
+            <div class="col-md-8 align-self-center">
+               <div class="row">
+                  <div class="col-md mb-3">
+                     <ul class="list-unstyled text-sm">
+                        <li><h6 class="text-uppercase">Contacto</h6></li>
+                        <li>Casa Central: Bvar. Artigas 1385</li>
+                        <li>Teléfono solo Uruguay: 18899</li>
+                        <li>Teléfono: +598 2403 4528</li>
+                        <li>WhatsApp comercial: 098 126 000</li>
+                     </ul>
+                  </div>
+                  <div class="col-md mb-3">
+                     <ul class="list-unstyled text-sm">
+                        <li><h6 class="text-uppercase">Nosotros</h6></li>
+                        <li><a href="/historia/">Historia</a></li>
+                        <li><a href="/que-nos-diferencia/">Qué nos diferencia</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md mb-3">
+                     <ul class="list-unstyled text-sm">
+                        <li><h6 class="text-uppercase">Servicios online</h6></li>
+                        <li><a href="/cita/">Agendar tu Cita</a></li>
+                        {% comment %}<li><a href="">Chat</a></li>{% endcomment %}
+                        <li><a href="/donde-encontrarnos/">Buscador de Centros</a></li>
+                        <li><a href="/test/">Test Online</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="whatsapp-button d-block d-sm-block d-md-none">
+         <a href="https://wa.me/+59898126000/?text=Hola, buen día." target="_blank">
+            <img src="/static/img/icon-whatsapp.svg" alt="">
+         </a>
+      </div>
+   </footer>

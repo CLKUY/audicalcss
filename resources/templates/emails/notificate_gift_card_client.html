@@ -1,0 +1,30 @@
+{% extends "emails/base.html" %}
+{% block content %}
+<div>
+    <p>Hemos recibido su orden de compra {{order.code}}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>Fecha</td>
+                <td>{{order.created_at|date:"d/m/Y H:i"}}</td>
+            </tr>
+            {% for item in order.order_items.all %}
+            <tr>
+                <td>Producto</td>
+                <td>{{item.name}}</td>
+            </tr>
+            <tr>
+                <td>Precio</td>
+                <td>{{item.currency}} {{item.price}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Forma de Pago</td>
+                <td>{{order.payment_entity}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+

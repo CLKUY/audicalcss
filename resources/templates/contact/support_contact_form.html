@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks %}
+
+{% block title %}Soporte técnico{% endblock %}
+{% block body_class %}productos_servicios test_cita{% endblock %}
+
+{% block main_content %}
+<div id="audifonos" class="mt-md-5">
+    <div class="container">
+      <div class="row">
+        {% comment %}
+        <div class="col-md-12 text-right">
+          <h2 class="text-uppercase text-right title text-md-right">{% autoescape off %}{{page_title}}{% endautoescape   %}</h2>
+        </div>
+        {% comment %}
+        <div class="col-md-4 d-none d-md-block">
+          <img src="{% static 'images/adultos-img.png' %}" class="img-fluid pt-0 img-adultos">
+        </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+<!-- Preguntas -->
+<div class="container py-5">
+<div class="col-md-8 col-sm-12 mx-auto">
+<h2 class="pb-3 text-uppercase title">{{form_title|default_if_none:""}}</h2> 
+<p>{{ form_header }}</p>
+<form class="form-horizontal" action="" method="post">
+{% csrf_token %}
+{{ form.non_field_errors }}
+<div class="row">
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Nombre *</label>  
+  <div class="">
+    {% render_field form.name class="form-control" %} 
+    {{ form.name.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Apellido *</label>
+  <div class="">    
+    {% render_field form.last_name class="form-control" %} 
+    {{ form.last_name.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Correo Electrónico *</label>
+  <div class="">    
+    {% render_field form.email class="form-control" %} 
+    {{ form.email.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Teléfono de contacto *</label>
+  <div class="">    
+    {% render_field form.phone class="form-control" %} 
+    {{ form.phone.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Ciudad/Localidad *</label>
+  <div class="">    
+    {% render_field form.city class="form-control" %} 
+    {{ form.city.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="selectbasic">Departamento *</label>
+  <div class="">    
+    {% render_field form.state class="form-control" %} 
+    {{ form.state.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput">Consulta *</label>  
+  <div class="">    
+    {% render_field form.body class="form-control input-md" %} 
+    {{ form.body.errors }}
+  </div>
+</div>
+
+<div class="form-group col-12 col-sm-6 ">
+  <label class="control-label" for="textinput"></label>  
+  <div class="">    
+    {{ form.captcha }}
+    {{ form.captcha.errors }}
+
+  </div>
+</div>
+
+
+<div class="form-group col-12 text-center">
+    <button id="singlebutton" name="enviar" class="text-white btn-send font-weight-bold mt-1">Enviar</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+<!-- end Preguntas -->
+
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static thumbnail widget_tweaks %}
+
+{% block title %}Aniversario Formulario cita{% endblock %}
+{% block body_class %}aniversario_formulario{% endblock %}
+
+{% block main_content %}
+
+  <div id="aniversario" class="mt-3 mb-5">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="col-12 col-md-6 col-lg-6 float-left d-none d-sm-block">
+          <img src="/static/images/AUDICAL_25_Sorteo.jpg" class="img-fluid" alt="">
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 float-left d-md-none d-lg-none d-xl-none">
+          <img src="/static/images/AUDICAL_25_Sorteo_mobile.jpg" class="img-fluid" alt="">
+        </div>
+        <div class="col-12 col-md-6 col-lg-6 float-left">
+          <h3 class="text-uppercase font-weight-bold title-test pt-5 mb-3">Formulario <br>de inscripción</h3>
+          <p class="h5 mb-2">Complete el formulario para participar de sorteos quincenales.</p>
+          <p class="mb-4"><a href="/noticias/detail/aniversario-bases-y-condiciones/" target="_blank">Ver bases y condiciones<a/></p>
+        
+          <form class="form-horizontal" action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="form-group col-12 col-sm-6">
+                <label class="control-label" for="textinput">Nombre</span> *</label>  
+                <div class="">
+                  {{ form.first_name }}
+                </div>
+              </div>
+              <div class="form-group col-12 col-sm-6 ">
+                <label class="control-label" for="selectbasic">Apellido *</label>
+                <div class="">
+                  {{ form.last_name }}
+                </div>
+              </div>
+              <div class="form-group col-12 col-sm-12 ">
+                <label class="control-label" for="selectbasic">Correo Electrónico *</label>
+                <div class="">    
+                  {{ form.email }}
+                </div>
+              </div>
+              <div class="form-group col-12 col-sm-6 ">
+                <label class="control-label" for="selectbasic">Documento *</label>
+                <div class="">    
+                  {{ form.document }}
+                </div>
+              </div>
+              <div class="form-group col-12 col-sm-6 ">
+                <label class="control-label" for="selectbasic">Teléfono o Celular *</label>
+                <div class="">    
+                  {{ form.phone }}
+                </div>
+              </div>
+              <div class="form-group col-12 col-sm-12 ">
+              <label class="control-label" style="padding-top: 9px;padding-left: 6px;" for="selectbasic">Quiero suscribirme a la Newsletter de Audical</label>
+              <div class="check-newsletter">    
+                  {{ form.newsletter }}
+              </div>
+              </div>
+              <div class="form-group col-12 col-sm-12 ">
+                <label class="control-label" for="textinput"></label>  
+                <div class="">    
+                  {{ form.captcha }}
+                  {{ form.captcha.errors }}
+                </div>
+              </div>
+              <div class="form-group col-12 text-center">
+                  <button id="singlebutton" name="enviar" class="text-white btn-send font-weight-bold mt-1">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('input').forEach(function (el) {
+      el.classList.add('form-control')
+    })
+  </script>
+{% endblock %}
