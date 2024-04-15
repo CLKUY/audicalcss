@@ -100,15 +100,15 @@ color: #C5003E !important;
 }
 
 a.btn-cita {
-    border: 2px solid #fff;
+   border: 2px solid #000;
     border-radius: 100px;
     padding: 0.45em 2em;
-    font-size: 1.2em;
+    color: #000;
 }
 
 a.btn-cita:hover {
-    background-color: #fff;
-    color: #58ead8 !important;
+    background-color: #C5003E !important;
+    color: #fff !important;
 }
 
 a.btn-test {
@@ -480,7 +480,6 @@ background: #fff; /* Old browsers */
 }
 
 #cita.half_cita .title,#test.half_test .title-test {
-    margin-top: 1em;
     font-weight: 800;
     font-size: 2em;
     line-height: 1.2;
