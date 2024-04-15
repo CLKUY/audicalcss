@@ -40,6 +40,9 @@ body {
 #header {
   background:#fff !important;
 }
+nav#navbar {
+    background: #C5003E;
+}
 
 .gradient-blue a, #innerNavbar a, #navbar .btn-search:hover a, #header a {
   color: #ffffff !important;
