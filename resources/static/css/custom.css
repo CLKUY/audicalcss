@@ -46,20 +46,20 @@ color: #22b5e4 !important;
 
 .btn-agenda:hover, nav a.btn-agenda:hover, nav a.btn-where:hover, a.btn-cap:hover, a.btn-where:hover {
     background: #22b5e4; /* Old browsers */
-    background: -moz-linear-gradient(left, #22b5e4 0%, #304494 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #22b5e4 0%,#304494 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #22b5e4 0%,#304494 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#304494',GradientType=1 ); /* IE6-9 */
+    background: -moz-linear-gradient(left, #22b5e4 0%, #c5003e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #22b5e4 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #22b5e4 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
 }
 
 .dropdown-item:hover {
     color: #ffffff;
     text-decoration: none;
     background: #22b5e4; /* Old browsers */
-    background: -moz-linear-gradient(left, #22b5e4 0%, #304494 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #22b5e4 0%,#304494 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #22b5e4 0%,#304494 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#304494',GradientType=1 ); /* IE6-9 */
+    background: -moz-linear-gradient(left, #22b5e4 0%, #c5003e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #22b5e4 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #22b5e4 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
 }
 
 /*CSS PORTADA*/
@@ -386,10 +386,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9956e', end
 footer{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#22b5e4+0,304494+100 */
 background: #22b5e4; /* Old browsers */
-background: -moz-linear-gradient(left, #22b5e4 0%, #304494 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #22b5e4 0%,#304494 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #22b5e4 0%,#304494 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#304494',GradientType=1 ); /* IE6-9 */
+background: -moz-linear-gradient(left, #22b5e4 0%, #c5003e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #22b5e4 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #22b5e4 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
 }
 footer .redes {
     background-color: #f2f2f2;
@@ -1390,7 +1390,7 @@ body.product-checkout .card .card-body h6 {
 }
 
 .cinco_pasos h2 {
-    color: #304494;
+    color: #c5003e;
 }
 
 .cinco_pasos h5 {
@@ -1424,7 +1424,7 @@ body.product-checkout .card .card-body h6 {
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: #304494; /* Set a background color */
+    background-color: #c5003e; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
@@ -1438,13 +1438,13 @@ body.product-checkout .card .card-body h6 {
 
 .cinco_pasos .card .card-header h5 .btn {
     font-size: 1rem;
-    color: #304494;
+    color: #c5003e;
     padding: 5px 5px;
 }
 
 .cinco_pasos .card .card-header h5 .btn {
     font-size: 0.8rem;
-    color: #304494;
+    color: #c5003e;
     text-align: left;
 }
 
