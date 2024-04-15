@@ -46,9 +46,9 @@ body {
 }
 
 .gradient-green, #services {
-  background: #1cd0df;
-  background: -webkit-gradient(linear, left top, right top, from(#1fe0cd), to(#1cd0df));
-  background: linear-gradient(90deg, #1fe0cd 0%, #1cd0df 100%);
+  background: #c5003e;
+  background: -webkit-gradient(linear, top, bottom, from(#a91237), to(#c5003e));
+  background: linear-gradient(270deg, #a91237 0%, #c5003e 100%);
   color: #c5003e !important;
 }
 
