@@ -92,16 +92,16 @@ body {
 }
 
 .btn-primary:hover {
-  color: #c5003e;
-  border-color: #c5003e;
+  color: #c5003e!important;
+  border-color: #c5003e!important;
   background:#fff !important;
   border-width: 2px;
 }
 
 .btn-outline-primary:hover {
-  color: #c5003e;
+  color: #fff!important;
   border-color: #c5003e;
-  background:#fff !important;
+  background:#c5003e !important;
   border-width: 2px;
 }
 
