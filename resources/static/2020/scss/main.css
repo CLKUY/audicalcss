@@ -101,7 +101,7 @@ body {
 }
 .btnwhite:hover{
   border-color: #fff !important;
-  color: #c5003e !important;
+  color: #000 !important;
   background:#fff !important;
   border-width: 2px;
 }
