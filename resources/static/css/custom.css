@@ -470,23 +470,13 @@ button.btn-where {
 }
 
 #cita.half_cita{
-    margin-top: -7px;
-background: #55e3ca; /* Old browsers */
-background: -moz-linear-gradient(left, #55e3ca 0%, #3ecfe2 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #55e3ca 0%,#3ecfe2 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #55e3ca 0%,#3ecfe2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#55e3ca', endColorstr='#3ecfe2',GradientType=1 ); /* IE6-9 */
+background: #fff; /* Old browsers */
 }
 
 #test.half_test{
-    margin-top: -7px;
         padding-top: 0;
     padding-bottom: 3em;
-background: #f35f8d; /* Old browsers */
-background: -moz-linear-gradient(left, #f35f8d 0%, #f9956f 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #f35f8d 0%,#f9956f 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #f35f8d 0%,#f9956f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f35f8d', endColorstr='#f9956f',GradientType=1 ); /* IE6-9 */
+background: #fff; /* Old browsers */
 }
 
 #cita.half_cita .title,#test.half_test .title-test {
