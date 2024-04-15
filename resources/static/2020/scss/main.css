@@ -50,7 +50,7 @@ body {
 }
 
 #navbar .btn-cart:hover {
-    color: #c6003e;
+    color: #c6003e !important;
     background: #fff;
     padding: 2px 20px;
     border-radius: 10px;
