@@ -187,17 +187,18 @@ span.icon-big {
 
 #products h2 {
   color: #c5003e;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 #products h3 {
   color: #c5003e;
-  font-size: 1rem;
+  font-size: 1.3rem;
   margin-bottom: 0px;
 }
 
 #products p {
   font-size: .9rem;
+  color:#000;
 }
 
 #featured h3 {
@@ -249,7 +250,7 @@ span.icon-big {
 }
 
 .btn-search {
-  background-color: #304494;
+  background-color: #c5003e;
   padding: .75rem;
   border-radius: 50%;
   color: #ffffff;
