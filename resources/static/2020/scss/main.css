@@ -67,17 +67,6 @@ body {
   font-weight: 600;
 }
 
-.btnwhite{
-  border-color: #fff !important;
-  color: #fff !important;
-  border-width: 2px;
-}
-.btnwhite:hover{
-  border-color: #fff !important;
-  color: #c5003e !important;
-  background:#fff !important;
-  border-width: 2px;
-}
 
 .btn-primary {
   background-color: #c5003e;
@@ -102,6 +91,18 @@ body {
   color: #fff!important;
   border-color: #c5003e;
   background:#c5003e !important;
+  border-width: 2px;
+}
+
+.btnwhite{
+  border-color: #fff !important;
+  color: #fff !important;
+  border-width: 2px;
+}
+.btnwhite:hover{
+  border-color: #fff !important;
+  color: #c5003e !important;
+  background:#fff !important;
   border-width: 2px;
 }
 
