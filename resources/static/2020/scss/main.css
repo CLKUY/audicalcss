@@ -224,6 +224,9 @@ span.icon-big {
   background-image: url(../../assets/images/woman.png);
   background-repeat: no-repeat;
   background-size: cover;
+    width: 200px;
+    max-width: 200px;
+    margin-top: -50px;
 }
 
 #services .img-bar-bottom {
