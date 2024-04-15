@@ -43,7 +43,7 @@ body {
   background:#fff !important;
 }
 #navbar .btn-cart {
-    color: #fff;
+    color: #fff !important;
     background: #c6003e;
     padding: 2px 20px;
     border-radius: 10px;
@@ -54,6 +54,7 @@ body {
     background: #fff;
     padding: 2px 20px;
     border-radius: 10px;
+  border-bottom: 0px !important;
 }
 
 .gradient-blue a, #innerNavbar a, #navbar .btn-search:hover a, #header a {
