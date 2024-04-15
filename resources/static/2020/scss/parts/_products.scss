@@ -1,16 +1,19 @@
 #products{
    .product-card{
-      border-radius: 10px;
-      background-color: #ffffff;
+      border-radius: 2px;
+    background-color: #ffffff;
+    border: 0 !important;
+    box-shadow: 0px 0px 10px #0000003d !important;
+}
    }
    img{
       max-height: 120px;
    }
    h2{
-     color: $blue; 
+     color: #C5003E; 
    }
    h3{
-      color: $cyan;
+      color: #C5003E;
       font-size: 1rem;
       margin-bottom: 0px;
    }
