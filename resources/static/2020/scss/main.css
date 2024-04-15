@@ -32,10 +32,13 @@ body {
   color: #555555;
 }
 
-.gradient-blue, #innerNavbar, #navbar .btn-search:hover, #header {
+.gradient-blue, #navbar .btn-search:hover, #header {
   
       background: #C5003E!important;
       color: #ffffff !important;
+}
+#header {
+  background:#fff !important;
 }
 
 .gradient-blue a, #innerNavbar a, #navbar .btn-search:hover a, #header a {
