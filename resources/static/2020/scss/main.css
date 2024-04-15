@@ -17,6 +17,8 @@
   line-height: 1.25rem;
 }
 
+
+
 @media (max-width: 992px) {
   .text-lg {
     font-size: 2.1rem;
@@ -39,6 +41,19 @@ body {
 }
 #header {
   background:#fff !important;
+}
+#navbar .btn-cart {
+    color: #fff;
+    background: #c6003e;
+    padding: 2px 20px;
+    border-radius: 10px;
+}
+
+#navbar .btn-cart:hover {
+    color: #c6003e;
+    background: #fff;
+    padding: 2px 20px;
+    border-radius: 10px;
 }
 
 .gradient-blue a, #innerNavbar a, #navbar .btn-search:hover a, #header a {
