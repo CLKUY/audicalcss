@@ -33,10 +33,9 @@ body {
 }
 
 .gradient-blue, #innerNavbar, #navbar .btn-search:hover, #header {
-  background: #22b5e4;
-  background: -webkit-gradient(linear, left top, right top, from(#22b5e4), to(#304494));
-  background: linear-gradient(90deg, #22b5e4 0%, #304494 100%);
-  color: #ffffff !important;
+  
+      background: #C5003E!important;
+      color: #ffffff !important;
 }
 
 .gradient-blue a, #innerNavbar a, #navbar .btn-search:hover a, #header a {
