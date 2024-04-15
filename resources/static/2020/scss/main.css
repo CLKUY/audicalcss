@@ -67,6 +67,12 @@ body {
   font-weight: 600;
 }
 
+.btnwhite{
+  border-color: #fff;
+  color: #fff !important;
+  border-width: 2px;
+}
+
 .btn-primary {
   background-color: #c5003e;
   border-color: #c5003e;
