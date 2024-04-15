@@ -179,6 +179,7 @@ span.icon-big {
   border-radius: 1px;
   border: 1px solid #fff !important;
   background-color: #ffffff;
+  box-shadow: 0px 0px 7px #00000057 !important;
 }
 
 #products img {
@@ -227,11 +228,11 @@ span.icon-big {
 }
 
 #why {
-  color: #304494;
+  color: #c5003e;
 }
 
 #why .material-icons {
-  color: #1EDCD0;
+  color: #c5003e;
 }
 
 #news {
