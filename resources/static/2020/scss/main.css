@@ -72,6 +72,12 @@ body {
   color: #fff !important;
   border-width: 2px;
 }
+.btnwhite:hover{
+  border-color: #fff !important;
+  color: #c5003e !important;
+  background:#fff !important;
+  border-width: 2px;
+}
 
 .btn-primary {
   background-color: #c5003e;
@@ -82,6 +88,20 @@ body {
 .btn-outline-primary {
   color: #c5003e;
   border-color: #c5003e;
+  border-width: 2px;
+}
+
+.btn-primary:hover {
+  color: #c5003e;
+  border-color: #c5003e;
+  background:#fff !important;
+  border-width: 2px;
+}
+
+.btn-outline-primary:hover {
+  color: #c5003e;
+  border-color: #c5003e;
+  background:#fff !important;
   border-width: 2px;
 }
 
