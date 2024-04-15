@@ -176,7 +176,8 @@ span.icon-big {
 }
 
 #products .product-card {
-  border-radius: 10px;
+  border-radius: 1px;
+  border: 1px solid #fff !important;
   background-color: #ffffff;
 }
 
@@ -185,11 +186,12 @@ span.icon-big {
 }
 
 #products h2 {
-  color: #304494;
+  color: #c5003e;
+  font-size: 1rem;
 }
 
 #products h3 {
-  color: #1EDCD0;
+  color: #c5003e;
   font-size: 1rem;
   margin-bottom: 0px;
 }
