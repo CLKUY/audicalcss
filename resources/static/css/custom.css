@@ -108,6 +108,7 @@ a.btn-cita {
 
 a.btn-cita:hover {
     background-color: #C5003E !important;
+	border-color: #C5003E !important;
     color: #fff !important;
 }
 
