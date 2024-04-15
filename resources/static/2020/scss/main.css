@@ -85,6 +85,7 @@ body {
   border-color: #c5003e!important;
   background:#fff !important;
   border-width: 2px;
+  cursor: pointer !important;
 }
 
 .btn-outline-primary:hover {
@@ -92,6 +93,7 @@ body {
   border-color: #c5003e;
   background:#c5003e !important;
   border-width: 2px;
+  cursor: pointer !important;
 }
 
 .btnwhite{
@@ -104,6 +106,7 @@ body {
   color: #000 !important;
   background:#fff !important;
   border-width: 2px;
+  cursor: pointer !important;
 }
 
 .divider {
