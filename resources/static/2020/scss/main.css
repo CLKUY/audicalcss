@@ -182,7 +182,8 @@ span.icon-big {
     width: 120px;
   }
   .brand .img-fluid {
-    max-width: 150% !important;
+    max-width: 200% !important;
+    margin-left: 20px;
 }
   #navbar #navbarNav ul {
     padding-top: 1rem;
