@@ -45,8 +45,8 @@ body {
 #navbar .btn-cart {
     color: #fff !important;
     background: #c6003e;
-    padding: 2px 20px;
-    border-radius: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 #navbar .btn-cart:hover {
