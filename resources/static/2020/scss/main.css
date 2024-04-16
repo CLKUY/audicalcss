@@ -32,7 +32,7 @@
     line-height: 1.4rem;
   }
 }
-
+#navbar .btn-search {display:none !important}
 body {
   color: #000000;
 }
