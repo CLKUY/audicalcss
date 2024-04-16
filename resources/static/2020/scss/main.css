@@ -32,11 +32,6 @@
     line-height: 1.4rem;
   }
 }
-#navbar .btn-cart {
-  padding: 1rem 1rem !important;
-    border-radius: 5px !important;
-    margin-top: 0.75rem !important;
-}
 #navbar .btn-search {display:none !important}
 body {
   color: #000000;
