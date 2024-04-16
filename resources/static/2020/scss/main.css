@@ -230,6 +230,7 @@ span.icon-big {
   color: #000000;
   border-bottom: 3px solid #FFFFFF;
     font-family: 'valuebold';
+    font-size: 14px;
 }
 
 #navbar #navbarNav a:hover {
