@@ -1,1 +1,26 @@
+{%load thumbnail static %}
 
+{% comment %}
+<div id="slickCarousel" class="w-100">
+    {% for banner in banners %}
+      <div class="slider-item">
+      	{% if banner.link %}<a href="{{banner.link}}" target="{{banner.link_target}}">{% endif %}
+        {% thumbnail banner.img "1140x350" quality=100 as im %}
+          <img class="d-block w-100" src="{{im.url}}" alt="First slide" style="margin: 0 auto;">
+        {% endthumbnail %}
+        {% if banner.link %}</a>{% endif %}
+      </div>
+    {% endfor %}
+</div>
+{% endcomment %}
+
+<div class="container">
+  <div class="row">
+     <div class="col-lg-8 pt-5 pb-3">
+        <h1 class="text-lg text-uppercase">Audical Soluciones Auditivas</h1>
+        <p class="text-md font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+           eiusmod tempor incididunt ut labore et dolore</p>
+     </div>
+  </div>
+</div>
+<img class="w-100 img-bar-bottom" src="{% static '2020/images/bottom.svg' %}">
