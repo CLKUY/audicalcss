@@ -34,12 +34,12 @@ a.btn-agenda {
     border-radius: 100px;
     padding: 0.45em 2em;
     font-size: 1.2em;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#58ead8+0,3fd0e1+100 */
-background: #58ead8; /* Old browsers */
-background: -moz-linear-gradient(left, #58ead8 0%, #3fd0e1 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #58ead8 0%,#3fd0e1 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #58ead8 0%,#3fd0e1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58ead8', endColorstr='#3fd0e1',GradientType=1 ); /* IE6-9 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c5003e+0,3fd0e1+100 */
+background: #c5003e; /* Old browsers */
+background: -moz-linear-gradient(left, #c5003e 0%, #a91237 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #c5003e 0%,#a91237 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #c5003e 0%,#a91237 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5003e', endColorstr='#a91237',GradientType=1 ); /* IE6-9 */
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -596,11 +596,11 @@ background: #c5003e;
     border-radius: 100px;
     padding: 0.45em 2em;
     font-size: 1em;
-    background: #58ead8;
-    background: -moz-linear-gradient(left, #58ead8 0%, #3fd0e1 100%);
-    background: -webkit-linear-gradient(left, #58ead8 0%,#3fd0e1 100%);
-    background: linear-gradient(to right, #58ead8 0%,#3fd0e1 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58ead8', endColorstr='#3fd0e1',GradientType=1 );
+    background: #c5003e;
+    background: -moz-linear-gradient(left, #c5003e 0%, #a91237 100%);
+    background: -webkit-linear-gradient(left, #c5003e 0%,#a91237 100%);
+    background: linear-gradient(to right, #c5003e 0%,#a91237 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5003e', endColorstr='#a91237',GradientType=1 );
 }
 /* end cita */
 
@@ -973,12 +973,12 @@ body.product-checkout .card figure .col-8 h5, body.product-checkout .card-body h
 }
 
 .solicitar-acceso{
-    border: 1px solid #58ead8;
+    border: 1px solid #c5003e;
     border-radius: 100px;
     padding: 0.45em 2em;
     font-size: 1em;
     background: #fff;
-    color: #58ead8;
+    color: #c5003e;
 }
 
 
