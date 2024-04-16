@@ -185,6 +185,11 @@ span.icon-big {
     max-width: 200% !important;
     margin-left: 20px;
 }
+  #navbar .btn-cart {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 0.75rem;
+}
   #navbar #navbarNav ul {
     padding-top: 1rem;
     margin-top: .5rem;
