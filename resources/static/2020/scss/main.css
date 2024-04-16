@@ -33,9 +33,9 @@
   }
 }
 #navbar .btn-cart {
-  padding: 1rem 1rem;
-    border-radius: 5px;
-    margin-top: 0.75rem;
+  padding: 1rem 1rem !important;
+    border-radius: 5px !important;
+    margin-top: 0.75rem !important;
 }
 #navbar .btn-search {display:none !important}
 body {
