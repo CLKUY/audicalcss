@@ -491,6 +491,7 @@ background: #fff; /* Old browsers */
     font-weight: 800;
     font-size: 2em;
     line-height: 1.2;
+	font-family: 'valuebold';
 }
 
 #cita.half_cita .description, #test.half_test .description {
