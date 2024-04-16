@@ -45,11 +45,11 @@ color: #C5003E !important;
 }
 
 .btn-agenda:hover, nav a.btn-agenda:hover, nav a.btn-where:hover, a.btn-cap:hover, a.btn-where:hover {
-    background: #22b5e4; /* Old browsers */
-    background: -moz-linear-gradient(left, #22b5e4 0%, #c5003e 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #22b5e4 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #22b5e4 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
+    background: #a91237; /* Old browsers */
+    background: -moz-linear-gradient(left, #a91237 0%, #c5003e 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #a91237 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #a91237 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a91237', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
 }
 
 .dropdown-item:hover {
@@ -381,12 +381,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9956e', end
 
 
 footer{
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#22b5e4+0,304494+100 */
-background: #22b5e4; /* Old browsers */
-background: -moz-linear-gradient(left, #22b5e4 0%, #c5003e 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #22b5e4 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #22b5e4 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a91237+0,304494+100 */
+background: #a91237; /* Old browsers */
+background: -moz-linear-gradient(left, #a91237 0%, #c5003e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #a91237 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #a91237 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a91237', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
 }
 footer .redes {
     background-color: #f2f2f2;
