@@ -374,12 +374,12 @@ a.btn-where {
     border-radius: 100px;
     padding: 0.45em 1em;
     font-size: 1.2em;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9956e+0,f35f8d+100 */
-background: #f9956e; /* Old browsers */
-background: -moz-linear-gradient(left, #f9956e 0%, #f35f8d 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #f9956e 0%,#f35f8d 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #f9956e 0%,#f35f8d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9956e', endColorstr='#f35f8d',GradientType=1 ); /* IE6-9 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c5003e+0,f35f8d+100 */
+background: #c5003e; /* Old browsers */
+background: -moz-linear-gradient(left, #c5003e 0%, #f35f8d 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #c5003e 0%,#f35f8d 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #c5003e 0%,#f35f8d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5003e', endColorstr='#f35f8d',GradientType=1 ); /* IE6-9 */
 }
 
 
@@ -450,11 +450,11 @@ button.btn-where,
     border-radius: 100px;
     padding: 0.45em 1.6em;
     font-size: 0.8em;
-    background: #f9956e;
-    background: -moz-linear-gradient(left, #f9956e 0%, #f35f8d 100%);
-    background: -webkit-linear-gradient(left, #f9956e 0%,#f35f8d 100%);
-    background: linear-gradient(to right, #f9956e 0%,#f35f8d 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9956e', endColorstr='#f35f8d',GradientType=1 );
+    background: #c5003e;
+    background: -moz-linear-gradient(left, #c5003e 0%, #f35f8d 100%);
+    background: -webkit-linear-gradient(left, #c5003e 0%,#f35f8d 100%);
+    background: linear-gradient(to right, #c5003e 0%,#f35f8d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5003e', endColorstr='#f35f8d',GradientType=1 );
     margin-top: 20px;
     height: 34px;
 }
@@ -530,11 +530,11 @@ a.btn-cita.btn-cita-inner {
 
 /* test auditivo */
 .test_auditivo #test{
-    background: #f9956e;
-    background: -moz-linear-gradient(left, #f9956e 0%, #f35f8d 100%);
-    background: -webkit-linear-gradient(left, #f9956e 0%,#f35f8d 100%);
-    background: linear-gradient(to right, #f9956e 0%,#f35f8d 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9956e', endColorstr='#f35f8d',GradientType=1 );
+    background: #c5003e;
+    background: -moz-linear-gradient(left, #c5003e 0%, #f35f8d 100%);
+    background: -webkit-linear-gradient(left, #c5003e 0%,#f35f8d 100%);
+    background: linear-gradient(to right, #c5003e 0%,#f35f8d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5003e', endColorstr='#f35f8d',GradientType=1 );
     padding-top: 2em;
     padding-bottom: 3em;
     }
