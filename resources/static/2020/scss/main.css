@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'valueregular';
+    src: url('value-regular-webfont.woff2') format('woff2'),
+         url('value-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'valuebold';
+    src: url('value-bold-webfont.woff2') format('woff2'),
+         url('value-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .text-sm {
   font-size: .75rem;
   font-weight: 600;
@@ -22,6 +43,9 @@
     border: 0;
 }
 
+body {
+  font-family: 'valueregular';
+}
 @media (max-width: 992px) {
   .text-lg {
     font-size: 2.1rem;
