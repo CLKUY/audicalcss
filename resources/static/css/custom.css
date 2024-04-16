@@ -1197,7 +1197,6 @@ div.box-color.active {
 }
 
 .servicio-group .row div .card img {
-    opacity: .3;
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
