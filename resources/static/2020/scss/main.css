@@ -229,6 +229,11 @@ span.icon-big {
   box-shadow: 0px 0px 7px #00000057 !important;
 }
 
+.card-img-overlay {
+    padding: 0 !important!;
+    border-radius: 0 !important;
+}
+
 #products img {
   max-height: 120px;
 }
