@@ -17,7 +17,9 @@ a:hover, button:hover{text-decoration: none !important;}
 .btn-nav-small{
     font-size: 0.8em !important;
 }
-
+.card-img-overlay {
+	margin: 0 !important!
+}
 .btn-agenda,
 a.btn-agenda {
     cursor: pointer;
