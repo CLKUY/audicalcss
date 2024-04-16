@@ -711,8 +711,8 @@ ul.pagination {
 }
 
 .page-item.active .page-link {
-    background-color: #f6777c;
-    border-color: #f6787b;
+    background-color: #C5003E;
+    border-color: #C5003E;
 }
 
 .pagination li.page-item {
