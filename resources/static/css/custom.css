@@ -55,11 +55,7 @@ color: #C5003E !important;
 .dropdown-item:hover {
     color: #ffffff;
     text-decoration: none;
-    background: #22b5e4; /* Old browsers */
-    background: -moz-linear-gradient(left, #22b5e4 0%, #c5003e 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #22b5e4 0%,#c5003e 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #22b5e4 0%,#c5003e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#22b5e4', endColorstr='#c5003e',GradientType=1 ); /* IE6-9 */
+    background: #c5003e; /* Old browsers */
 }
 
 /*CSS PORTADA*/
