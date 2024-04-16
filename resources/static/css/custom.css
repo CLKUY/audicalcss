@@ -807,6 +807,11 @@ a.registroa:hover {
     background: none !important;
     border-bottom: 1px solid #c4c4c4;
 }
+	#navbar .btn-cart {
+    padding: 1rem 1rem !important;
+    border-radius: 5px !important;
+    margin-top: 0.75rem !important;
+}
 a.navbar-brand img {
     width: 175px;
 }
