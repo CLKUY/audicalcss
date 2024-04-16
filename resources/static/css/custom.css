@@ -1150,7 +1150,7 @@ div.box-color.active {
 }
 
 .slick-arrow::before{
-    color: #0087c9!important
+    color: #c5003e!important
 }
 
 .shipping-select-container {
@@ -1250,7 +1250,7 @@ div.box-color.active {
 }
 
 .productos_shop h2 {
-    color:#0087c9;
+    color:#c5003e;
 }
 
 .productos_shop .content-shop .content-product {
@@ -1269,7 +1269,7 @@ div.box-color.active {
 
 .filter-shop h4 {
     font-size: 1rem;
-    color: #0087c9;
+    color: #c5003e;
 }
 
 .filter-shop ul {
@@ -1299,7 +1299,7 @@ body.product-checkout {
 }
 
 body.product-checkout h2 {
-    color:#0087c9;
+    color:#c5003e;
 }
 
 body.product-checkout .content-steps {
