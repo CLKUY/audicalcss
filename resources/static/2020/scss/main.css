@@ -193,10 +193,12 @@ span.icon-big {
 
 #navbar #navbarNav a {
   color: #000000;
+  border-bottom: 2px solid #FFFFFF;
 }
 
 #navbar #navbarNav a:hover {
   padding-bottom: 5px;
+  border-bottom: 2px solid #C5003E;
 }
 
 #navbar .btns-others a:hover {
