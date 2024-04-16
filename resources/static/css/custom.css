@@ -55,7 +55,7 @@ color: #C5003E !important;
 .dropdown-item:hover {
     color: #ffffff;
     text-decoration: none;
-    background: #c5003e; /* Old browsers */
+    background: #c5003e !important; /* Old browsers */
 }
 
 /*CSS PORTADA*/
