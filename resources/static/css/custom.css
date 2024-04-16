@@ -1204,11 +1204,17 @@ div.box-color.active {
     opacity: .5;
 }
 .servicio-group .row div .card h5 {
-   padding: 10px;
     position: absolute;
     background: #c6003e;
     width: 100%;
-    bottom: 1px;
+    bottom: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 20px;
 }
 
 #shipping-types label[for=id_select_ues-pickup], #shipping-types label[for=id_select_ues-delivery] {
