@@ -551,11 +551,11 @@ a.btn-cita.btn-cita-inner {
 
 /*  cita */
 .test_cita #cita{
-background: #58ead8;
-    background: -moz-linear-gradient(left, #58ead8 0%, #3fd0e1 100%);
-    background: -webkit-linear-gradient(left, #58ead8 0%,#3fd0e1 100%);
-    background: linear-gradient(to right, #58ead8 0%,#3fd0e1 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#58ead8', endColorstr='#3fd0e1',GradientType=1 );
+background: #c5003e;
+    background: -moz-linear-gradient(left, #a91237 0%, #c5003e 100%);
+    background: -webkit-linear-gradient(left, #a91237 0%,#c5003e 100%);
+    background: linear-gradient(to right, #a91237 0%,#c5003e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a91237', endColorstr='#c5003e',GradientType=1 );
     padding-top: 2em;
     padding-bottom: 0em;
     }
