@@ -344,7 +344,7 @@ span.icon-big {
   color: #c5003e;
 }
 #navbarNav .nav-item .dropdown-menu a.dropdown-item {
- font-size: small !important;
+ font-family: 'value-regular'
 }
 
 #navbarNav .nav-item .dropdown-menu a.dropdown-item:hover {
