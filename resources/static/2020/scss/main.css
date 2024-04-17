@@ -214,11 +214,8 @@ span.icon-big {
 
 @media (max-width: 992px) {
   #navbar .brand {
-    width: 120px;
-  }
-  .brand .img-fluid {
-    max-width: 200% !important;
-    margin-left: 20px;
+    width: 60%;
+    margin: 0 auto;
 }
   #navbar .btn-cart {
     padding: 1rem;
