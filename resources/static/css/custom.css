@@ -348,6 +348,13 @@ box-shadow: 0px 0px 10px 0px rgba(204,204,204,1);
 a.navbar-brand img {
     margin-top: -55px;
 }
+	
+.logodesktop {
+    display:none;
+}
+.logomob {
+    display:block;
+}
 }
 
 .item_news h4{
