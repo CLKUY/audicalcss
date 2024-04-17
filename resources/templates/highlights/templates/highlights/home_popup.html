@@ -1,0 +1,29 @@
+{% load thumbnail %}<div class="d-none d-md-block d-lg-block d-xl-block modal-popup">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+        {% if highlight.link %}<a href="{{highlight.link}}" target="{{highlight.link_target}}">{% endif %}
+        {% if highlight.video %}
+          {% autoescape off %}{{highlight.video}}{% endautoescape %}
+        {% else %}
+        {% thumbnail highlight.file "600x600" crop="center" as img %}
+          <img class="img-fluid" src="{{ img.url }}" alt="" title="" />
+        {% endthumbnail %}
+        {% endif %}
+        {% if highlight.link %}</a>{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+ <script type="text/javascript">
+  window.onload = function() {console.log('myModal')}
+    $(document).ready(function () {
+      if (!getCookie('audical_popup{{ highlight.pk }}')) {
+        if($('#myModal').closest('.modal-popup:visible').length == 0){return}
+        $('#myModal').modal('show');
+        setCookie('audical_popup{{ highlight.pk }}','audical_popup{{ highlight.pk }}', 1);
+      }
+    });
+  </script>
+</div>

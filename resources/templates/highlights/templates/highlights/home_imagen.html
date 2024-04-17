@@ -1,0 +1,17 @@
+{% comment %}
+
+{% if highlight.link %}<a href="{{highlight.link}}" target="{{highlight.link_target}}">{% endif %}
+  {%if highlight.file%}<img src="{{highlight.file.url}}" class="img-fluid circles_img">{%endif%}
+  <h3 class="pt-2 pb-3">{% autoescape off %}{{highlight.highlight_body}}{% endautoescape %}</h3>
+{% if highlight.link %}</a>{% endif %}
+
+{% endcomment %}
+
+
+     <div class="product-card text-center shadow px-3 py-4" style="border: 1px solid #ddd;">
+      {%if highlight.file%}<img class="pb-3" src="{{highlight.file.url}}" alt="Invisibles">{%endif%}
+        <h3 class="text-uppercase">{{highlight.title}}</h3>
+        <h2 class="text-md text-uppercase">{{highlight.sub_title}}</h2>
+        <p>{{highlight.highlight_body}}</p>
+        {% if highlight.link %}<a class="btn btn-outline-primary rounded-pill" href="{{highlight.link}}" target="{{highlight.link_target}}">más info</a>{% endif %}
+     </div>

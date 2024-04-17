@@ -1,0 +1,45 @@
+
+
+    <div class="row">
+
+
+        <div class="pepe-container">
+            <div class="flexslider">
+                <ul class="slides">
+                    {% for instance in highlight %}
+                    <li>
+  
+                        {% if instance.link %}<a href="{{instance.link}}" target="{{instance.link_target}}">{% endif %}
+                        <img src="{{instance.file.url}}" alt="{{instance.title}}">
+                        {% if instance.link %}</a>{% endif %}
+        
+                  </li>
+                  {% endfor %}
+                </ul>
+             </div>
+             <div class="flexslider-mobile" style="display:none">
+                 <div class="col mb-3">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for instance in highlight %}
+                      <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                        {% if instance.link %}<a href="{{instance.link}}" target="{{instance.link_target}}">{% endif %}
+                        <img class="d-block w-100" src="{{instance.file.url}}" alt="{{instance.title}}">
+                        {% if instance.link %}</a>{% endif %}
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
+             </div>
+        </div>
+
+    </div>
