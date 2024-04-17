@@ -46,6 +46,12 @@
     background: none !important;
     border: 0;
 }
+.logodesktop {
+    display:block;
+}
+.logomob {
+    display:none;
+}
 
 body {
   font-family: 'valueregular';
