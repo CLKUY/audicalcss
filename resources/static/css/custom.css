@@ -346,12 +346,7 @@ box-shadow: 0px 0px 10px 0px rgba(204,204,204,1);
 
 @media (min-width: 768px){
 		
-.logodesktop {
-    display:none !important;
-}
-.logomob {
-    display:block !important;
-}
+
 a.navbar-brand img {
     margin-top: -55px;
 }
@@ -816,6 +811,12 @@ a.registroa:hover {
 }
 
 @media (max-width: 768px){
+	.logodesktop {
+    display:none !important;
+}
+.logomob {
+    display:block !important;
+}
 .bg_filter {
     background: none !important;
     border-bottom: 1px solid #c4c4c4;
